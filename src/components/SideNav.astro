@@ -1,0 +1,32 @@
+---
+import { navItems } from "../data/nav";
+
+const currentPath = Astro.url.pathname;
+
+const isCurrent = (href: string) => {
+  if (href === "/") {
+    return currentPath === "/";
+  }
+
+  return currentPath.startsWith(href);
+};
+---
+
+<nav class="site-nav" aria-label="Primary navigation">
+  <ul class="site-nav__list">
+    {
+      navItems.map((item) => (
+        <li class="site-nav__item">
+          <a
+            class:list={["site-nav__link", { "site-nav__link--active": isCurrent(item.href) }]}
+            href={item.href}
+            aria-current={isCurrent(item.href) ? "page" : undefined}
+          >
+            <span class="site-nav__icon" aria-hidden="true">{item.iconLabel}</span>
+            <span class="site-nav__label">{item.label}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>

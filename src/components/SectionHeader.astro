@@ -1,0 +1,16 @@
+---
+export interface Props {
+  id?: string;
+  eyebrow?: string;
+  title: string;
+  intro?: string;
+}
+
+const { id, eyebrow, title, intro } = Astro.props;
+---
+
+<header class="section-header">
+  {eyebrow && <p class="section-header__eyebrow">{eyebrow}</p>}
+  <h1 id={id}>{title}</h1>
+  {intro && <p class="section-header__intro">{intro}</p>}
+</header>
