@@ -1,0 +1,25 @@
+---
+const placeholderSongs = [
+  { title: "Placeholder Song", artist: "Placeholder Artist" },
+  { title: "Placeholder Song", artist: "Placeholder Artist" },
+  { title: "Placeholder Song", artist: "Placeholder Artist" }
+];
+
+// TODO: Add real Spotify integration later without API keys or OAuth in this static foundation.
+---
+
+<section class="home-card spotify-card" aria-labelledby="spotify-title">
+  <div class="home-card__header">
+    <h2 id="spotify-title">My Spotify Top Songs</h2>
+  </div>
+  <ol class="spotify-card__list">
+    {
+      placeholderSongs.map((song) => (
+        <li class="spotify-card__row">
+          <span class="spotify-card__track">{song.title}</span>
+          <span class="spotify-card__artist">{song.artist}</span>
+        </li>
+      ))
+    }
+  </ol>
+</section>

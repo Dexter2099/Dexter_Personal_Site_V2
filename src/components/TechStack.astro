@@ -1,0 +1,21 @@
+---
+import { techStack } from "../data/tech";
+---
+
+<section class="home-card tech-stack" aria-labelledby="tech-stack-title">
+  <div class="home-card__header">
+    <h2 id="tech-stack-title">Tech Stack</h2>
+  </div>
+  <ul class="tech-stack__list" aria-label="Core technologies">
+    {
+      techStack.map((tech) => (
+        <li>
+          <span class="tech-stack__chip" tabindex="0" aria-label={tech.name}>
+            <span class="tech-stack__initials" aria-hidden="true">{tech.shortLabel}</span>
+            <span class="tech-stack__name">{tech.name}</span>
+          </span>
+        </li>
+      ))
+    }
+  </ul>
+</section>

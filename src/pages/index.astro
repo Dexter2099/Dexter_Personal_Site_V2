@@ -1,11 +1,38 @@
 ---
+import Button from "../components/Button.astro";
+import SpotifyCard from "../components/SpotifyCard.astro";
+import TechStack from "../components/TechStack.astro";
+import { socialLinks } from "../data/links";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="Dexter Mehta">
-  <section class="page-section page-section--hero" aria-labelledby="home-title">
-    <p class="page-kicker">Portfolio foundation</p>
-    <h1 id="home-title">Dexter Mehta</h1>
-    <p class="page-lede">Backend Developer · APIs · Databases · Practical AI Applications</p>
-  </section>
+  <div class="home-page">
+    <section class="hero" aria-labelledby="home-title">
+      <div class="hero__panel">
+        <h1 id="home-title">Dexter Mehta</h1>
+        <p class="hero__role">Backend Developer</p>
+        <p class="hero__subtitle">APIs · Databases · Practical AI Applications</p>
+        <div class="hero__links" aria-label="Profile links">
+          {
+            socialLinks.map((link) => (
+              <Button
+                href={link.href}
+                label={link.label}
+                variant={link.variant}
+                ariaLabel={link.ariaLabel}
+                target={link.href.startsWith("http") ? "_blank" : undefined}
+                rel={link.href.startsWith("http") ? "noreferrer" : undefined}
+              />
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <div class="home-page__cards">
+      <TechStack />
+      <SpotifyCard />
+    </div>
+  </div>
 </BaseLayout>

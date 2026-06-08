@@ -152,6 +152,168 @@ a {
   max-width: 55rem;
 }
 
+.home-page {
+  display: grid;
+  gap: clamp(2rem, 5vw, 4rem);
+  width: min(100%, 58rem);
+  margin: 0 auto;
+  padding: clamp(2rem, 4vw, 4rem) 0;
+}
+
+.hero {
+  display: grid;
+  place-items: center;
+  min-height: min(52rem, calc(100vh - 10rem));
+  text-align: center;
+}
+
+.hero__panel {
+  width: min(100%, 52rem);
+  padding: clamp(2.25rem, 6vw, 5rem) clamp(1.25rem, 4vw, 3.5rem);
+  border: 1px solid var(--border-subtle);
+  border-radius: 0.5rem;
+  background:
+    linear-gradient(180deg, rgba(17, 21, 29, 0.82), rgba(13, 16, 22, 0.5)),
+    rgba(7, 8, 10, 0.7);
+  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.3);
+}
+
+.hero h1 {
+  max-width: none;
+  color: var(--text-primary);
+  text-wrap: balance;
+}
+
+.hero__role {
+  margin: 1.2rem 0 0;
+  color: var(--gold-primary);
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.hero__subtitle {
+  max-width: 42rem;
+  margin: 1.2rem auto 0;
+  color: var(--text-muted);
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  line-height: 1.5;
+}
+
+.hero__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.85rem;
+  margin-top: 2.2rem;
+}
+
+.home-page__cards {
+  display: grid;
+  gap: 1rem;
+}
+
+.home-card {
+  border: 1px solid var(--border-subtle);
+  border-radius: 0.5rem;
+  background: rgba(17, 21, 29, 0.72);
+  box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.18);
+}
+
+.home-card__header {
+  padding: 1.1rem 1.1rem 0;
+}
+
+.home-card h2 {
+  margin: 0;
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+  font-size: clamp(1.55rem, 3vw, 2.2rem);
+  line-height: 1.1;
+}
+
+.tech-stack__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin: 0;
+  padding: 1rem 1.1rem 1.1rem;
+  list-style: none;
+}
+
+.tech-stack__chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 2.4rem;
+  padding: 0.45rem 0.65rem;
+  border: 1px solid rgba(215, 215, 215, 0.12);
+  border-radius: 999px;
+  background: rgba(7, 8, 10, 0.42);
+  color: var(--text-secondary);
+  cursor: default;
+}
+
+.tech-stack__chip:hover,
+.tech-stack__chip:focus-visible {
+  border-color: var(--border-strong);
+  color: var(--text-primary);
+}
+
+.tech-stack__initials {
+  display: grid;
+  place-items: center;
+  min-width: 2rem;
+  color: var(--gold-soft);
+  font: 600 0.78rem/1 var(--font-mono);
+}
+
+.tech-stack__name {
+  max-width: 0;
+  overflow: hidden;
+  color: var(--text-secondary);
+  font: 500 0.8rem/1.2 var(--font-mono);
+  white-space: nowrap;
+  opacity: 0;
+  transition:
+    max-width 180ms ease,
+    opacity 180ms ease;
+}
+
+.tech-stack__chip:hover .tech-stack__name,
+.tech-stack__chip:focus-visible .tech-stack__name {
+  max-width: 12rem;
+  opacity: 1;
+}
+
+.spotify-card__list {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0;
+  padding: 1rem 1.1rem 1.1rem;
+  list-style-position: inside;
+}
+
+.spotify-card__row {
+  padding: 0.75rem 0.8rem;
+  border: 1px solid rgba(215, 215, 215, 0.1);
+  border-radius: 0.4rem;
+  background: rgba(7, 8, 10, 0.3);
+  color: var(--text-muted);
+}
+
+.spotify-card__track {
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.spotify-card__artist::before {
+  content: " - ";
+  color: var(--text-muted);
+}
+
 .page-kicker,
 .section-header__eyebrow {
   margin: 0 0 1rem;
@@ -187,11 +349,22 @@ h1 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 2.75rem;
-  padding: 0.65rem 1rem;
+  min-width: 7.5rem;
+  min-height: 2.9rem;
+  padding: 0.65rem 1.15rem;
   border: 1px solid var(--border-strong);
-  border-radius: 0.4rem;
+  border-radius: 999px;
+  font-weight: 700;
   text-decoration: none;
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
 }
 
 .button--primary {
@@ -199,9 +372,19 @@ h1 {
   color: var(--bg-primary);
 }
 
+.button--primary:hover {
+  background: var(--gold-soft);
+}
+
 .button--secondary {
   background: transparent;
   color: var(--text-primary);
+}
+
+.button--secondary:hover {
+  border-color: var(--gold-soft);
+  background: rgba(212, 175, 55, 0.08);
+  color: var(--gold-soft);
 }
 
 @media (max-width: 760px) {
@@ -251,5 +434,32 @@ h1 {
 
   .page-section {
     min-height: calc(100vh - 4.75rem);
+  }
+
+  .home-page {
+    gap: 1.25rem;
+    padding: 1rem 0;
+  }
+
+  .hero {
+    min-height: calc(100vh - 8rem);
+  }
+
+  .hero__panel {
+    padding: 2rem 1rem;
+  }
+
+  .hero__links {
+    align-items: stretch;
+    gap: 0.65rem;
+  }
+
+  .button {
+    flex: 1 1 9rem;
+  }
+
+  .tech-stack__name {
+    max-width: none;
+    opacity: 1;
   }
 }
