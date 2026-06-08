@@ -1,10 +1,68 @@
 ---
-import SectionHeader from "../components/SectionHeader.astro";
+import Button from "../components/Button.astro";
+import ImageFeature from "../components/ImageFeature.astro";
+import { authorLinks } from "../data/author";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="About | Dexter Mehta">
-  <section class="page-section" aria-labelledby="about-title">
-    <SectionHeader id="about-title" title="About" />
-  </section>
+  <div class="about-page">
+    <ImageFeature
+      title="About Me"
+      imageSrc="/images/profile.jpg"
+      imageAlt="Dexter Mehta profile photo"
+      imageWidth={3024}
+      imageHeight={4032}
+      loading="eager"
+      imageVariant="portrait"
+    >
+      <div class="prose">
+        <p>
+          I’m a software developer based in Brisbane with a Master of Information Technology from Queensland University of Technology. I’m focused on backend development, APIs, databases, and practical AI applications.
+        </p>
+        <p>
+          I moved into tech when I saw AI becoming one of the most important technologies of our time. That pulled me toward software engineering, because real AI products still depend on strong foundations.
+        </p>
+        <p>
+          Outside of programming, I enjoy powerlifting, and am an avid movie lover.
+        </p>
+        <p>
+          My goal is to build a long-term career in software engineering, keep improving as a developer, and create a stable future where I can support my family through meaningful work.
+        </p>
+      </div>
+    </ImageFeature>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <ImageFeature
+      title="Author"
+      imageSrc="/images/i-am-your-beast-cover.jpg"
+      imageAlt="Cover of I Am Your Beast by Dexter Mehta"
+      imageWidth={2838}
+      imageHeight={3784}
+      headingLevel="h2"
+      imageVariant="book"
+      reverse
+    >
+      <div class="prose prose--compact">
+        <p>
+          I’m thrilled to share my debut novel, I Am Your Beast, written with the hope of inspiring the next generation of young adults to explore science. Thank you for your support, and I hope you enjoy reading it as much as I enjoyed writing it.
+        </p>
+      </div>
+      <div class="feature-actions" aria-label="Book links">
+        {
+          authorLinks.map((link) => (
+            <Button
+              href={link.href}
+              label={link.label}
+              variant={link.variant}
+              ariaLabel={link.ariaLabel}
+              target="_blank"
+              rel="noreferrer"
+            />
+          ))
+        }
+      </div>
+    </ImageFeature>
+  </div>
 </BaseLayout>

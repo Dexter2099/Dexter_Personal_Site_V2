@@ -1,0 +1,37 @@
+---
+export interface Props {
+  title: string;
+  imageSrc: string;
+  imageAlt: string;
+  imageWidth: number;
+  imageHeight: number;
+  loading?: "eager" | "lazy";
+  headingLevel?: "h1" | "h2";
+  imageVariant?: "portrait" | "book";
+  reverse?: boolean;
+}
+
+const {
+  title,
+  imageSrc,
+  imageAlt,
+  imageWidth,
+  imageHeight,
+  loading = "lazy",
+  headingLevel = "h1",
+  imageVariant = "portrait",
+  reverse = false
+} = Astro.props;
+const titleId = `${title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")}-title`;
+const HeadingTag = headingLevel;
+---
+
+<section class:list={["image-feature", `image-feature--${imageVariant}`, { "image-feature--reverse": reverse }]} aria-labelledby={titleId}>
+  <div class="image-feature__media">
+    <img src={imageSrc} alt={imageAlt} width={imageWidth} height={imageHeight} loading={loading} decoding="async" />
+  </div>
+  <div class="image-feature__content">
+    <HeadingTag id={titleId}>{title}</HeadingTag>
+    <slot />
+  </div>
+</section>
