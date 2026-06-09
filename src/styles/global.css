@@ -437,18 +437,22 @@ a {
 }
 
 .image-feature__content h1,
-.image-feature__content h2 {
-  max-width: 12ch;
+.image-feature__content h2,
+.experience-hero h1,
+.projects-hero h1,
+.contact-panel h1,
+.section-header h1 {
+  max-width: 18ch;
   margin: 0;
   color: var(--text-primary);
   font-family: var(--font-heading);
   font-weight: 800;
-  line-height: 0.95;
-  font-size: clamp(3rem, 7vw, 5.8rem);
+  line-height: 1.05;
+  font-size: clamp(2.4rem, 5vw, 4rem);
 }
 
-.image-feature--book .image-feature__content h2 {
-  font-size: clamp(2.4rem, 5vw, 4rem);
+.contact-panel h1 {
+  margin-inline: auto;
 }
 
 .prose {
@@ -501,11 +505,6 @@ a {
     linear-gradient(180deg, rgba(17, 21, 29, 0.78), rgba(13, 16, 22, 0.52)),
     rgba(7, 8, 10, 0.66);
   box-shadow: 0 1.4rem 4rem rgba(0, 0, 0, 0.22);
-}
-
-.experience-hero h1 {
-  max-width: none;
-  font-size: clamp(3.6rem, 9vw, 7.4rem);
 }
 
 .experience-hero p {
@@ -658,11 +657,6 @@ a {
   text-align: center;
 }
 
-.contact-panel h1 {
-  max-width: none;
-  font-size: clamp(3.4rem, 8vw, 6.6rem);
-}
-
 .contact-panel p {
   max-width: 42rem;
   margin: 1.25rem auto 0;
@@ -708,11 +702,6 @@ a {
     linear-gradient(180deg, rgba(17, 21, 29, 0.8), rgba(13, 16, 22, 0.52)),
     rgba(7, 8, 10, 0.66);
   box-shadow: 0 1.4rem 4rem rgba(0, 0, 0, 0.22);
-}
-
-.projects-hero h1 {
-  max-width: none;
-  font-size: clamp(3.4rem, 8vw, 7rem);
 }
 
 .projects-hero p {
@@ -826,10 +815,6 @@ h1 {
   font-size: clamp(3.4rem, 10vw, 8.6rem);
   font-weight: 800;
   line-height: 0.95;
-}
-
-.section-header h1 {
-  font-size: clamp(3rem, 8vw, 6.5rem);
 }
 
 .page-lede,
