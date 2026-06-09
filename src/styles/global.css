@@ -638,18 +638,18 @@ a {
 .timeline-card__logo-chip {
   display: grid;
   place-items: center;
-  min-width: 6.5rem;
-  min-height: 3.2rem;
-  padding: 0.5rem 0.7rem;
-  border: 1px solid rgba(215, 215, 215, 0.12);
-  border-radius: 0.45rem;
-  background: rgba(245, 235, 200, 0.96);
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
 }
 
 .timeline-card__logo {
   display: block;
-  max-width: 7rem;
-  max-height: 3rem;
+  max-width: 9rem;
+  max-height: 4rem;
   width: auto;
   height: auto;
   object-fit: contain;
