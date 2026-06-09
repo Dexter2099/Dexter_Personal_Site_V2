@@ -503,6 +503,10 @@ a {
   padding: 1.15rem 1.15rem 0;
 }
 
+.primary-stack .section-heading {
+  padding: 0;
+}
+
 .section-heading h2 {
   margin: 0;
   color: var(--text-primary);
@@ -516,7 +520,7 @@ a {
   flex-wrap: wrap;
   gap: 0.6rem;
   margin: 0;
-  padding: 1rem 1.15rem 1.15rem;
+  padding: 1rem 0 0;
   list-style: none;
 }
 
@@ -620,7 +624,7 @@ a {
   min-height: min(48rem, calc(100vh - 10rem));
   width: min(100%, 54rem);
   margin: 0 auto;
-  padding: clamp(8rem, 20vh, 12rem) 0 clamp(2rem, 4vw, 4rem);
+  padding: clamp(10rem, 24vh, 16rem) 0 clamp(2rem, 4vw, 4rem);
 }
 
 .contact-panel {
