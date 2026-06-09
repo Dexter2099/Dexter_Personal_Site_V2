@@ -30,7 +30,7 @@ export const experienceEntries: ExperienceEntry[] = [
     logo: "/images/qut-logo.jpg",
     logoAlt: "QUT logo",
     bullets: [
-      "Completed a Master of IT focused on computer science, backend engineering, databases, system design, and applied ML systems.",
+      "Completed a Master of IT majoring in computer science, backend engineering, databases, system design, and applied ML systems.",
       "Built API-oriented projects using Python and modern web tooling, with emphasis on clean data flow, validation, and maintainable structure."
     ]
   },
