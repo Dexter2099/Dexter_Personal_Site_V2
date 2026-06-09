@@ -19,6 +19,9 @@
   --font-heading: "Playfair Display", Georgia, "Times New Roman", serif;
   --font-body: "Inter", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
+
+  --page-gutter: clamp(1.25rem, 4vw, 4rem);
+  --side-nav-space: 8rem;
 }
 
 * {
@@ -74,22 +77,25 @@ a {
 }
 
 .site-shell {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 11rem;
   min-height: 100vh;
 }
 
 .site-main {
-  width: min(100%, 76rem);
-  padding: clamp(2rem, 5vw, 5rem);
+  width: 100%;
+  min-height: 100vh;
+  padding-block: clamp(2rem, 5vw, 5rem);
+  padding-inline: max(var(--page-gutter), calc(var(--side-nav-space) + 1rem));
 }
 
 .site-nav {
-  position: sticky;
+  position: fixed;
   top: 0;
+  right: 0;
+  z-index: 6;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: var(--side-nav-space);
   min-height: 100vh;
   padding: 2rem 1.25rem;
 }
@@ -869,6 +875,10 @@ h1 {
 }
 
 @media (max-width: 760px) {
+  :root {
+    --side-nav-space: 0rem;
+  }
+
   .site-shell {
     display: block;
     padding-bottom: 4.75rem;
@@ -882,6 +892,7 @@ h1 {
     position: fixed;
     inset: auto 0 0;
     z-index: 5;
+    width: auto;
     min-height: auto;
     padding: 0.65rem;
     border-top: 1px solid var(--border-subtle);
