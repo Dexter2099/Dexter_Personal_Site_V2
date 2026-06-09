@@ -6,19 +6,36 @@ export interface Props {
   target?: string;
   rel?: string;
   variant?: "primary" | "secondary";
+  icon?: "mail";
 }
 
-const { href, label, ariaLabel, target, rel, variant = "primary" } = Astro.props;
+const { href, label, ariaLabel, target, rel, variant = "primary", icon } = Astro.props;
 const className = `button button--${variant}`;
 ---
 
 {
   href ? (
     <a class={className} href={href} aria-label={ariaLabel} target={target} rel={rel}>
+      {icon === "mail" && (
+        <svg class="button__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M4.75 6.75h14.5v10.5H4.75z" />
+          <path d="m5.25 7.25 6.75 5.2 6.75-5.2" />
+          <path d="m8.25 11.6-3 2.65" />
+          <path d="m15.75 11.6 3 2.65" />
+        </svg>
+      )}
       {label}
     </a>
   ) : (
     <button class={className} type="button" aria-label={ariaLabel}>
+      {icon === "mail" && (
+        <svg class="button__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M4.75 6.75h14.5v10.5H4.75z" />
+          <path d="m5.25 7.25 6.75 5.2 6.75-5.2" />
+          <path d="m8.25 11.6-3 2.65" />
+          <path d="m15.75 11.6 3 2.65" />
+        </svg>
+      )}
       {label}
     </button>
   )
