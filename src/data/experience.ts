@@ -8,7 +8,7 @@ export type ExperienceEntry = {
 export const experienceEntries: ExperienceEntry[] = [
   {
     date: "2026",
-    title: "Delvify internship",
+    title: "Delvify.ai Internship",
     body: "Worked on backend/API features, authentication flows, structured data search, and AI-assisted product workflows.",
     highlights: [
       "Backend/API feature work",

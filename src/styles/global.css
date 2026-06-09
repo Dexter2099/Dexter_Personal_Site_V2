@@ -499,13 +499,6 @@ a {
   font-size: clamp(1.05rem, 2vw, 1.35rem);
 }
 
-.primary-stack,
-.timeline-section {
-  border: 1px solid var(--border-subtle);
-  border-radius: 0.5rem;
-  background: rgba(17, 21, 29, 0.66);
-}
-
 .section-heading {
   padding: 1.15rem 1.15rem 0;
 }
@@ -584,9 +577,9 @@ a {
 }
 
 .timeline-card__date {
-  margin: 0 0 0.45rem;
+  margin: 0 0 0.5rem;
   color: var(--gold-soft);
-  font: 600 0.78rem/1.2 var(--font-mono);
+  font: 700 clamp(1rem, 1.4vw, 1.25rem)/1.2 var(--font-mono);
 }
 
 .timeline-card h3 {
