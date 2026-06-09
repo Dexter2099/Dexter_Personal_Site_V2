@@ -167,11 +167,11 @@ a {
 .home-page {
   display: grid;
   gap: clamp(2.25rem, 5vw, 3.75rem);
-  align-content: center;
+  align-content: start;
   width: min(100%, 46rem);
   min-height: calc(100vh - 10rem);
   margin: 0 auto;
-  padding: clamp(2rem, 4vw, 4.5rem) 0;
+  padding: clamp(4.5rem, 11vh, 7rem) 0 clamp(2rem, 4vw, 4.5rem);
   text-align: center;
 }
 
@@ -935,7 +935,7 @@ h1 {
   .home-page {
     gap: 1.25rem;
     min-height: calc(100vh - 8rem);
-    padding: 1rem 0;
+    padding: 2rem 0 1rem;
   }
 
   .hero {
