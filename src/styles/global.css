@@ -584,6 +584,59 @@ a {
   font: 500 0.75rem/1.2 var(--font-mono);
 }
 
+.contact-page {
+  display: grid;
+  place-items: center;
+  min-height: min(48rem, calc(100vh - 10rem));
+  width: min(100%, 54rem);
+  margin: 0 auto;
+  padding: clamp(2rem, 4vw, 4rem) 0;
+}
+
+.contact-panel {
+  width: 100%;
+  padding: clamp(2rem, 5vw, 4rem);
+  border: 1px solid var(--border-subtle);
+  border-radius: 0.5rem;
+  background:
+    linear-gradient(180deg, rgba(17, 21, 29, 0.82), rgba(13, 16, 22, 0.52)),
+    rgba(7, 8, 10, 0.68);
+  box-shadow: 0 1.4rem 4rem rgba(0, 0, 0, 0.24);
+  text-align: center;
+}
+
+.contact-panel h1 {
+  max-width: none;
+  font-size: clamp(3.4rem, 8vw, 6.6rem);
+}
+
+.contact-panel p {
+  max-width: 42rem;
+  margin: 1.25rem auto 0;
+  color: var(--text-secondary);
+  font-size: clamp(1.05rem, 2vw, 1.28rem);
+  line-height: 1.65;
+}
+
+.contact-panel__action {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.contact-panel__action .button::before {
+  content: "";
+  width: 1rem;
+  height: 0.72rem;
+  margin-right: 0.55rem;
+  border: 2px solid currentColor;
+  border-radius: 0.12rem;
+  background:
+    linear-gradient(32deg, transparent 48%, currentColor 50%, transparent 52%),
+    linear-gradient(148deg, transparent 48%, currentColor 50%, transparent 52%);
+  opacity: 0.86;
+}
+
 .page-kicker,
 .section-header__eyebrow {
   margin: 0 0 1rem;
@@ -790,5 +843,18 @@ h1 {
 
   .timeline__item::before {
     left: 0.18rem;
+  }
+
+  .contact-page {
+    min-height: calc(100vh - 8rem);
+    padding: 1rem 0;
+  }
+
+  .contact-panel {
+    padding: 2rem 1.25rem;
+  }
+
+  .contact-panel__action .button {
+    flex: 0 1 100%;
   }
 }
