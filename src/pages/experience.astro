@@ -1,10 +1,31 @@
 ---
-import SectionHeader from "../components/SectionHeader.astro";
+import Timeline from "../components/Timeline.astro";
+import { techStack } from "../data/tech";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="Experience | Dexter Mehta">
-  <section class="page-section" aria-labelledby="experience-title">
-    <SectionHeader id="experience-title" title="Experience" />
-  </section>
+  <div class="experience-page">
+    <header class="experience-hero" aria-labelledby="experience-title">
+      <h1 id="experience-title">Experience</h1>
+      <p>A focused transition into backend development, APIs, databases, and practical AI systems.</p>
+    </header>
+
+    <section class="primary-stack" aria-labelledby="primary-stack-title">
+      <div class="section-heading">
+        <h2 id="primary-stack-title">Primary Stack</h2>
+      </div>
+      <ul class="primary-stack__list" aria-label="Primary technologies">
+        {
+          techStack.map((tech) => (
+            <li>
+              <span class="primary-stack__label">{tech.name}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <Timeline />
+  </div>
 </BaseLayout>

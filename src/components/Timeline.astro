@@ -1,0 +1,29 @@
+---
+import { experienceEntries } from "../data/experience";
+---
+
+<section class="timeline-section" aria-labelledby="timeline-title">
+  <div class="section-heading">
+    <h2 id="timeline-title">Experience Timeline</h2>
+  </div>
+  <ol class="timeline">
+    {
+      experienceEntries.map((entry) => (
+        <li class="timeline__item">
+          <article class="timeline-card">
+            <p class="timeline-card__date">{entry.date}</p>
+            <h3>{entry.title}</h3>
+            <p class="timeline-card__body">{entry.body}</p>
+            <ul class="timeline-card__highlights" aria-label={`${entry.title} highlights`}>
+              {
+                entry.highlights.map((highlight) => (
+                  <li>{highlight}</li>
+                ))
+              }
+            </ul>
+          </article>
+        </li>
+      ))
+    }
+  </ol>
+</section>
