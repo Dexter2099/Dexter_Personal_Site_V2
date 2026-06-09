@@ -1,10 +1,22 @@
 ---
-import SectionHeader from "../components/SectionHeader.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { projects } from "../data/projects";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="Featured Projects | Dexter Mehta">
-  <section class="page-section" aria-labelledby="projects-title">
-    <SectionHeader id="projects-title" title="Featured Projects" />
-  </section>
+  <div class="projects-page">
+    <header class="projects-hero" aria-labelledby="projects-title">
+      <h1 id="projects-title">Featured Projects</h1>
+      <p>Selected projects to showcase technical skills.</p>
+    </header>
+
+    <section class="project-showcase" aria-label="Featured project demos">
+      {
+        projects.map((project) => (
+          <ProjectCard project={project} />
+        ))
+      }
+    </section>
+  </div>
 </BaseLayout>

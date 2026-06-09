@@ -1,0 +1,50 @@
+---
+import Button from "./Button.astro";
+import type { Project } from "../data/projects";
+
+export interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+const titleId = `${project.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")}-title`;
+---
+
+<article class="project-card" aria-labelledby={titleId}>
+  <div class="project-card__media">
+    <video
+      src={project.videoSrc}
+      aria-label={project.videoLabel}
+      title={project.videoLabel}
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+    >
+      Your browser cannot load this demo video. <a href={project.videoSrc}>Open the {project.title} demo video directly.</a>
+    </video>
+  </div>
+  <div class="project-card__content">
+    <h2 id={titleId}>{project.title}</h2>
+    <p class="project-card__description">{project.description}</p>
+    <p class="project-card__emphasis"><span>Focus</span>{project.emphasis}</p>
+    <ul class="project-card__tech" aria-label={`${project.title} technology stack`}>
+      {
+        project.techStack.map((tech) => (
+          <li>{tech}</li>
+        ))
+      }
+    </ul>
+    <div class="project-card__actions">
+      <Button
+        href={project.githubUrl}
+        label="GitHub"
+        variant="secondary"
+        ariaLabel={`View ${project.title} on GitHub`}
+        target="_blank"
+        rel="noreferrer"
+      />
+    </div>
+  </div>
+</article>
