@@ -171,7 +171,7 @@ a {
   width: min(100%, 46rem);
   min-height: calc(100vh - 10rem);
   margin: 0 auto;
-  padding: clamp(4.5rem, 11vh, 7rem) 0 clamp(2rem, 4vw, 4.5rem);
+  padding: clamp(2rem, 4vw, 4.5rem) 0;
   text-align: center;
 }
 
@@ -180,6 +180,14 @@ a {
   place-items: center;
   min-height: auto;
   text-align: center;
+}
+
+.home-hero {
+  margin-top: clamp(8rem, 22vh, 14rem);
+}
+
+.home-hero .hero__panel {
+  padding-top: 0;
 }
 
 .hero__panel {
@@ -935,7 +943,11 @@ h1 {
   .home-page {
     gap: 1.25rem;
     min-height: calc(100vh - 8rem);
-    padding: 2rem 0 1rem;
+    padding: 1rem 0;
+  }
+
+  .home-hero {
+    margin-top: 1.5rem;
   }
 
   .hero {
