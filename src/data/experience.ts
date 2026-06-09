@@ -10,7 +10,7 @@ export type ExperienceEntry = {
 export const experienceEntries: ExperienceEntry[] = [
   {
     date: "2026",
-    title: "Software Engineer Internship at Delvify.ai",
+    title: "Internship at Delvify.ai",
     meta: "Hong Kong / Singapore-based SaaS",
     logo: "/images/delvify-logo.png",
     logoAlt: "Delvify.ai logo",
