@@ -335,7 +335,7 @@ a {
 }
 
 .spotify-card {
-  margin-top: clamp(2rem, 4vw, 3rem);
+  margin-top: clamp(1.1rem, 2.2vw, 1.75rem);
 }
 
 .spotify-card__list {

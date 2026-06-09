@@ -1,11 +1,21 @@
 ---
 import { techStack } from "../data/tech";
+
+export interface Props {
+  showHeading?: boolean;
+}
+
+const { showHeading = true } = Astro.props;
 ---
 
-<section class="home-card tech-stack" aria-labelledby="tech-stack-title">
-  <div class="home-card__header">
-    <h2 id="tech-stack-title">Tech Stack</h2>
-  </div>
+<section class="home-card tech-stack" aria-label={showHeading ? undefined : "Tech Stack"} aria-labelledby={showHeading ? "tech-stack-title" : undefined}>
+  {
+    showHeading && (
+      <div class="home-card__header">
+        <h2 id="tech-stack-title">Tech Stack</h2>
+      </div>
+    )
+  }
   <ul class="tech-stack__list" aria-label="Core technologies">
     {
       techStack.map((tech) => (
