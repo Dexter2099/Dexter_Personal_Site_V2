@@ -9,12 +9,23 @@ import { experienceEntries } from "../data/experience";
         <li class="timeline__item">
           <article class="timeline-card">
             <p class="timeline-card__date">{entry.date}</p>
-            <h3>{entry.title}</h3>
-            <p class="timeline-card__body">{entry.body}</p>
-            <ul class="timeline-card__highlights" aria-label={`${entry.title} highlights`}>
+            <div class="timeline-card__header">
+              <div class="timeline-card__title-group">
+                <h3>{entry.title}</h3>
+                <p class="timeline-card__meta">{entry.meta}</p>
+              </div>
               {
-                entry.highlights.map((highlight) => (
-                  <li>{highlight}</li>
+                entry.logo && entry.logoAlt && (
+                  <div class="timeline-card__logo-chip">
+                    <img class="timeline-card__logo" src={entry.logo} alt={entry.logoAlt} loading="lazy" decoding="async" />
+                  </div>
+                )
+              }
+            </div>
+            <ul class="timeline-card__bullets" aria-label={`${entry.title} highlights`}>
+              {
+                entry.bullets.map((bullet) => (
+                  <li>{bullet}</li>
                 ))
               }
             </ul>

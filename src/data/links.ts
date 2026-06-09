@@ -14,8 +14,7 @@ export const socialLinks: SocialLink[] = [
   },
   {
     label: "LinkedIn",
-    // TODO: Replace with Dexter's final LinkedIn profile URL.
-    href: "https://www.linkedin.com/in/dexter-mehta/",
+    href: "https://www.linkedin.com/in/dexter-developer/",
     variant: "secondary",
     ariaLabel: "Visit Dexter Mehta on LinkedIn"
   },
