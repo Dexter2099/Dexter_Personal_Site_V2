@@ -183,7 +183,7 @@ a {
 }
 
 .home-hero {
-  margin-top: clamp(8rem, 22vh, 14rem);
+  margin-top: clamp(11rem, 28vh, 18rem);
 }
 
 .home-hero .hero__panel {
