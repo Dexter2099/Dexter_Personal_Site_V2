@@ -397,6 +397,15 @@ a {
   padding: clamp(2rem, 4vw, 4rem) 0;
 }
 
+.about-page__section {
+  width: 100%;
+}
+
+.about-page__section--author {
+  width: min(100%, 60rem);
+  margin-inline: auto;
+}
+
 .image-feature {
   display: grid;
   grid-template-columns: minmax(14rem, 0.82fr) minmax(0, 1.18fr);
@@ -432,7 +441,7 @@ a {
 }
 
 .image-feature--portrait .image-feature__media img {
-  max-width: 19rem;
+  max-width: clamp(14rem, 24vw, 20rem);
   aspect-ratio: 1;
   border-radius: 50%;
   box-shadow: 0 1.2rem 3rem rgba(0, 0, 0, 0.34);
@@ -443,7 +452,7 @@ a {
 }
 
 .image-feature--book .image-feature__media img {
-  max-width: 15rem;
+  max-width: clamp(13rem, 22vw, 18rem);
   aspect-ratio: 2 / 3;
   border-radius: 0.45rem;
   box-shadow: 0 1rem 2.4rem rgba(0, 0, 0, 0.32);
@@ -464,6 +473,11 @@ a {
   font-size: clamp(2.4rem, 5vw, 4rem);
 }
 
+.about-page .image-feature__content h1,
+.about-page .image-feature__content h2 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+}
+
 .contact-panel h1,
 .contact-title {
   margin-inline: auto;
@@ -474,13 +488,13 @@ a {
   gap: 1rem;
   margin-top: 1.5rem;
   color: var(--text-secondary);
-  font-size: clamp(1rem, 1.7vw, 1.13rem);
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  font-weight: 400;
   line-height: 1.75;
 }
 
 .prose--compact {
   max-width: 42rem;
-  font-size: 1rem;
 }
 
 .prose p {
@@ -499,6 +513,11 @@ a {
   height: 1px;
   margin: 0 auto;
   background: linear-gradient(90deg, transparent, var(--border-strong), transparent);
+}
+
+.about-page .image-feature--book {
+  grid-template-columns: minmax(0, 1.05fr) minmax(12rem, 0.8fr);
+  gap: clamp(3rem, 6vw, 5rem);
 }
 
 .experience-page {
