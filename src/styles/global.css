@@ -730,16 +730,16 @@ a {
 
 .project-card {
   display: grid;
-  grid-template-columns: minmax(18rem, 0.95fr) minmax(0, 1.05fr);
+  grid-template-columns: minmax(0, 1.24fr) minmax(20rem, 0.76fr);
   gap: clamp(1.25rem, 3vw, 2rem);
   align-items: center;
-  padding: clamp(1rem, 2.5vw, 1.5rem);
-  border: 1px solid var(--border-subtle);
-  border-radius: 0.5rem;
+  padding: clamp(0.75rem, 2vw, 1.15rem) 0;
+  border: 0;
+  border-radius: 0;
   background:
-    linear-gradient(180deg, rgba(17, 21, 29, 0.74), rgba(13, 16, 22, 0.48)),
-    rgba(7, 8, 10, 0.62);
-  box-shadow: 0 1.1rem 3.2rem rgba(0, 0, 0, 0.2);
+    linear-gradient(180deg, rgba(17, 21, 29, 0.52), rgba(13, 16, 22, 0.28)),
+    rgba(7, 8, 10, 0.34);
+  box-shadow: none;
 }
 
 .project-card__media {
@@ -778,14 +778,6 @@ a {
   line-height: 1.6;
 }
 
-.project-card__emphasis span {
-  display: inline-flex;
-  margin-right: 0.55rem;
-  color: var(--gold-soft);
-  font: 600 0.76rem/1 var(--font-mono);
-  text-transform: uppercase;
-}
-
 .project-card__tech {
   display: flex;
   flex-wrap: wrap;
@@ -811,13 +803,36 @@ a {
 }
 
 .project-card__github {
-  min-width: 3rem;
-  padding-inline: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: auto;
+  min-height: auto;
+  padding: 0.2rem;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition:
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.project-card__github:hover {
+  transform: none;
+  background: transparent;
+  color: var(--gold-soft);
+}
+
+.project-card__github:focus-visible {
+  background: transparent;
+  color: var(--gold-soft);
 }
 
 .project-card__github-icon {
-  width: 1.1rem;
-  height: 1.1rem;
+  width: 1.55rem;
+  height: 1.55rem;
   fill: currentColor;
 }
 
@@ -1110,6 +1125,6 @@ h1 {
   }
 
   .project-card__actions .button {
-    flex: 0 1 100%;
+    flex: 0 0 auto;
   }
 }
