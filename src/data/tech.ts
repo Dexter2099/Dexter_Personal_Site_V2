@@ -1,16 +1,28 @@
+import {
+  siDocker,
+  siFastapi,
+  siGithubactions,
+  siPostgresql,
+  siPython,
+  siReact,
+  siSqlalchemy,
+  siTypescript
+} from "simple-icons";
+
 export type TechItem = {
   name: string;
-  shortLabel: string;
+  iconPath?: string;
+  iconFallback?: "ai";
 };
 
 export const techStack: TechItem[] = [
-  { name: "Python", shortLabel: "Py" },
-  { name: "FastAPI", shortLabel: "API" },
-  { name: "PostgreSQL", shortLabel: "PG" },
-  { name: "SQLAlchemy", shortLabel: "ORM" },
-  { name: "Docker", shortLabel: "Dkr" },
-  { name: "GitHub Actions", shortLabel: "CI" },
-  { name: "TypeScript", shortLabel: "TS" },
-  { name: "React", shortLabel: "Re" },
-  { name: "AI / LLM APIs", shortLabel: "LLM" }
+  { name: "Python", iconPath: siPython.path },
+  { name: "FastAPI", iconPath: siFastapi.path },
+  { name: "PostgreSQL", iconPath: siPostgresql.path },
+  { name: "SQLAlchemy", iconPath: siSqlalchemy.path },
+  { name: "Docker", iconPath: siDocker.path },
+  { name: "GitHub Actions", iconPath: siGithubactions.path },
+  { name: "TypeScript", iconPath: siTypescript.path },
+  { name: "React", iconPath: siReact.path },
+  { name: "AI / LLM APIs", iconFallback: "ai" }
 ];

@@ -10,8 +10,22 @@ import { techStack } from "../data/tech";
     {
       techStack.map((tech) => (
         <li>
-          <span class="tech-stack__chip" tabindex="0" aria-label={tech.name}>
-            <span class="tech-stack__initials" aria-hidden="true">{tech.shortLabel}</span>
+          <span class="tech-stack__chip" tabindex="0" aria-label={tech.name} title={tech.name}>
+            <span class="tech-stack__icon" aria-hidden="true">
+              {
+                tech.iconPath ? (
+                  <svg viewBox="0 0 24 24" focusable="false">
+                    <path d={tech.iconPath} />
+                  </svg>
+                ) : (
+                  <svg viewBox="0 0 24 24" focusable="false">
+                    <path d="M12 3.75 13.45 8.4 18 10l-4.55 1.6L12 16.25l-1.45-4.65L6 10l4.55-1.6L12 3.75Z" />
+                    <path d="M18.5 15.25 19.25 17.2 21 18l-1.75.8-.75 1.95-.75-1.95L16 18l1.75-.8.75-1.95Z" />
+                    <path d="M5.25 14.25 5.9 15.8 7.5 16.5l-1.6.7-.65 1.55-.65-1.55-1.6-.7 1.6-.7.65-1.55Z" />
+                  </svg>
+                )
+              }
+            </span>
             <span class="tech-stack__name">{tech.name}</span>
           </span>
         </li>

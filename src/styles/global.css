@@ -290,12 +290,19 @@ a {
   color: var(--text-primary);
 }
 
-.tech-stack__initials {
+.tech-stack__icon {
   display: grid;
   place-items: center;
-  min-width: 2rem;
+  width: 2rem;
+  aspect-ratio: 1;
   color: var(--gold-soft);
-  font: 600 0.78rem/1 var(--font-mono);
+}
+
+.tech-stack__icon svg {
+  display: block;
+  width: 1.15rem;
+  height: 1.15rem;
+  fill: currentColor;
 }
 
 .tech-stack__name {
@@ -442,7 +449,8 @@ a {
   font-size: clamp(2.4rem, 5vw, 4rem);
 }
 
-.contact-panel h1 {
+.contact-panel h1,
+.contact-title {
   margin-inline: auto;
 }
 
@@ -624,12 +632,12 @@ a {
   min-height: min(48rem, calc(100vh - 10rem));
   width: min(100%, 54rem);
   margin: 0 auto;
-  padding: clamp(10rem, 24vh, 16rem) 0 clamp(2rem, 4vw, 4rem);
+  padding: clamp(13rem, 32vh, 22rem) 0 clamp(2rem, 4vw, 4rem);
 }
 
 .contact-panel {
   width: 100%;
-  padding: clamp(2rem, 5vw, 4rem);
+  padding: clamp(2.5rem, 5vw, 4rem);
   border: 1px solid var(--border-subtle);
   border-radius: 0.5rem;
   background:
