@@ -235,11 +235,11 @@ a {
 
 .home-page {
   display: grid;
-  gap: clamp(0.75rem, 1.8vw, 1.5rem);
+  gap: 1.25rem;
   align-content: start;
   width: min(100%, 46rem);
   margin: 0 auto;
-  padding: clamp(0.75rem, 2vw, 1.75rem) 0 clamp(1rem, 2vw, 2rem);
+  padding: 0 0 clamp(1rem, 2vw, 2rem);
   text-align: center;
 }
 
@@ -251,15 +251,16 @@ a {
 }
 
 .home-hero {
-  min-height: clamp(52vh, 54vh, 56vh);
+  display: grid;
+  place-items: center;
+  min-height: clamp(21rem, 46vh, 30rem);
   margin-top: 0;
-  align-items: center;
 }
 
 .home-hero__content {
   width: 100%;
   padding-top: 0;
-  transform: translateY(clamp(2.5rem, 4vw, 4.5rem));
+  transform: translateY(clamp(3rem, 7vh, 4.5rem));
 }
 
 .hero__panel {
@@ -360,8 +361,8 @@ a {
 
 .home-supporting-content {
   display: grid;
-  gap: 0.9rem;
-  margin-top: clamp(0.2rem, 0.8vw, 0.5rem);
+  gap: 1.4rem;
+  margin-top: clamp(-0.65rem, -1vh, -0.2rem);
 }
 
 .home-card {
@@ -391,7 +392,7 @@ a {
   justify-content: center;
   gap: 0.75rem;
   margin: 0;
-  padding: 0.35rem 0 0.9rem;
+  padding: 0.25rem 0 1.1rem;
   list-style: none;
 }
 
@@ -1155,7 +1156,7 @@ h1 {
   }
 
   .home-hero {
-    min-height: 48vh;
+    min-height: auto;
     margin-top: 0;
   }
 
@@ -1169,7 +1170,11 @@ h1 {
 
   .home-supporting-content {
     gap: 0.85rem;
-    margin-top: 0.25rem;
+    margin-top: 0;
+  }
+
+  .tech-stack__list {
+    padding-top: 0.5rem;
   }
 
   .hero__links {
