@@ -1,11 +1,7 @@
 ---
-const placeholderSongs = [
-  { title: "Placeholder Song", artist: "Placeholder Artist" },
-  { title: "Placeholder Song", artist: "Placeholder Artist" },
-  { title: "Placeholder Song", artist: "Placeholder Artist" }
-];
+import { getSpotifyTopTracks } from "../lib/spotify";
 
-// TODO: Add real Spotify integration later without API keys or OAuth in this static foundation.
+const topTracks = await getSpotifyTopTracks(5);
 ---
 
 <section class="home-card spotify-card" aria-labelledby="spotify-title">
@@ -22,10 +18,30 @@ const placeholderSongs = [
   </div>
   <ol class="spotify-card__list">
     {
-      placeholderSongs.map((song) => (
+      topTracks.map((track, index) => (
         <li class="spotify-card__row">
-          <span class="spotify-card__track">{song.title}</span>
-          <span class="spotify-card__artist">{song.artist}</span>
+          <span class="spotify-card__number">{index + 1}.</span>
+          <span class="spotify-card__art" aria-hidden="true">
+            {
+              track.albumImageUrl ? (
+                <img src={track.albumImageUrl} alt="" loading="lazy" decoding="async" />
+              ) : (
+                <span>{index + 1}</span>
+              )
+            }
+          </span>
+          <span class="spotify-card__details">
+            {
+              track.url ? (
+                <a class="spotify-card__track" href={track.url} target="_blank" rel="noreferrer">
+                  {track.title}
+                </a>
+              ) : (
+                <span class="spotify-card__track">{track.title}</span>
+              )
+            }
+            <span class="spotify-card__artist">{track.artists}</span>
+          </span>
         </li>
       ))
     }
