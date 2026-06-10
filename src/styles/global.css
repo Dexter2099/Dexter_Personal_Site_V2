@@ -458,9 +458,22 @@ a {
 }
 
 .spotify-card {
-  width: min(100%, 26rem);
+  display: grid;
+  justify-items: stretch;
+  width: 100%;
+  max-width: 25rem;
   margin-top: clamp(0.25rem, 0.8vw, 0.6rem);
   margin-inline: auto;
+}
+
+.spotify-card .home-card__header {
+  display: grid;
+  grid-template-columns: 1.6rem minmax(0, 1fr);
+  align-items: center;
+  justify-content: normal;
+  gap: 0.65rem;
+  width: 100%;
+  text-align: left;
 }
 
 .spotify-card__list {
