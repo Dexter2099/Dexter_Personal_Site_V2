@@ -468,12 +468,22 @@ a {
 
 .spotify-card .home-card__header {
   display: grid;
-  grid-template-columns: 1.6rem minmax(0, 1fr);
+  grid-template-columns: 1.6rem 2.75rem minmax(0, 1fr);
   align-items: center;
   justify-content: normal;
   gap: 0.65rem;
   width: 100%;
+  padding: 0 0.2rem;
   text-align: left;
+}
+
+.spotify-card .home-card__header h2 {
+  grid-column: 3;
+}
+
+.spotify-card .home-card__header .spotify-card__icon {
+  grid-column: 2;
+  justify-self: center;
 }
 
 .spotify-card__list {
