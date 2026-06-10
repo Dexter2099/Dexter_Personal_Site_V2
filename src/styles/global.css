@@ -228,62 +228,49 @@ a {
   margin-top: 1.75rem;
 }
 
-.hero__icon-link {
+.home-socials {
+  gap: clamp(1.5rem, 3vw, 2rem);
+}
+
+.home-social-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 3.15rem;
-  height: 3.15rem;
-  border: 1px solid var(--border-strong);
+  width: 3rem;
+  height: 3rem;
+  border: 0;
   border-radius: 999px;
+  background: transparent;
   color: var(--text-primary);
   text-decoration: none;
   transition:
-    border-color 160ms ease,
     background-color 160ms ease,
     color 160ms ease,
     transform 160ms ease;
 }
 
-.hero__icon-link:hover {
+.home-social-link:hover,
+.home-social-link:focus-visible {
+  background: rgba(212, 175, 55, 0.08);
+  color: var(--gold-primary);
   transform: translateY(-1px);
 }
 
-.hero__icon-link--primary {
-  background: var(--gold-primary);
-  color: var(--bg-primary);
-}
-
-.hero__icon-link--primary:hover {
-  background: var(--gold-soft);
-}
-
-.hero__icon-link--secondary {
-  background: transparent;
-  color: var(--text-primary);
-}
-
-.hero__icon-link--secondary:hover {
-  border-color: var(--gold-soft);
-  background: rgba(212, 175, 55, 0.08);
-  color: var(--gold-soft);
-}
-
-.hero__icon {
+.home-social-link__icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 1.35rem;
-  height: 1.35rem;
+  width: 2rem;
+  height: 2rem;
 }
 
-.hero__icon svg {
+.home-social-link__icon svg {
   width: 100%;
   height: 100%;
   fill: currentColor;
 }
 
-.hero__icon svg path {
+.home-social-link__icon svg path {
   vector-effect: non-scaling-stroke;
 }
 
@@ -1102,7 +1089,7 @@ h1 {
     gap: 0.65rem;
   }
 
-  .hero__icon-link {
+  .home-social-link {
     flex: 0 0 auto;
   }
 
