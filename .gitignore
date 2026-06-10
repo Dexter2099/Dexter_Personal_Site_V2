@@ -9,3 +9,5 @@ astro-dev*.log
 Assets/
 DemoReels/
 DexterPersonalSiteV2Plan.docx
+.env
+.env.local
