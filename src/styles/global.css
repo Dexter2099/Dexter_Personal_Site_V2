@@ -251,7 +251,7 @@ a {
 }
 
 .home-hero {
-  min-height: clamp(28rem, calc(100vh - 12rem), 38rem);
+  min-height: clamp(34rem, calc(100vh - 6rem), 46rem);
   margin-top: 0;
   align-items: center;
 }
