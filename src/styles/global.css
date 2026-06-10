@@ -470,11 +470,13 @@ a {
 
 .spotify-card .home-card__header {
   display: grid;
-  grid-template-columns: 2.75rem minmax(0, 1fr);
+  grid-template-columns: 2.75rem minmax(10rem, 15rem);
   align-items: center;
   justify-content: normal;
   gap: 0.7rem;
-  width: 100%;
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
   padding: 0 0.2rem;
   text-align: left;
 }
@@ -491,14 +493,16 @@ a {
 .spotify-card__list {
   display: grid;
   gap: 0.35rem;
-  margin: 0;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
   padding: 0.7rem 0 0;
   list-style: none;
 }
 
 .spotify-card__row {
   display: grid;
-  grid-template-columns: 2.75rem minmax(0, 1fr);
+  grid-template-columns: 2.75rem minmax(10rem, 15rem);
   align-items: center;
   gap: 0.7rem;
   padding: 0.35rem 0.2rem;
@@ -537,6 +541,7 @@ a {
 .spotify-card__track {
   display: block;
   overflow: hidden;
+  max-width: 15rem;
   color: var(--text-secondary);
   font-weight: 600;
   line-height: 1.25;
@@ -581,6 +586,7 @@ a.spotify-card__track:focus-visible {
 
 .spotify-card__artist {
   overflow: hidden;
+  max-width: 15rem;
   color: var(--text-muted);
   font-size: 0.95rem;
   line-height: 1.3;
