@@ -458,12 +458,14 @@ a {
 }
 
 .spotify-card {
+  --spotify-offset: clamp(1.25rem, 3vw, 2.25rem);
   display: grid;
   justify-items: stretch;
   width: 100%;
   max-width: 25rem;
   margin-top: clamp(0.25rem, 0.8vw, 0.6rem);
-  margin-inline: auto;
+  margin-right: max(0rem, calc(50% - 12.5rem - var(--spotify-offset)));
+  margin-left: auto;
 }
 
 .spotify-card .home-card__header {
@@ -1265,6 +1267,11 @@ h1 {
   .tech-stack__list {
     flex-wrap: wrap;
     padding-bottom: 1rem;
+  }
+
+  .spotify-card {
+    --spotify-offset: 0rem;
+    margin-inline: auto;
   }
 
   .tech-stack__chip {
