@@ -235,12 +235,11 @@ a {
 
 .home-page {
   display: grid;
-  gap: clamp(2.25rem, 5vw, 3.75rem);
+  gap: clamp(1.5rem, 3vw, 2.5rem);
   align-content: start;
   width: min(100%, 46rem);
-  min-height: calc(100vh - 10rem);
   margin: 0 auto;
-  padding: clamp(2rem, 4vw, 4.5rem) 0;
+  padding: clamp(1.25rem, 3vw, 3rem) 0 clamp(1rem, 2vw, 2rem);
   text-align: center;
 }
 
@@ -252,7 +251,7 @@ a {
 }
 
 .home-hero {
-  margin-top: clamp(11rem, 28vh, 18rem);
+  margin-top: clamp(2rem, 8vh, 5rem);
 }
 
 .home-hero .hero__panel {
@@ -357,7 +356,7 @@ a {
 
 .home-page__cards {
   display: grid;
-  gap: 1.65rem;
+  gap: 1.1rem;
 }
 
 .home-card {
@@ -387,7 +386,7 @@ a {
   justify-content: center;
   gap: 0.75rem;
   margin: 0;
-  padding: 1rem 0 1.85rem;
+  padding: 0.85rem 0 1.2rem;
   list-style: none;
 }
 
@@ -455,7 +454,7 @@ a {
 }
 
 .spotify-card {
-  margin-top: clamp(1.1rem, 2.2vw, 1.75rem);
+  margin-top: clamp(0.75rem, 1.6vw, 1.2rem);
 }
 
 .spotify-card__list {
@@ -1147,7 +1146,6 @@ h1 {
 
   .home-page {
     gap: 1.25rem;
-    min-height: calc(100vh - 8rem);
     padding: 1rem 0;
   }
 
