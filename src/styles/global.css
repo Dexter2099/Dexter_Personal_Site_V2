@@ -251,7 +251,9 @@ a {
 }
 
 .home-hero {
-  margin-top: clamp(2rem, 8vh, 5rem);
+  min-height: clamp(28rem, calc(100vh - 12rem), 38rem);
+  margin-top: 0;
+  align-items: center;
 }
 
 .home-hero .hero__panel {
@@ -1150,7 +1152,8 @@ h1 {
   }
 
   .home-hero {
-    margin-top: 1.5rem;
+    min-height: auto;
+    margin-top: 1rem;
   }
 
   .hero {
