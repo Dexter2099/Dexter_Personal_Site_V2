@@ -92,8 +92,6 @@ a {
 .site-footer {
   width: 100%;
   margin-top: auto;
-  border-top: 1px solid var(--border-subtle);
-  background: rgba(7, 8, 10, 0.5);
 }
 
 .site-footer__inner {
@@ -260,7 +258,7 @@ a {
 .home-hero__content {
   width: 100%;
   padding-top: 0;
-  transform: translateY(clamp(3rem, 7vh, 4.5rem));
+  transform: translateY(clamp(8rem, 18vh, 13rem));
 }
 
 .hero__panel {
@@ -362,7 +360,7 @@ a {
 .home-supporting-content {
   display: grid;
   gap: 1.4rem;
-  margin-top: clamp(-0.65rem, -1vh, -0.2rem);
+  margin-top: clamp(4rem, 8vh, 6rem);
 }
 
 .home-card {
