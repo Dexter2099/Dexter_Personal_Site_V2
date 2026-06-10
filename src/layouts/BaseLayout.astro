@@ -1,4 +1,5 @@
 ---
+import Footer from "../components/Footer.astro";
 import SideNav from "../components/SideNav.astro";
 import "../styles/global.css";
 
@@ -33,6 +34,7 @@ const {
       <main id="main-content" class="site-main">
         <slot />
       </main>
+      <Footer />
       <SideNav />
     </div>
   </body>

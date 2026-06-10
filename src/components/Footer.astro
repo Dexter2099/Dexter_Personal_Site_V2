@@ -1,0 +1,40 @@
+---
+import {
+  siAstro,
+  siCloudflarepages,
+  siReact,
+  siTailwindcss,
+  siTypescript
+} from "simple-icons";
+
+const footerTech = [
+  { name: "Astro", path: siAstro.path },
+  { name: "TypeScript", path: siTypescript.path },
+  { name: "Tailwind CSS", path: siTailwindcss.path },
+  { name: "React", path: siReact.path },
+  { name: "Cloudflare Pages", path: siCloudflarepages.path }
+];
+---
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p class="site-footer__copyright">© 2026 Dexter Mehta</p>
+
+    <div class="site-footer__stack" aria-label="Built with Astro, TypeScript, Tailwind CSS, React, and Cloudflare Pages">
+      <span class="site-footer__label">Built with</span>
+      <ul class="site-footer__tech-list" aria-label="Technology stack">
+        {
+          footerTech.map((tech) => (
+            <li class="site-footer__tech-item">
+              <span class="site-footer__tech-icon" role="img" aria-label={tech.name} title={tech.name}>
+                <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                  <path d={tech.path} />
+                </svg>
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</footer>
