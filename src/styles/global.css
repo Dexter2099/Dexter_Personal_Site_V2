@@ -42,6 +42,7 @@ body {
     radial-gradient(circle at top left, rgba(212, 175, 55, 0.08), transparent 32rem),
     linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
   color: var(--text-primary);
+  overflow-x: clip;
 }
 
 body,
@@ -76,13 +77,51 @@ a {
   transform: translateY(0);
 }
 
+.side-rays-background {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.side-rays-background::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(255, 220, 64, 0.82) 0 2.5rem, rgba(234, 179, 8, 0.34) 6rem, rgba(234, 179, 8, 0.08) 13rem, transparent 24rem),
+    radial-gradient(circle at 96% 3%, rgba(245, 235, 200, 0.28), transparent 12rem);
+  filter: blur(3px);
+  opacity: 0.5;
+  mix-blend-mode: screen;
+}
+
+.side-rays-background .side-rays-container {
+  width: 100%;
+  height: 100%;
+}
+
+.side-rays-background astro-island {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .site-shell {
+  position: relative;
+  z-index: 1;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
 .site-main {
+  position: relative;
+  z-index: 1;
   flex: 1 0 auto;
   width: 100%;
   padding-block: clamp(2rem, 5vw, 5rem);
@@ -1160,6 +1199,12 @@ h1 {
   border-color: var(--gold-soft);
   background: rgba(212, 175, 55, 0.08);
   color: var(--gold-soft);
+}
+
+@media (max-width: 700px) {
+  .side-rays-background {
+    opacity: 0.85;
+  }
 }
 
 @media (max-width: 760px) {

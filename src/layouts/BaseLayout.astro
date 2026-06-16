@@ -1,5 +1,6 @@
 ---
 import Footer from "../components/Footer.astro";
+import SideRaysBackground from "../components/SideRaysBackground.astro";
 import SideNav from "../components/SideNav.astro";
 import "../styles/global.css";
 
@@ -31,6 +32,7 @@ const {
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
+    <SideRaysBackground />
     <div class="site-shell">
       <main id="main-content" class="site-main">
         <slot />
