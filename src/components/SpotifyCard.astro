@@ -16,7 +16,7 @@ const topTracks = await getSpotifyTopTracks(3);
     </span>
     <h2 id="spotify-title">On rotation</h2>
   </div>
-  <ol class="spotify-card__list">
+  <ol class="spotify-card__list" data-spotify-track-list data-spotify-endpoint="/api/spotify">
     {
       topTracks.map((track) => (
         <li class="spotify-card__row">
@@ -46,3 +46,83 @@ const topTracks = await getSpotifyTopTracks(3);
     }
   </ol>
 </section>
+
+<script>
+  const list = document.querySelector("[data-spotify-track-list]");
+  const endpoint = list?.getAttribute("data-spotify-endpoint") ?? "/api/spotify";
+
+  function createTrackRow(track) {
+    const row = document.createElement("li");
+    row.className = "spotify-card__row";
+
+    const art = document.createElement("span");
+    art.className = "spotify-card__art";
+    art.setAttribute("aria-hidden", "true");
+
+    if (track.albumImageUrl) {
+      const image = document.createElement("img");
+      image.src = track.albumImageUrl;
+      image.alt = "";
+      image.loading = "lazy";
+      image.decoding = "async";
+      art.append(image);
+    } else {
+      const placeholder = document.createElement("span");
+      placeholder.textContent = "♪";
+      art.append(placeholder);
+    }
+
+    const details = document.createElement("span");
+    details.className = "spotify-card__details";
+
+    const title = track.title || "Untitled track";
+    const titleElement = track.url ? document.createElement("a") : document.createElement("span");
+    titleElement.className = "spotify-card__track";
+    titleElement.textContent = title;
+
+    if (track.url) {
+      titleElement.href = track.url;
+      titleElement.target = "_blank";
+      titleElement.rel = "noreferrer";
+    }
+
+    const artist = document.createElement("span");
+    artist.className = "spotify-card__artist";
+    artist.textContent = track.artists || "Unknown artist";
+
+    details.append(titleElement, artist);
+    row.append(art, details);
+
+    return row;
+  }
+
+  async function refreshSpotifyTracks() {
+    if (!list) {
+      return;
+    }
+
+    try {
+      const response = await fetch(endpoint, {
+        headers: {
+          Accept: "application/json"
+        }
+      });
+
+      if (!response.ok) {
+        return;
+      }
+
+      const payload = await response.json();
+      const tracks = Array.isArray(payload.tracks) ? payload.tracks : [];
+      const rows = tracks.map(createTrackRow);
+
+      if (rows.length > 0) {
+        list.replaceChildren(...rows);
+      }
+    } catch {
+      // Keep the server-rendered fallback rows visible.
+    }
+  }
+
+  refreshSpotifyTracks();
+</script>
