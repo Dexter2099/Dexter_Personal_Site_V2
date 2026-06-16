@@ -66,6 +66,7 @@ test("global stacking rules keep rays decorative and content interactive", async
   assert.match(css, /\.side-rays-background astro-island\s*\{[^}]*height:\s*100%;/s);
   assert.match(css, /\.site-shell\s*\{[^}]*position:\s*relative;[^}]*z-index:\s*1;/s);
   assert.match(css, /\.site-main\s*\{[^}]*position:\s*relative;[^}]*z-index:\s*1;/s);
+  assert.match(css, /@media\s*\(max-width:\s*700px\)\s*\{[^}]*\.side-rays-background\s*\{[^}]*opacity:\s*0\.5;/s);
   assert.doesNotMatch(css, /@media\s*\(prefers-reduced-motion:\s*reduce\)\s*\{[^}]*\.side-rays-background\s*\{[^}]*display:\s*none;/s);
 });
 

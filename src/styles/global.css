@@ -1203,7 +1203,7 @@ h1 {
 
 @media (max-width: 700px) {
   .side-rays-background {
-    opacity: 0.85;
+    opacity: 0.5;
   }
 }
 
