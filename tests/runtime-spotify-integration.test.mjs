@@ -45,3 +45,10 @@ test("Spotify card keeps static fallback HTML and hydrates from the runtime API"
   assert.doesNotMatch(component, /innerHTML\s*=/);
   assert.match(component, /catch\s*\{/);
 });
+
+test("server-rendered Spotify fallback honors the requested track limit", async () => {
+  const source = await read("src/lib/spotify.ts");
+
+  assert.match(source, /fallbackTracks\.slice\(0,\s*limit\)/);
+  assert.doesNotMatch(source, /return fallbackTracks;/);
+});

@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TextEffect } from "./text-effect";
 
 const HERO_TITLE_EFFECT_PLAYED_KEY = "dexter-hero-title-effect-played";
+const HERO_TITLE_EFFECT_COMPLETE_EVENT = "hero-title-effect-complete";
 
 export default function HeroTitleEffect() {
   const [hasPlayed, setHasPlayed] = useState(() => {
@@ -15,6 +16,16 @@ export default function HeroTitleEffect() {
     setHasPlayed(true);
   };
   const shouldAnimate = !hasPlayed;
+
+  const notifyTitleComplete = () => {
+    window.dispatchEvent(new Event(HERO_TITLE_EFFECT_COMPLETE_EVENT));
+  };
+
+  useEffect(() => {
+    if (hasPlayed) {
+      window.setTimeout(notifyTitleComplete, 0);
+    }
+  }, [hasPlayed]);
 
   return (
     <>

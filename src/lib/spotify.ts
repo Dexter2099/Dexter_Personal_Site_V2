@@ -52,6 +52,10 @@ const fallbackTracks: SpotifyTopTrack[] = [
   isFallback: true
 }));
 
+function getFallbackTracks(limit: number): SpotifyTopTrack[] {
+  return fallbackTracks.slice(0, limit);
+}
+
 function getRequiredSpotifyEnv() {
   const { SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, SPOTIFY_REFRESH_TOKEN } = process.env;
 
@@ -133,9 +137,9 @@ export async function getSpotifyTopTracks(limit = 5): Promise<SpotifyTopTrack[]>
       albumName: track.album?.name ?? null
     })) ?? [];
 
-    return tracks.length > 0 ? tracks : fallbackTracks;
+    return tracks.length > 0 ? tracks : getFallbackTracks(limit);
   } catch (error) {
     console.warn("Spotify top tracks unavailable; rendering fallback rows.", error instanceof Error ? error.message : error);
-    return fallbackTracks;
+    return getFallbackTracks(limit);
   }
 }

@@ -39,7 +39,6 @@ test("home hero records the animation and keeps the text-effect layout after the
   assert.match(heroTitleEffect, /const\s+shouldAnimate\s*=\s*!hasPlayed;/);
   assert.match(heroTitleEffect, /trigger=\{shouldAnimate\}/);
   assert.match(heroTitleEffect, /onAnimationComplete=\{handleAnimationComplete\}/);
-  assert.doesNotMatch(heroTitleEffect, /if\s*\(hasPlayed\)\s*\{/);
   assert.doesNotMatch(heroTitleEffect, /<h1 id="home-title">Dexter Mehta<\/h1>/);
   assert.doesNotMatch(heroTitleEffect, /<p className="hero__role">Backend Developer<\/p>/);
   assert.doesNotMatch(textEffect, /\{trigger\s*&&\s*\(/);
