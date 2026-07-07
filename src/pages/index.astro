@@ -1,6 +1,7 @@
 ---
 import SpotifyCard from "../components/SpotifyCard.astro";
 import TechStack from "../components/TechStack.astro";
+import HeroTitleEffect from "../components/react/HeroTitleEffect.jsx";
 import { socialLinks } from "../data/links";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
@@ -9,8 +10,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   <div class="home-page">
     <section class="hero home-hero" aria-labelledby="home-title">
       <div class="hero__panel home-hero__content">
-        <h1 id="home-title">Dexter Mehta</h1>
-        <p class="hero__role">Backend Developer</p>
+        <HeroTitleEffect client:only="react" />
         <div class="hero__links home-socials" aria-label="Profile links">
           {
             socialLinks.map((link) => (
