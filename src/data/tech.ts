@@ -2,10 +2,13 @@ import {
   siDocker,
   siFastapi,
   siGithubactions,
+  siGooglecloud,
   siPostgresql,
   siPython,
+  siPytest,
   siReact,
   siSqlalchemy,
+  siTailwindcss,
   siTypescript
 } from "simple-icons";
 
@@ -21,11 +24,14 @@ const pytorchIconPath =
 export const techStack: TechItem[] = [
   { name: "Python", iconPath: siPython.path },
   { name: "FastAPI", iconPath: siFastapi.path },
-  { name: "PostgreSQL", iconPath: siPostgresql.path },
   { name: "SQLAlchemy", iconPath: siSqlalchemy.path },
+  { name: "PostgreSQL", iconPath: siPostgresql.path },
+  { name: "pytest", iconPath: siPytest.path },
   { name: "Docker", iconPath: siDocker.path },
   { name: "GitHub Actions", iconPath: siGithubactions.path },
   { name: "TypeScript", iconPath: siTypescript.path },
   { name: "React", iconPath: siReact.path },
-  { name: "PyTorch", iconPath: pytorchIconPath }
+  { name: "Tailwind CSS", iconPath: siTailwindcss.path },
+  { name: "PyTorch", iconPath: pytorchIconPath },
+  { name: "Google Cloud", iconPath: siGooglecloud.path }
 ];
