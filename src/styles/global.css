@@ -357,6 +357,7 @@ a {
 }
 
 .home-social-link {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -396,6 +397,32 @@ a {
 
 .home-social-link__icon svg path {
   vector-effect: non-scaling-stroke;
+}
+
+.home-social-link__label {
+  position: absolute;
+  bottom: calc(100% + 0.45rem);
+  left: 50%;
+  z-index: 2;
+  padding: 0.35rem 0.55rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: 999px;
+  background: rgba(7, 8, 10, 0.94);
+  color: var(--text-secondary);
+  font: 500 0.8rem/1.2 var(--font-mono);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 0.2rem);
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease;
+}
+
+.home-social-link:hover .home-social-link__label,
+.home-social-link:focus-visible .home-social-link__label {
+  opacity: 1;
+  transform: translate(-50%, 0);
 }
 
 .sr-only {

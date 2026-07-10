@@ -1,6 +1,12 @@
 import { AnimatedGroup } from "./animated-group";
 import { useHomeIntroSequence } from "./home-intro-sequence";
 
+const hoverLabels = {
+  GitHub: "Github",
+  LinkedIn: "Linkedin",
+  Email: "Email"
+};
+
 function SocialIcon({ label }) {
   if (label === "GitHub") {
     return (
@@ -52,6 +58,7 @@ export default function HomeSocialLinks({ socialLinks }) {
           <span className="home-social-link__icon" aria-hidden="true">
             <SocialIcon label={link.label} />
           </span>
+          <span className="home-social-link__label" aria-hidden="true">{hoverLabels[link.label] ?? link.label}</span>
           <span className="sr-only">{link.label}</span>
         </a>
       ))}
