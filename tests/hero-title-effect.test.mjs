@@ -25,7 +25,7 @@ test("home hero renders a page-load per-character text effect for the title and 
   assert.match(heroTitleEffect, />\s*Dexter Mehta\s*<\/TextEffect>/s);
   assert.match(heroTitleEffect, /<TextEffect[^>]*as="p"[^>]*per="char"[^>]*preset="fade"/s);
   assert.match(heroTitleEffect, /className="hero__role"/);
-  assert.match(heroTitleEffect, /delay=\{0\.35\}/);
+  assert.doesNotMatch(heroTitleEffect, /delay=/);
   assert.match(heroTitleEffect, />\s*Backend Developer\s*<\/TextEffect>/s);
 });
 

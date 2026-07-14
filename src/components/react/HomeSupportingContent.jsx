@@ -1,16 +1,40 @@
 import { useEffect, useState } from "react";
+import { motion } from "motion/react";
 import { AnimatedGroup } from "./animated-group";
 import { useHomeIntroSequence } from "./home-intro-sequence";
 
 const SPOTIFY_ENDPOINT = "/api/spotify";
+
+const techStackVariants = {
+  container: {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.12
+      }
+    }
+  },
+  item: {
+    hidden: { opacity: 0, scale: 0.82 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        type: "spring",
+        bounce: 0.28,
+        duration: 0.68
+      }
+    }
+  }
+};
 
 const spotifyVariants = {
   container: {
     hidden: {},
     visible: {
       transition: {
-        delayChildren: 0.38,
-        staggerChildren: 0.05
+        delayChildren: 0,
+        staggerChildren: 0.15
       }
     }
   },
@@ -29,7 +53,7 @@ const spotifyVariants = {
       transition: {
         type: "spring",
         bounce: 0.3,
-        duration: 1
+        duration: 0.7
       }
     }
   }
@@ -65,7 +89,7 @@ function SpotifyIcon() {
 }
 
 export default function HomeSupportingContent({ techStack, initialTracks }) {
-  const { isReady, shouldAnimate, markIntroComplete } = useHomeIntroSequence();
+  const { shouldAnimate, markIntroComplete } = useHomeIntroSequence();
   const [tracks, setTracks] = useState(initialTracks);
 
   useEffect(() => {
@@ -93,10 +117,6 @@ export default function HomeSupportingContent({ techStack, initialTracks }) {
     refreshSpotifyTracks();
   }, []);
 
-  if (!isReady) {
-    return null;
-  }
-
   return (
     <section className="home-supporting-content" aria-label="Home supporting content">
       <section className="home-card tech-stack" aria-label="Tech Stack">
@@ -106,7 +126,9 @@ export default function HomeSupportingContent({ techStack, initialTracks }) {
           className="tech-stack__list"
           aria-label="Core technologies"
           preset="scale"
+          variants={techStackVariants}
           trigger={shouldAnimate}
+          onAnimationComplete={shouldAnimate ? markIntroComplete : undefined}
         >
           {techStack.map((tech) => (
             <span key={tech.name} className="tech-stack__chip" tabIndex="0" aria-label={tech.name} title={tech.name}>
@@ -120,19 +142,23 @@ export default function HomeSupportingContent({ techStack, initialTracks }) {
       </section>
 
       <section className="home-card spotify-card" aria-labelledby="spotify-title">
-        <div className="home-card__header">
+        <motion.div
+          className="home-card__header"
+          initial={shouldAnimate ? { opacity: 0, y: 12 } : false}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
           <span className="spotify-card__icon" aria-hidden="true">
             <SpotifyIcon />
           </span>
           <h2 id="spotify-title">On rotation</h2>
-        </div>
+        </motion.div>
         <AnimatedGroup
           as="ol"
           itemAs="li"
           className="spotify-card__list"
           variants={spotifyVariants}
           trigger={shouldAnimate}
-          onAnimationComplete={markIntroComplete}
         >
           {tracks.map((track) => (
             <div key={`${track.title}-${track.artists}`} className="spotify-card__row">

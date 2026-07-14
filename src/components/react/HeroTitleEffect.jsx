@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { TextEffect } from "./text-effect";
 
 const HERO_TITLE_EFFECT_PLAYED_KEY = "dexter-hero-title-effect-played";
-const HERO_TITLE_EFFECT_COMPLETE_EVENT = "hero-title-effect-complete";
 
 export default function HeroTitleEffect() {
   const [hasPlayed, setHasPlayed] = useState(() => {
@@ -17,16 +16,6 @@ export default function HeroTitleEffect() {
   };
   const shouldAnimate = !hasPlayed;
 
-  const notifyTitleComplete = () => {
-    window.dispatchEvent(new Event(HERO_TITLE_EFFECT_COMPLETE_EVENT));
-  };
-
-  useEffect(() => {
-    if (hasPlayed) {
-      window.setTimeout(notifyTitleComplete, 0);
-    }
-  }, [hasPlayed]);
-
   return (
     <>
       <TextEffect
@@ -34,6 +23,8 @@ export default function HeroTitleEffect() {
         per="char"
         preset="fade"
         id="home-title"
+        containerTransition={{ staggerChildren: 0.1 }}
+        segmentTransition={{ duration: 0.4 }}
         trigger={shouldAnimate}
       >
         Dexter Mehta
@@ -43,7 +34,8 @@ export default function HeroTitleEffect() {
         per="char"
         preset="fade"
         className="hero__role"
-        delay={0.35}
+        containerTransition={{ staggerChildren: 0.1 }}
+        segmentTransition={{ duration: 0.4 }}
         trigger={shouldAnimate}
         onAnimationComplete={handleAnimationComplete}
       >

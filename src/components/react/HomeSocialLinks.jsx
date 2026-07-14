@@ -7,6 +7,29 @@ const hoverLabels = {
   Email: "Email"
 };
 
+const socialLinkVariants = {
+  container: {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.15
+      }
+    }
+  },
+  item: {
+    hidden: { opacity: 0, scale: 0.82 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        type: "spring",
+        bounce: 0.28,
+        duration: 0.7
+      }
+    }
+  }
+};
+
 function SocialIcon({ label }) {
   if (label === "GitHub") {
     return (
@@ -33,18 +56,15 @@ function SocialIcon({ label }) {
 }
 
 export default function HomeSocialLinks({ socialLinks }) {
-  const { isReady, shouldAnimate } = useHomeIntroSequence();
-  const reservedSocialStyle = isReady ? undefined : { visibility: "hidden", pointerEvents: "none" };
+  const { shouldAnimate } = useHomeIntroSequence();
 
   return (
     <AnimatedGroup
-      key={isReady ? "ready" : "reserved"}
       className="hero__links home-socials"
       aria-label="Profile links"
-      aria-hidden={!isReady}
       preset="scale"
+      variants={socialLinkVariants}
       trigger={shouldAnimate}
-      style={reservedSocialStyle}
     >
       {socialLinks.map((link) => (
         <a
