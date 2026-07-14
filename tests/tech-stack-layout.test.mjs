@@ -47,3 +47,12 @@ test("desktop tech stack is icon-only while preserving header and link sizing", 
   assert.match(css, /\.spotify-card__list\s*\{[^}]*gap:\s*0\.25rem;[^}]*padding:\s*0\.45rem 0 0;/s);
   assert.match(css, /\.spotify-card__row\s*\{[^}]*padding:\s*0\.2rem 0\.2rem;/s);
 });
+
+test("on rotation heading keeps a readable mobile minimum and the current desktop maximum", async () => {
+  const css = await read("src/styles/global.css");
+
+  assert.match(
+    css,
+    /\.spotify-card \.home-card__header h2\s*\{[^}]*font-size:\s*clamp\(1\.2rem,\s*2\.49vw,\s*1\.5rem\);/s
+  );
+});

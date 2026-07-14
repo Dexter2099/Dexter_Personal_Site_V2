@@ -569,7 +569,7 @@ a {
   grid-column: 2;
   font-family: var(--font-body);
   font-weight: 400;
-  font-size: clamp(1.1rem, 3.15vw, 1.9rem);
+  font-size: clamp(1.2rem, 2.49vw, 1.5rem);
 }
 
 .spotify-card .home-card__header .spotify-card__icon {
