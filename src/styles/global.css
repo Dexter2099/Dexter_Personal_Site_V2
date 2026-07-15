@@ -998,10 +998,6 @@ a.spotify-card__track:focus-visible {
 .contact-panel {
   width: 100%;
   padding: clamp(2.5rem, 5vw, 4rem);
-  border: 1px solid rgba(212, 175, 55, 0.12);
-  border-radius: 0.5rem;
-  background: rgba(17, 21, 29, 0.28);
-  box-shadow: none;
   text-align: center;
 }
 
