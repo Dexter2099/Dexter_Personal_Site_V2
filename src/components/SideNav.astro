@@ -1,4 +1,5 @@
 ---
+import Dock from "./react/Dock.jsx";
 import { navItems } from "../data/nav";
 import type { NavItem } from "../data/nav";
 
@@ -21,7 +22,18 @@ const iconPaths: Record<NavItem["icon"], string[]> = {
 };
 ---
 
-<nav class="site-nav" aria-label="Primary navigation">
+<nav class="site-nav site-nav--desktop" aria-label="Primary navigation">
+  <Dock
+    client:media="(min-width: 761px)"
+    items={navItems}
+    currentPath={currentPath}
+    distance={110}
+    baseItemSize={52}
+    magnification={68}
+  />
+</nav>
+
+<nav class="site-nav site-nav--mobile" aria-label="Primary navigation">
   <ul class="site-nav__list">
     {
       navItems.map((item) => (

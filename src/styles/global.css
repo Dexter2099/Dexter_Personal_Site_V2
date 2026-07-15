@@ -220,6 +220,10 @@ a {
   padding: 2rem 1.25rem;
 }
 
+.site-nav--mobile {
+  display: none;
+}
+
 .site-nav__list {
   display: grid;
   gap: 1.15rem;
@@ -1278,10 +1282,15 @@ h1 {
     justify-content: center;
   }
 
-  .site-nav {
+  .site-nav--desktop {
+    display: none;
+  }
+
+  .site-nav--mobile {
     position: fixed;
     inset: auto 0 0;
     z-index: 5;
+    display: flex;
     width: auto;
     min-height: auto;
     padding: 0.65rem;
