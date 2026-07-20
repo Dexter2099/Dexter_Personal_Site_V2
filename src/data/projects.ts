@@ -1,14 +1,26 @@
 export type Project = {
   title: string;
-  githubUrl: string;
+  githubUrl?: string;
   videoSrc: string;
   videoLabel: string;
+  videoFit?: "cover" | "contain";
   description: string;
   techStack: string[];
   emphasis: string;
 };
 
 export const projects: Project[] = [
+  {
+    title: "THRIVE Knowledge Assessment Platform",
+    videoSrc: "/videos/kap-superquiz-demo.mp4",
+    videoLabel: "THRIVE Knowledge Assessment Platform demo reel",
+    videoFit: "contain",
+    description:
+      "A self-hosted training and certification platform developed for members of the THRIVE Project. It supports authenticated learner assessments, question-bank and quiz-set management, attempt history, results, and administrator reporting.",
+    techStack: ["TypeScript", "React", "Express", "PostgreSQL", "Drizzle", "Docker Compose", "Nginx", "Vitest"],
+    emphasis:
+      "Role-scoped learner and administrator workflows, secure assessment delivery, immutable attempt records, reporting, testing, and deployment-ready architecture."
+  },
   {
     title: "Job Tracker API",
     githubUrl: "https://github.com/Dexter2099/Job-Tracker",

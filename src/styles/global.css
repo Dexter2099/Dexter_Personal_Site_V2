@@ -1074,6 +1074,10 @@ a.spotify-card__track:focus-visible {
   object-fit: cover;
 }
 
+.project-card__media .project-card__video--contain {
+  object-fit: contain;
+}
+
 .project-card__content h2 {
   margin: 0;
   color: var(--text-primary);

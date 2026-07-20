@@ -25,7 +25,19 @@ import { experienceEntries } from "../data/experience";
             <ul class="timeline-card__bullets" aria-label={`${entry.title} highlights`}>
               {
                 entry.bullets.map((bullet) => (
-                  <li>{bullet}</li>
+                  <li>
+                    {
+                      typeof bullet === "string" ? (
+                        bullet
+                      ) : (
+                        <>
+                          {bullet.before}
+                          <a href={bullet.link.href} target="_blank" rel="noreferrer">{bullet.link.label}</a>
+                          {bullet.after}
+                        </>
+                      )
+                    }
+                  </li>
                 ))
               }
             </ul>
