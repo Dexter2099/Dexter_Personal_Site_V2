@@ -18,7 +18,8 @@ test("experience timeline adds SafeTrase then THRIVE with a clickable project li
   assert.ok(delvifyIndex > thriveIndex, "Delvify must remain below the two new entries");
 
   assert.match(experience, /meta: "The Advisory Network \| Mobile, web and backend development"/);
-  assert.match(experience, /Develop the Stage 1 SafeTrase MVP across an Expo\/React Native mobile app, Next\.js admin portal, and Supabase\/PostgreSQL backend using TypeScript\./);
+  assert.match(experience, /Developed the Stage 1 SafeTrase MVP across an Expo\/React Native mobile app, Next\.js admin portal, and Supabase\/PostgreSQL backend using TypeScript\./);
+  assert.doesNotMatch(experience, /Develop the Stage 1 SafeTrase MVP/);
   assert.match(experience, /meta: "KAP SuperQuiz \| Remote"/);
   assert.match(experience, /Develop a self-hosted assessment platform using TypeScript, React, Express, PostgreSQL\/Drizzle, Docker Compose, and Nginx/);
 

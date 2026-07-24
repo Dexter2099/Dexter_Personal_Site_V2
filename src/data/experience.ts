@@ -26,7 +26,7 @@ export const experienceEntries: ExperienceEntry[] = [
     logo: "/images/advisory-network-logo.png",
     logoAlt: "The Advisory Network logo",
     bullets: [
-      "Develop the Stage 1 SafeTrase MVP across an Expo/React Native mobile app, Next.js admin portal, and Supabase/PostgreSQL backend using TypeScript.",
+      "Developed the Stage 1 SafeTrase MVP across an Expo/React Native mobile app, Next.js admin portal, and Supabase/PostgreSQL backend using TypeScript.",
       "Built secure workflows for reviewing and publishing public-health alerts, alongside authenticated mobile feeds and versioned in-app guidance.",
       "Implemented database migrations, row-level security, and automated contract and security tests to protect sensitive workflows and enforce access boundaries.",
       "Collaborate with stakeholders to translate evolving product and public-health requirements into maintainable technical solutions."
