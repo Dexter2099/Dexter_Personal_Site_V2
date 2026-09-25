@@ -39,7 +39,7 @@ export default function HeroTitleEffect() {
         trigger={shouldAnimate}
         onAnimationComplete={handleAnimationComplete}
       >
-        Backend Developer
+        Fullstack Developer
       </TextEffect>
     </>
   );

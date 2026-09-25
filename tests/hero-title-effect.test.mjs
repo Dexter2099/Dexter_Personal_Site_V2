@@ -17,7 +17,7 @@ test("home hero renders a page-load per-character text effect for the title and 
   assert.match(homePage, /import HeroTitleEffect from "\.\.\/components\/react\/HeroTitleEffect\.jsx";/);
   assert.match(homePage, /<HeroTitleEffect\s+client:only="react"\s*\/>/);
   assert.doesNotMatch(homePage, /<h1 id="home-title">Dexter Mehta<\/h1>/);
-  assert.doesNotMatch(homePage, /<p class="hero__role">Backend Developer<\/p>/);
+  assert.doesNotMatch(homePage, /<p class="hero__role">Fullstack Developer<\/p>/);
 
   assert.match(heroTitleEffect, /import\s+\{\s*TextEffect\s*\}\s+from\s+["']\.\/text-effect["'];/);
   assert.match(heroTitleEffect, /<TextEffect[^>]*as="h1"[^>]*per="char"[^>]*preset="fade"/s);
@@ -26,7 +26,7 @@ test("home hero renders a page-load per-character text effect for the title and 
   assert.match(heroTitleEffect, /<TextEffect[^>]*as="p"[^>]*per="char"[^>]*preset="fade"/s);
   assert.match(heroTitleEffect, /className="hero__role"/);
   assert.doesNotMatch(heroTitleEffect, /delay=/);
-  assert.match(heroTitleEffect, />\s*Backend Developer\s*<\/TextEffect>/s);
+  assert.match(heroTitleEffect, />\s*Fullstack Developer\s*<\/TextEffect>/s);
 });
 
 test("home hero records the animation and keeps the text-effect layout after the first run", async () => {
@@ -40,7 +40,7 @@ test("home hero records the animation and keeps the text-effect layout after the
   assert.match(heroTitleEffect, /trigger=\{shouldAnimate\}/);
   assert.match(heroTitleEffect, /onAnimationComplete=\{handleAnimationComplete\}/);
   assert.doesNotMatch(heroTitleEffect, /<h1 id="home-title">Dexter Mehta<\/h1>/);
-  assert.doesNotMatch(heroTitleEffect, /<p className="hero__role">Backend Developer<\/p>/);
+  assert.doesNotMatch(heroTitleEffect, /<p className="hero__role">Fullstack Developer<\/p>/);
   assert.doesNotMatch(textEffect, /\{trigger\s*&&\s*\(/);
   assert.match(textEffect, /initial=\{trigger\s*\?\s*"hidden"\s*:\s*false\}/);
 });
