@@ -1,6 +1,7 @@
 export type Project = {
   title: string;
   githubUrl?: string;
+  xUrl?: string;
   videoSrc: string;
   videoLabel: string;
   videoFit?: "cover" | "contain";
@@ -53,5 +54,17 @@ export const projects: Project[] = [
     techStack: ["Python", "PyTorch", "Computer Vision", "Grad-CAM", "Flask", "Machine Learning"],
     emphasis:
       "Model inference, medical image classification, visual explanation, and interview-ready ML project communication."
+  },
+  {
+    title: "Mallet Mayhem '84",
+    xUrl: "https://x.com/DeftMenaceGames",
+    videoSrc: "/videos/mallet-mayhem-84-demo.mp4",
+    videoLabel: "Mallet Mayhem '84 demo reel",
+    videoFit: "contain",
+    description:
+      "An air-hockey sports simulation built in Unreal Engine 5 and C++, developed from ideation and physics research through testing and production builds within two months.",
+    techStack: ["Unreal Engine 5", "C++", "Codex", "Unreal MCP"],
+    emphasis:
+      "Developed almost entirely by directing Codex and Unreal MCP in natural language."
   }
 ];
