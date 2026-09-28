@@ -6,6 +6,7 @@ export interface Props {
 }
 
 const { project } = Astro.props;
+const descriptionParts = project.description.split(/(C\+\+)/g);
 const titleId = `${project.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")}-title`;
 ---
 
@@ -27,7 +28,13 @@ const titleId = `${project.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").repla
   </div>
   <div class="project-card__content">
     <h2 id={titleId}>{project.title}</h2>
-    <p class="project-card__description">{project.description}</p>
+    <p class="project-card__description">
+      {
+        descriptionParts.map((part) =>
+          part === "C++" ? <span class="project-card__no-wrap">{part}</span> : part
+        )
+      }
+    </p>
     <p class="project-card__emphasis">{project.emphasis}</p>
     <ul class="project-card__tech" aria-label={`${project.title} technology stack`}>
       {

@@ -20,7 +20,7 @@ test("Mallet Mayhem '84 is the last featured project", async () => {
   );
   assert.match(
     projects,
-    /An air-hockey sports simulation game built in Unreal Engine 5 and\\u00A0C\+\+, developed from ideation and physics research through testing and production builds within two months\./
+    /An air-hockey sports simulation game built in Unreal Engine 5 and C\+\+, developed from ideation and physics research through testing and production builds within two months\./
   );
   assert.match(
     projects,
@@ -31,6 +31,18 @@ test("Mallet Mayhem '84 is the last featured project", async () => {
   assert.match(projects, /videoFit: "contain"/);
   assert.match(projects, /xUrl: "https:\/\/x\.com\/DeftMenaceGames"/);
   assert.ok(existsSync(new URL("../public/videos/mallet-mayhem-84-demo.mp4", import.meta.url)));
+});
+
+test("project descriptions keep the complete C++ token on one line", async () => {
+  const projectCard = await read("src/components/ProjectCard.astro");
+  const globalStyles = await read("src/styles/global.css");
+
+  assert.match(projectCard, /project\.description\.split\(\/\(C\\\+\\\+\)\/g\)/);
+  assert.match(projectCard, /part === "C\+\+" \? <span class="project-card__no-wrap">/);
+  assert.match(
+    globalStyles,
+    /\.project-card__no-wrap\s*\{\s*white-space:\s*nowrap;\s*\}/
+  );
 });
 
 test("project cards render optional X links independently of GitHub links", async () => {

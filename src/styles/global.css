@@ -1098,6 +1098,10 @@ a.spotify-card__track:focus-visible {
   line-height: 1.75;
 }
 
+.project-card__no-wrap {
+  white-space: nowrap;
+}
+
 .project-card__emphasis {
   margin: 1.4rem 0 0;
   color: var(--text-muted);
