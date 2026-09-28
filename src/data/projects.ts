@@ -58,7 +58,7 @@ export const projects: Project[] = [
   {
     title: "Mallet Mayhem '84",
     xUrl: "https://x.com/DeftMenaceGames",
-    videoSrc: "/videos/mallet-mayhem-84-demo.mp4",
+    videoSrc: "/videos/mallet-mayhem-84-demo-f8e60fd6.mp4",
     videoLabel: "Mallet Mayhem '84 demo reel",
     videoFit: "contain",
     description:
