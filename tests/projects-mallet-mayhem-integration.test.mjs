@@ -20,7 +20,7 @@ test("Mallet Mayhem '84 is the last featured project", async () => {
   );
   assert.match(
     projects,
-    /An air-hockey sports simulation game built in Unreal Engine 5 and C\+\+, developed from ideation and physics research through testing and production builds within two months\./
+    /An air-hockey sports simulation game built in Unreal Engine 5 and\\u00A0C\+\+, developed from ideation and physics research through testing and production builds within two months\./
   );
   assert.match(
     projects,

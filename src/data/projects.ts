@@ -62,7 +62,7 @@ export const projects: Project[] = [
     videoLabel: "Mallet Mayhem '84 demo reel",
     videoFit: "contain",
     description:
-      "An air-hockey sports simulation game built in Unreal Engine 5 and C++, developed from ideation and physics research through testing and production builds within two months.",
+      "An air-hockey sports simulation game built in Unreal Engine 5 and\u00A0C++, developed from ideation and physics research through testing and production builds within two months.",
     techStack: ["Unreal Engine 5", "C++", "Codex", "Unreal MCP"],
     emphasis:
       "Developed almost entirely by directing Codex and Unreal MCP in natural language."
