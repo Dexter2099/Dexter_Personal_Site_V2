@@ -20,8 +20,7 @@ export const socialLinks: SocialLink[] = [
   },
   {
     label: "Email",
-    // TODO: Replace with Dexter's final portfolio contact email address.
-    href: "mailto:dexter@example.com",
+    href: "mailto:dexter.mehta01@gmail.com",
     variant: "secondary",
     ariaLabel: "Email Dexter Mehta"
   }
