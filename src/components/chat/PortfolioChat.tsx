@@ -85,6 +85,7 @@ export default function PortfolioChat() {
       if (disposed || widget.current || !challenge.current) return;
       widget.current = window.turnstile?.render(challenge.current, {
         sitekey: config!.siteKey, action: 'portfolio-chat', theme: 'dark',
+        appearance: 'interaction-only', size: 'flexible',
         callback: (value: string) => setToken(value),
         'expired-callback': () => setToken(''), 'error-callback': () => setToken('')
       });

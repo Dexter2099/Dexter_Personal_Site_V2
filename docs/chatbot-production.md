@@ -24,6 +24,8 @@ Pages runtime settings remain in the existing Cloudflare project rather than cha
 
 The US$5 live cap preserves half of the US$10 overall monthly allowance for development. It stays US$5 in subsequent months until deliberately changed. Do not raise both independent databases to US$10 or discard their accounting. Charges are conservatively tracked at standard token rates, including uncertain reservations, regardless of promotional credits.
 
+Turnstile uses its supported `interaction-only` appearance: background verification runs normally, and an interactive challenge is shown when Cloudflare requires it. Flexible sizing and narrow-screen padding keep the challenge within the panel.
+
 ## Public limits and privacy
 
 Atomic D1 admission enforces one pending generation per session, 6 questions/minute and 30/hour per session, 12/minute and 60/hour per network, and 60/minute and 300/hour globally. Network hashes rotate daily; raw IP addresses are not stored. Duplicate question IDs never trigger another provider call. Monthly/daily/active-reply/request-rate failures are distinguished. Only temporary limits advise a retry delay.

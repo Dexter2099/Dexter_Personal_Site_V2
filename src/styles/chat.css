@@ -79,6 +79,7 @@ html:has(.chat-panel[open]) { overflow:hidden; }
 .chat-error { margin:0; padding:.65rem 1.25rem; color:#ffc9a9; font-size:.8rem; line-height:1.5; flex-shrink:0; }
 #chat-challenge { flex-shrink:0; padding-inline:1.25rem; }
 #chat-challenge:empty { display:none; }
+@media (max-width:360px) { #chat-challenge { padding-inline:.5rem; } }
 @keyframes chat-spin { to { transform:rotate(360deg); } }
 @media(max-width:760px) {
   .chat-launcher { bottom:calc(5.9rem + env(safe-area-inset-bottom)); right:1rem; padding:.7rem .9rem; }
