@@ -1,0 +1,4 @@
+{
+  "compilerOptions":{"target":"ES2022","module":"ESNext","moduleResolution":"Bundler","jsx":"react-jsx","strict":true,"noEmit":true,"resolveJsonModule":true,"esModuleInterop":true,"lib":["ES2023","DOM"],"skipLibCheck":true},
+  "include":["server/chat/**/*.ts","functions/api/chat.ts","workers/chat-maintenance.ts","src/scripts/portfolio-chat.ts","src/components/chat/**/*.tsx","src/components/ui/**/*.tsx"]
+}

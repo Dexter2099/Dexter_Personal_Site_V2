@@ -1,0 +1,15 @@
+// Production D1 operations only. Pages build/runtime settings are managed in
+// Cloudflare's existing dexter-developer project, preserving Spotify bindings.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "dexter-developer",
+  "account_id": "af124d09842d7f630394c04140fa42f3",
+  "pages_build_output_dir": "dist",
+  "compatibility_date": "2026-10-12",
+  "d1_databases": [{
+    "binding": "CHAT_DB",
+    "database_name": "dexter-portfolio-chat-production",
+    "database_id": "38761624-d9ba-4981-8ac4-f38c33478d26",
+    "migrations_dir": "migrations"
+  }]
+}

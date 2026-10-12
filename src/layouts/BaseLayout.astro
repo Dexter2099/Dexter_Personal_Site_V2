@@ -2,6 +2,7 @@
 import Footer from "../components/Footer.astro";
 import SideRaysBackground from "../components/SideRaysBackground.astro";
 import SideNav from "../components/SideNav.astro";
+import PortfolioChat from "../components/PortfolioChat.astro";
 import "../styles/global.css";
 
 export interface Props {
@@ -40,5 +41,6 @@ const {
       <Footer />
       <SideNav />
     </div>
+    {(import.meta.env.DEV || import.meta.env.PUBLIC_PORTFOLIO_CHAT === 'true') && <PortfolioChat />}
   </body>
 </html>

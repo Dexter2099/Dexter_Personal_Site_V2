@@ -1,0 +1,9 @@
+// Preparation only. Create and verify a real CHAT_DB binding before deployment.
+{
+  "$schema":"../node_modules/wrangler/config-schema.json",
+  "name":"dexter-portfolio-chat-maintenance",
+  "main":"chat-maintenance.ts",
+  "compatibility_date":"2026-10-12",
+  "triggers":{"crons":["15 2 * * *"]},
+  "d1_databases":[{"binding":"CHAT_DB","database_name":"REPLACE_WITH_PRODUCTION_DATABASE","database_id":"REPLACE_WITH_PRODUCTION_DATABASE_ID"}]
+}

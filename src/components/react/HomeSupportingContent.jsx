@@ -151,7 +151,7 @@ export default function HomeSupportingContent({ techStack, initialTracks }) {
           <span className="spotify-card__icon" aria-hidden="true">
             <SpotifyIcon />
           </span>
-          <h2 id="spotify-title">On rotation</h2>
+          <h2 id="spotify-title">On Rotation</h2>
         </motion.div>
         <AnimatedGroup
           as="ol"

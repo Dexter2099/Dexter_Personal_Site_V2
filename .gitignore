@@ -11,3 +11,10 @@ DemoReels/
 DexterPersonalSiteV2Plan.docx
 .env
 .env.local
+.dev.vars*
+.wrangler/
+.chat-private/
+playwright-report/
+test-results/
+.codex-chat-*.json
+/wrangler.jsonc
