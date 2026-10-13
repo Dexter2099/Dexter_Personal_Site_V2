@@ -194,16 +194,24 @@ a {
 }
 
 @media (min-width: 761px) {
-  .site-shell:has(.home-page) .site-main {
-    padding-bottom: 0;
+  .site-shell:has(.home-page) .site-main,
+  .site-shell:has(.contact-page) .site-main {
+    display: grid;
+    place-items: center;
+    padding-block: clamp(1rem, 3vh, 3rem);
   }
 
   .site-shell:has(.home-page) .home-page {
+    align-content: center;
     padding-bottom: 0;
   }
 
   .site-shell:has(.home-page) .site-footer {
     display: none;
+  }
+
+  .site-shell:has(.contact-page) .site-footer__inner {
+    padding-right: max(var(--page-gutter), calc(var(--side-nav-space) + 1rem), 13rem);
   }
 }
 
@@ -308,19 +316,18 @@ a {
 .home-hero {
   display: grid;
   place-items: center;
-  min-height: clamp(21rem, 46vh, 30rem);
+  min-height: auto;
   margin-top: 0;
-}
-
-.home-hero__content {
-  width: 100%;
-  padding-top: 0;
-  transform: translateY(clamp(8rem, 18vh, 13rem));
 }
 
 .hero__panel {
   width: 100%;
   padding: clamp(1.5rem, 5vw, 3.5rem) 0 0;
+}
+
+.home-hero__content {
+  width: 100%;
+  padding-top: 0;
 }
 
 .hero h1 {
@@ -446,7 +453,7 @@ a {
 .home-supporting-content {
   display: grid;
   gap: clamp(0.8rem, 1.5vh, 1.1rem);
-  margin-top: clamp(4.5rem, 6vh, 5rem);
+  margin-top: 0;
 }
 
 .home-card {
@@ -993,10 +1000,8 @@ a.spotify-card__track:focus-visible {
 .contact-page {
   display: grid;
   place-items: start center;
-  min-height: min(48rem, calc(100vh - 10rem));
   width: min(100%, 54rem);
   margin: 0 auto;
-  padding: clamp(13rem, 32vh, 22rem) 0 clamp(2rem, 4vw, 4rem);
 }
 
 .contact-panel {
