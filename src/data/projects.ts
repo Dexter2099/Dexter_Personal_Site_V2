@@ -58,8 +58,8 @@ export const projects: Project[] = [
   {
     title: "Mallet Mayhem '84",
     xUrl: "https://x.com/DeftMenaceGames",
-    videoSrc: "/videos/mallet-mayhem-84-demo-f8e60fd6.mp4",
-    videoLabel: "Mallet Mayhem '84 demo reel",
+    videoSrc: "/videos/mallet-mayhem-84-trailer-30s-cd9c4ab2.mp4",
+    videoLabel: "Mallet Mayhem '84 coming soon trailer",
     videoFit: "contain",
     description:
       "An air-hockey sports simulation game built in Unreal Engine 5 and C++, developed from ideation and physics research through testing and production builds within two months.",

@@ -27,17 +27,23 @@ test("Mallet Mayhem '84 is the last featured project", async () => {
     /Developed almost entirely by directing Codex and Unreal MCP in natural language\./
   );
   assert.match(projects, /techStack: \["Unreal Engine 5", "C\+\+", "Codex", "Unreal MCP"\]/);
-  assert.match(projects, /videoSrc: "\/videos\/mallet-mayhem-84-demo-f8e60fd6\.mp4"/);
+  assert.match(
+    projects,
+    /videoSrc: "\/videos\/mallet-mayhem-84-trailer-30s-cd9c4ab2\.mp4"/
+  );
   assert.doesNotMatch(
     projects,
-    /videoSrc: "\/videos\/mallet-mayhem-84-demo\.mp4"/,
-    "Mallet Mayhem must use a versioned video URL so browsers cannot reuse the old sped-up asset"
+    /videoSrc: "\/videos\/mallet-mayhem-84-demo-/,
+    "Mallet Mayhem must not reference the retired gameplay demo"
   );
   assert.match(projects, /videoFit: "contain"/);
   assert.match(projects, /xUrl: "https:\/\/x\.com\/DeftMenaceGames"/);
   assert.ok(
     existsSync(
-      new URL("../public/videos/mallet-mayhem-84-demo-f8e60fd6.mp4", import.meta.url)
+      new URL(
+        "../public/videos/mallet-mayhem-84-trailer-30s-cd9c4ab2.mp4",
+        import.meta.url
+      )
     )
   );
 });
