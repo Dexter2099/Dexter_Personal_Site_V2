@@ -30,10 +30,12 @@ export function providerBody(message: string, selected: Entry[], history: {messa
   };
   const approved_records=selected.map(entry=>{
     const {id,title,summary,limits,reviewed,currentStatus}=datedSummary(entry);
-    return {id,title,summary,limits,reviewed,currentStatus};
+    // Avoid repeating the same snapshot notice in every record. Preserve each
+    // historical warning; the shared snapshot rule remains part of the input.
+    return {id,title,summary,limits,reviewed,...(currentStatus.startsWith('Historical') ? {currentStatus} : {})};
   });
   do {
-    body.input[0].content=JSON.stringify({approved_records,previous_conversation:previous,visitor_question:message});
+    body.input[0].content=JSON.stringify({knowledge_status:'All records are reviewed snapshots, not live feeds.',approved_records,previous_conversation:previous,visitor_question:message});
     if (inputBound(body)<=MAX_INPUT_BYTES || !previous.length) break;
     previous.shift();
   } while (true);

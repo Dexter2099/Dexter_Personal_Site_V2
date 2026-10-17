@@ -38,7 +38,7 @@ Message/answer text and identifying hashes expire after 90 days; remaining accou
 
 ## Knowledge updates
 
-`knowledge/approved/portfolio.json` contains 19 reviewed career/project summaries. SafeTrase source ingestion and The Advisory Network lead the employer pitch, followed by Delvify and KAP. Private repositories support approved skill summaries; raw code, manuscripts, learner records, referee identities and private provenance are excluded. Coastal Courier is excluded.
+The effective knowledge combines reviewed career/project summaries in `knowledge/approved/portfolio.json` with the public SafeTrase groups in `src/data/experience.ts`, using `server/chat/public-experience.ts`. Public bullets (including linked bullet text) flow into the model context on each website release; update the role's `reviewed` date when reviewing new facts. The content hash includes these public details, so older conversation context is excluded after knowledge changes. Build validation checks the combined records and rejects oversized summaries or unapproved links/content. SafeTrase source ingestion and The Advisory Network lead the employer pitch, followed by Delvify and KAP. Private repositories support approved skill summaries; raw code, manuscripts, learner records, referee identities and private provenance are excluded. Coastal Courier is excluded.
 
 All approved summaries reach the real model on every ordinary question. The `current-work` record answers broad latest-work questions and needs owner review when priorities change. The model has no browsing, mailbox, filesystem or repository tools. GitHub's numeric public contributions heading is cached daily, with the last successful check date; it does not establish hours worked or coding every day. Failed refreshes retain the last good snapshot and expose its age.
 
@@ -47,7 +47,7 @@ npm run chat:github
 npm run chat:refresh
 ```
 
-The local owner-only source register lives in `.chat-private/source-register.json`. `chat:refresh` compares selected file hashes and writes review candidates without uploading content or changing approved knowledge. Update reviewed summaries and dates deliberately, run checks, then release. Other public pages and X updates are not automatically copied into knowledge.
+The local owner-only source register lives in `.chat-private/source-register.json`. `chat:refresh` compares selected file hashes and writes review candidates without uploading content or changing approved knowledge. Update private-source summaries and dates deliberately, run checks, then release. Public SafeTrase experience edits share the site's release automatically; other public pages, other roles and X updates are not automatically copied into knowledge. The chatbot never crawls local repositories or arbitrary websites during a visitor question.
 
 ## Verification
 

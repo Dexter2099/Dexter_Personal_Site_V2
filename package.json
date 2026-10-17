@@ -9,6 +9,7 @@
   },
   "scripts": {
     "dev": "astro dev",
+    "prebuild": "npm run chat:check",
     "build": "astro build",
     "preview": "astro preview",
     "test": "node --test tests/*.test.mjs",

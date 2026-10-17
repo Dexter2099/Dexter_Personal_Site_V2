@@ -1,16 +1,21 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { resolve, extname } from 'node:path';
-const path='knowledge/approved/portfolio.json', raw=readFileSync(path,'utf8'), corpus=JSON.parse(raw);
+import { tsImport } from 'tsx/esm/api';
+const { approvedEntries } = await tsImport('../server/chat/public-experience.ts', import.meta.url);
+const { providerBody, reservation } = await tsImport('../server/chat/provider.ts', import.meta.url);
 const allowed=new Set(['dexter-developer.dev','github.com','safetrase.com','thrivabilitymatters.org','x.com','www.amazon.com.au','www.goodreads.com']);
 const ids=new Set();
-for(const e of corpus.entries) {
+for(const e of approvedEntries) {
   if(!e.id||ids.has(e.id)||!e.summary||e.summary.length>2500||!e.limits||!e.reviewed||!e.tags.length||e.reviewDays<1)throw new Error('Invalid knowledge entry.');
   ids.add(e.id);
   if(/coastal courier|third person action|c:\\|sk-[a-zA-Z0-9-]{15,}|dexter@example\.com/i.test(JSON.stringify(e)))throw new Error(`Disallowed content in ${e.id}`);
   for(const link of e.links) {const u=new URL(link.url);if(u.protocol!=='https:'||!allowed.has(u.hostname))throw new Error(`Unapproved public link in ${e.id}`);}
 }
-const version=createHash('sha256').update(JSON.stringify(corpus)).digest('hex').slice(0,16);
+const version=createHash('sha256').update(JSON.stringify(approvedEntries)).digest('hex').slice(0,16);
+// Three UTF-8 bytes per UTF-16 code unit bounds a valid 2,000-unit question.
+// Fail the build if new public content would crowd out a maximum-size question.
+reservation(providerBody('字'.repeat(2000),approvedEntries,[],'gpt-5.4-mini'));
 console.log(`Validated ${ids.size} approved records. Knowledge version ${version}.`);
 if(process.argv.includes('--refresh')) {
   mkdirSync('.chat-private',{recursive:true});

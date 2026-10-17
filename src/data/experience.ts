@@ -20,6 +20,7 @@ export type ExperienceEntry = {
   title: string;
   meta: string;
   summary?: string;
+  reviewed?: string;
   logo?: string;
   logoAlt?: string;
 } & (
@@ -30,6 +31,7 @@ export type ExperienceEntry = {
 export const experienceEntries: ExperienceEntry[] = [
   {
     id: "safetrase",
+    reviewed: "2026-10-17",
     date: "2026",
     title: "Internship at SafeTrase",
     meta: "The Advisory Network",

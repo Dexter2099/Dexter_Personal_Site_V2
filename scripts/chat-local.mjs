@@ -9,7 +9,10 @@ if(!['gpt-5.4','gpt-5.4-mini','gpt-5.4-nano','gpt-6-luna','gpt-6.1-sol'].include
 const wrangler=resolve('node_modules/wrangler/bin/wrangler.js');
 // Astro 7 moved its CLI; follow the installed package's declared executable.
 const astroBin=resolve('node_modules/astro',JSON.parse(readFileSync('node_modules/astro/package.json','utf8')).bin.astro);
-const build=()=>run(astroBin,['build'],{...process.env,PUBLIC_PORTFOLIO_CHAT:'true'});
+const build=()=>{
+  run(resolve('scripts/chat-knowledge.mjs'),[]);
+  run(astroBin,['build'],{...process.env,PUBLIC_PORTFOLIO_CHAT:'true'});
+};
 function run(file,params,env=process.env) {
   const child=spawnSync(process.execPath,[file,...params],{env,stdio:'inherit'});
   if(child.status!==0) process.exit(child.status??1);

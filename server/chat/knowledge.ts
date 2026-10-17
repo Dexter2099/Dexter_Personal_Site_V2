@@ -1,10 +1,10 @@
-import corpus from '../../knowledge/approved/portfolio.json';
+import { approvedEntries } from './public-experience';
 import type { Entry } from './types';
 import { normalise } from './policy';
 import type { D1Database } from '@cloudflare/workers-types';
 import { githubSnapshot, withGithubActivity } from './github';
 
-export const entries: Entry[] = corpus.entries;
+export const entries: Entry[] = approvedEntries;
 const stop = new Set('dexter dexters mehta what how why who does did has have his him her their the a an and or for with from about can could should would tell me more please give know work working used use is are was in on of to he they this that experience examples skills project projects'.split(' '));
 const aliases: Record<string, string> = { recently:'recent', hobbies:'hobby', contributions:'contributed', contribute:'contributed', contributing:'contributed', developer:'backend', databases:'postgresql', database:'postgresql', testing:'testing', tests:'testing', test:'testing', typescript:'typescript', 'csharp':'c#', 'dotnet':'net', updates:'progress' };
 const currentWorkWords = new Set('latest recent current currently newest new ongoing lately now right moment at present these days most been doing building developing up getting active professional internship internships job jobs progress'.split(' '));
@@ -44,9 +44,12 @@ export function retrieve(query: string, limit = 4): Entry[] {
     .slice(0,limit).map(x => x.entry);
 }
 let version: Promise<string> | undefined;
-export function knowledgeVersion() {
-  return version ??= crypto.subtle.digest('SHA-256', new TextEncoder().encode(JSON.stringify(corpus)))
+export function versionForEntries(records: Entry[]) {
+  return crypto.subtle.digest('SHA-256', new TextEncoder().encode(JSON.stringify(records)))
     .then(bytes => Array.from(new Uint8Array(bytes), b => b.toString(16).padStart(2,'0')).join('').slice(0,16));
+}
+export function knowledgeVersion() {
+  return version ??= versionForEntries(entries);
 }
 export async function chatKnowledge(db?:D1Database,now=Date.now()) {
   const snapshot=await githubSnapshot(db), active=withGithubActivity(entries,snapshot,now);
