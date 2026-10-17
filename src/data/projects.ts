@@ -1,4 +1,6 @@
 export type Project = {
+  id?: string;
+  reviewed?: string;
   title: string;
   githubUrl?: string;
   xUrl?: string;
@@ -13,6 +15,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     title: "THRIVE Knowledge Assessment Platform",
+    id: "kap",
     videoSrc: "/videos/kap-superquiz-demo.mp4",
     videoLabel: "THRIVE Knowledge Assessment Platform demo reel",
     videoFit: "contain",
@@ -24,6 +27,7 @@ export const projects: Project[] = [
   },
   {
     title: "Job Tracker API",
+    id: "job-tracker",
     githubUrl: "https://github.com/Dexter2099/Job-Tracker",
     videoSrc: "/videos/job-tracker-demo.mp4",
     videoLabel: "Job Tracker API demo reel",
@@ -35,6 +39,7 @@ export const projects: Project[] = [
   },
   {
     title: "Gspace Chat",
+    id: "gspacechat",
     githubUrl: "https://github.com/Dexter2099/GspaceChat",
     videoSrc: "/videos/gspace-chat-demo.mp4",
     videoLabel: "Gspace Chat demo reel",
@@ -46,6 +51,7 @@ export const projects: Project[] = [
   },
   {
     title: "X-Ray Pneumonia Classifier",
+    id: "ml",
     githubUrl: "https://github.com/Dexter2099/xray-pneumonia-classifier",
     videoSrc: "/videos/xray-classifier-demo.mp4",
     videoLabel: "X-Ray Pneumonia Classifier demo reel",
@@ -57,6 +63,7 @@ export const projects: Project[] = [
   },
   {
     title: "Mallet Mayhem '84",
+    id: "mallet",
     xUrl: "https://x.com/DeftMenaceGames",
     videoSrc: "/videos/mallet-mayhem-84-trailer-30s-cd9c4ab2.mp4",
     videoLabel: "Mallet Mayhem '84 coming soon trailer",

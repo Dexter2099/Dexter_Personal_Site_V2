@@ -4,6 +4,7 @@ import { ButtonUtility } from '../ui/button-utility';
 import { TextArea } from '../ui/textarea';
 import { Checkbox } from '../ui/checkbox';
 import { sourceLinks, type Config, type Reply, type Source } from '../../scripts/portfolio-chat';
+import { contactEmailHref } from '../../data/links';
 
 declare global {
   interface Window {
@@ -149,7 +150,7 @@ export default function PortfolioChat() {
         <details className="chat-privacy"><summary>Before you send · privacy & AI</summary><p>Submitted messages and replies are recorded for 90 days to help Dexter understand how this assistant is used. Messages are redacted where possible and sent to OpenAI; they may be used to improve its models. Please avoid sensitive, confidential, proprietary or children’s information. AI answers can be mistaken.</p></details>
         <Checkbox className="chat-consent" name="consent" isSelected={consent} onChange={setConsent} label="I agree to the recording and model-improvement use described above." />
       </form>
-      <footer className="chat-footer"><span>Prefer a conversation?</span><Button color="link-color" href="mailto:dexter.mehta01@gmail.com" iconTrailing={outward}>Email Dexter</Button></footer>
+      <footer className="chat-footer"><span>Prefer a conversation?</span><Button color="link-color" href={contactEmailHref} iconTrailing={outward}>Email Dexter</Button></footer>
     </dialog>
   </div>;
 }

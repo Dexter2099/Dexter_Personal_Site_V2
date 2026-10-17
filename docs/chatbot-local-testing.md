@@ -38,7 +38,7 @@ Message/answer text and identifying hashes expire after 90 days; remaining accou
 
 ## Knowledge updates
 
-The effective knowledge combines reviewed career/project summaries in `knowledge/approved/portfolio.json` with the public SafeTrase groups in `src/data/experience.ts`, using `server/chat/public-experience.ts`. Public bullets (including linked bullet text) flow into the model context on each website release; update the role's `reviewed` date when reviewing new facts. The content hash includes these public details, so older conversation context is excluded after knowledge changes. Build validation checks the combined records and rejects oversized summaries or unapproved links/content. SafeTrase source ingestion and The Advisory Network lead the employer pitch, followed by Delvify and KAP. Private repositories support approved skill summaries; raw code, manuscripts, learner records, referee identities and private provenance are excluded. Coastal Courier is excluded.
+The effective knowledge combines reviewed career/project summaries in `knowledge/approved/portfolio.json` with all experience entries and project cards in `src/data/experience.ts` and `src/data/projects.ts`, using `server/chat/public-experience.ts`. Home identity, About and Contact prose are shared through `src/data/site-copy.ts`; public contact/social URLs, author links and home technology labels use their existing shared data modules. Public bullets, descriptions, technology stacks and demo labels flow into model context on each website release; update item or shared `reviewed` dates when reviewing changed facts. New experience/project items are included automatically. Stable IDs preserve identity when titles change. The content hash includes these public details, so older conversation context is excluded after knowledge changes. Build validation checks the combined records and rejects oversized summaries or unapproved links/content. SafeTrase source ingestion and The Advisory Network lead the employer pitch, followed by Delvify and KAP. Private repositories support approved skill summaries; raw code, manuscripts, learner records, referee identities and private provenance are excluded. Coastal Courier is excluded.
 
 All approved summaries reach the real model on every ordinary question. The `current-work` record answers broad latest-work questions and needs owner review when priorities change. The model has no browsing, mailbox, filesystem or repository tools. GitHub's numeric public contributions heading is cached daily, with the last successful check date; it does not establish hours worked or coding every day. Failed refreshes retain the last good snapshot and expose its age.
 
@@ -47,7 +47,7 @@ npm run chat:github
 npm run chat:refresh
 ```
 
-The local owner-only source register lives in `.chat-private/source-register.json`. `chat:refresh` compares selected file hashes and writes review candidates without uploading content or changing approved knowledge. Update private-source summaries and dates deliberately, run checks, then release. Public SafeTrase experience edits share the site's release automatically; other public pages, other roles and X updates are not automatically copied into knowledge. The chatbot never crawls local repositories or arbitrary websites during a visitor question.
+The local owner-only source register lives in `.chat-private/source-register.json`. `chat:refresh` compares selected file hashes and writes review candidates without uploading content or changing approved knowledge. Update private-source summaries and dates deliberately, run checks, then release. All current public career/profile sections share the site's release automatically. Older detailed project evidence remains explicitly dated; public descriptions take precedence for the fields they describe. A new page must use shared content and be registered in the knowledge builder (see AGENTS.md). Live Spotify tracks, X posts, private files and external page contents are not automatically copied. The chatbot never crawls local repositories or arbitrary websites during a visitor question.
 
 ## Verification
 
@@ -59,7 +59,7 @@ npm run chat:build
 npm audit --audit-level=low
 ```
 
-The input is bounded to 32,000 UTF-8 bytes including conservative framing, with up to three previous exchanges; output is capped at 600 tokens. Three previous exchanges is a memory window, not a three-question allowance. Fixed privacy/off-topic replies avoid provider calls. Provider timeouts and invalid replies are never retried automatically.
+The input is bounded to 48,000 UTF-8 bytes including conservative framing, with up to three previous exchanges; output is capped at 600 tokens. Three previous exchanges is a memory window, not a three-question allowance. Fixed privacy/off-topic replies avoid provider calls. Provider timeouts and invalid replies are never retried automatically.
 
 On 12 October 2026, the Astro 7.3.8/React integration 7.0.1 dependency tree had zero reported vulnerabilities. The Node pin is 24.19.0. Browser checks covered desktop/ultrawide and 320px/390px mobile layouts, accessible labels, pointer/keyboard submission and correct contact links. Real mobile soft-keyboard and screen-reader acceptance remain useful device checks.
 

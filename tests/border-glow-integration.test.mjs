@@ -19,7 +19,8 @@ test("contact page hydrates BorderGlow around the existing panel with the site p
   assert.match(contactPage, /coneSpread=\{8\}/);
   assert.match(contactPage, /fillOpacity=\{0\}/);
   assert.match(contactPage, /animated=\{false\}/);
-  assert.match(contactPage, /<h1 class="contact-title" id="contact-title">Get in Touch<\/h1>/);
+  assert.match(contactPage, /<h1 class="contact-title" id="contact-title">\{siteCopy.contact.heading\}<\/h1>/);
+  assert.match(await read("src/data/site-copy.ts"), /heading: 'Get in Touch'/);
   assert.match(contactPage, /<Button[\s\S]*label="Email"/);
 });
 

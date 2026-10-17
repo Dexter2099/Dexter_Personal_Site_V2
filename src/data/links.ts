@@ -25,3 +25,5 @@ export const socialLinks: SocialLink[] = [
     ariaLabel: "Email Dexter Mehta"
   }
 ];
+
+export const contactEmailHref = socialLinks.find(link => link.label === "Email")!.href;

@@ -5,6 +5,7 @@ import { experienceEntries } from '../../src/data/experience';
 import { withWebsiteExperience } from '../../server/chat/public-experience';
 import { entries, versionForEntries } from '../../server/chat/knowledge';
 import { providerBody, reservation } from '../../server/chat/provider';
+import { MAX_INPUT_BYTES } from '../../server/chat/config';
 
 test('published SafeTrase details reach the actual model context with experience citations', () => {
   const body = providerBody('What Android testing, cloud deployment and SEO work has Dexter done?', entries, [], 'gpt-5.4');
@@ -33,7 +34,7 @@ test('editing public bullets changes model evidence and the conversation knowled
 test('expanded evidence leaves room for maximum UTF-8 input and keeps historical warnings', () => {
   const body = providerBody('字'.repeat(2000), entries, [], 'gpt-5.4');
   assert.ok(reservation(body) > 0);
-  assert.ok(new TextEncoder().encode(JSON.stringify(body)).byteLength + 2048 <= 32000);
+  assert.ok(new TextEncoder().encode(JSON.stringify(body)).byteLength + 2048 <= MAX_INPUT_BYTES);
   const old = {...entries[0], reviewed: '2020-01-01'};
   const packet = JSON.parse(providerBody('What is current?', [old], [], 'gpt-5.4').input[0].content);
   assert.match(packet.knowledge_status, /not live feeds/);

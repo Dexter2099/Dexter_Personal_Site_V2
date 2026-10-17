@@ -4,13 +4,13 @@ import { resolve, extname } from 'node:path';
 import { tsImport } from 'tsx/esm/api';
 const { approvedEntries } = await tsImport('../server/chat/public-experience.ts', import.meta.url);
 const { providerBody, reservation } = await tsImport('../server/chat/provider.ts', import.meta.url);
-const allowed=new Set(['dexter-developer.dev','github.com','safetrase.com','thrivabilitymatters.org','x.com','www.amazon.com.au','www.goodreads.com']);
+const allowed=new Set(['dexter-developer.dev','github.com','safetrase.com','thrivabilitymatters.org','x.com','www.amazon.com.au','www.goodreads.com','www.linkedin.com']);
 const ids=new Set();
 for(const e of approvedEntries) {
-  if(!e.id||ids.has(e.id)||!e.summary||e.summary.length>2500||!e.limits||!e.reviewed||!e.tags.length||e.reviewDays<1)throw new Error('Invalid knowledge entry.');
+  if(!e.id||ids.has(e.id)||!e.summary||e.summary.length>2500||!e.limits||!/^\d{4}-\d{2}-\d{2}$/.test(e.reviewed)||!e.tags.length||e.reviewDays<1)throw new Error('Invalid knowledge entry.');
   ids.add(e.id);
   if(/coastal courier|third person action|c:\\|sk-[a-zA-Z0-9-]{15,}|dexter@example\.com/i.test(JSON.stringify(e)))throw new Error(`Disallowed content in ${e.id}`);
-  for(const link of e.links) {const u=new URL(link.url);if(u.protocol!=='https:'||!allowed.has(u.hostname))throw new Error(`Unapproved public link in ${e.id}`);}
+  for(const link of e.links) {const u=new URL(link.url);if(u.protocol!=='https:'||u.username||u.password||!allowed.has(u.hostname))throw new Error(`Unapproved public link in ${e.id}`);}
 }
 const version=createHash('sha256').update(JSON.stringify(approvedEntries)).digest('hex').slice(0,16);
 // Three UTF-8 bytes per UTF-16 code unit bounds a valid 2,000-unit question.

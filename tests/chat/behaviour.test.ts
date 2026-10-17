@@ -6,7 +6,7 @@ import { handleChat } from '../../server/chat/handler';
 import { entries, knowledgeVersion, retrieve, datedSummary, chatKnowledge } from '../../server/chat/knowledge';
 import { GITHUB_ACTIVITY_URL, GITHUB_CACHE_TTL, GITHUB_REFRESH_INTERVAL, githubSnapshot, parseContributions, refreshGithub, withGithubActivity } from '../../server/chat/github';
 import { fixedReply, redact, safeAnswer, UNKNOWN } from '../../server/chat/policy';
-import { configuration } from '../../server/chat/config';
+import { configuration, MAX_INPUT_BYTES } from '../../server/chat/config';
 import { providerBody, reservation, validateResult, generate } from '../../server/chat/provider';
 import { admit, admissionFailure, cleanup, finish, history } from '../../server/chat/store';
 import type { ChatEnv } from '../../server/chat/types';
@@ -191,7 +191,7 @@ test('full approved context bounds long input and history before reserving spend
   const packet=JSON.parse(body.input[0].content);
   assert.equal(packet.approved_records.length,entries.length);
   assert.ok(packet.previous_conversation.length<previous.length);
-  assert.ok(new TextEncoder().encode(JSON.stringify(body)).byteLength+2048<=32000);
+  assert.ok(new TextEncoder().encode(JSON.stringify(body)).byteLength+2048<=MAX_INPUT_BYTES);
   assert.ok(reservation(body)>0);assert.ok(reservation(body)<750000);
   assert.ok(packet.approved_records.every((entry:any)=>!('links' in entry)&&!('tags' in entry)));
   assert.equal(body.text.format.schema.properties.source_ids.maxItems,4);

@@ -12,6 +12,7 @@ test("home hero renders a page-load per-character text effect for the title and 
   };
   const homePage = await read("src/pages/index.astro");
   const heroTitleEffect = await read("src/components/react/HeroTitleEffect.jsx");
+  const siteCopy = await read("src/data/site-copy.ts");
 
   assert.ok(dependencies.motion, "motion is missing from package.json");
   assert.match(homePage, /import HeroTitleEffect from "\.\.\/components\/react\/HeroTitleEffect\.jsx";/);
@@ -22,11 +23,13 @@ test("home hero renders a page-load per-character text effect for the title and 
   assert.match(heroTitleEffect, /import\s+\{\s*TextEffect\s*\}\s+from\s+["']\.\/text-effect["'];/);
   assert.match(heroTitleEffect, /<TextEffect[^>]*as="h1"[^>]*per="char"[^>]*preset="fade"/s);
   assert.match(heroTitleEffect, /id="home-title"/);
-  assert.match(heroTitleEffect, />\s*Dexter Mehta\s*<\/TextEffect>/s);
+  assert.match(heroTitleEffect, />\s*\{siteCopy.name\}\s*<\/TextEffect>/s);
+  assert.match(siteCopy, /name: 'Dexter Mehta'/);
   assert.match(heroTitleEffect, /<TextEffect[^>]*as="p"[^>]*per="char"[^>]*preset="fade"/s);
   assert.match(heroTitleEffect, /className="hero__role"/);
   assert.doesNotMatch(heroTitleEffect, /delay=/);
-  assert.match(heroTitleEffect, />\s*Fullstack Developer\s*<\/TextEffect>/s);
+  assert.match(heroTitleEffect, />\s*\{siteCopy.role\}\s*<\/TextEffect>/s);
+  assert.match(siteCopy, /role: 'Fullstack Developer'/);
 });
 
 test("home hero records the animation and keeps the text-effect layout after the first run", async () => {

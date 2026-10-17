@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { TextEffect } from "./text-effect";
+import { siteCopy } from "../../data/site-copy";
 
 const HERO_TITLE_EFFECT_PLAYED_KEY = "dexter-hero-title-effect-played";
 
@@ -27,7 +28,7 @@ export default function HeroTitleEffect() {
         segmentTransition={{ duration: 0.4 }}
         trigger={shouldAnimate}
       >
-        Dexter Mehta
+        {siteCopy.name}
       </TextEffect>
       <TextEffect
         as="p"
@@ -39,7 +40,7 @@ export default function HeroTitleEffect() {
         trigger={shouldAnimate}
         onAnimationComplete={handleAnimationComplete}
       >
-        Fullstack Developer
+        {siteCopy.role}
       </TextEffect>
     </>
   );

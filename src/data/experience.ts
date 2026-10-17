@@ -83,6 +83,7 @@ export const experienceEntries: ExperienceEntry[] = [
   {
     date: "2026",
     title: "Volunteer Full Stack Developer at the THRIVE Project",
+    id: "kap",
     meta: "KAP SuperQuiz | Remote",
     logo: "/images/thrive-logo.png",
     logoAlt: "THRIVE Project logo",
@@ -103,6 +104,7 @@ export const experienceEntries: ExperienceEntry[] = [
   {
     date: "2026",
     title: "Internship at Delvify.ai",
+    id: "delvify",
     meta: "Hong Kong / Singapore-based SaaS",
     logo: "/images/delvify-logo.png",
     logoAlt: "Delvify.ai logo",
@@ -118,6 +120,7 @@ export const experienceEntries: ExperienceEntry[] = [
   {
     date: "2023–2025",
     title: "Career Transition and Software Development",
+    id: "career-transition",
     meta: "QUT / Independent Projects | Brisbane",
     logo: "/images/qut-logo.jpg",
     logoAlt: "QUT logo",
@@ -129,6 +132,7 @@ export const experienceEntries: ExperienceEntry[] = [
   {
     date: "2018–2024",
     title: "Rehabilitation Physiotherapist",
+    id: "physiotherapy",
     meta: "SPEARS Health | Medibank | Brisbane",
     bullets: [
       "Managed 400+ complex client cases, using structured assessment, accurate documentation, and outcome tracking under time pressure.",

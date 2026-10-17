@@ -1,6 +1,9 @@
 import type { Answer } from './types';
+import { socialLinks } from '../../src/data/links';
 
-export const EMAIL = 'dexter.mehta01@gmail.com';
+const emailHref = socialLinks.find(link => link.label === 'Email')?.href;
+if (!emailHref || !/^mailto:[^?\s@]+@[^?\s@]+\.[^?\s@]+$/.test(emailHref)) throw new Error('A valid public contact email is required.');
+export const EMAIL = emailHref.slice('mailto:'.length);
 export const POLICY_VERSION = '2026-10-12.2';
 export const MAX_MESSAGE = 2000;
 export const MAX_BODY = 12000;
@@ -8,8 +11,8 @@ export const CONTACT: Answer = {
   kind: 'answer', text: `Email is Dexter’s preferred way to get in touch: ${EMAIL}. You can also explore his GitHub and LinkedIn profiles.`,
   sources: [
     { id: 'email', label: 'Email Dexter', url: `mailto:${EMAIL}` },
-    { id: 'github', label: 'GitHub', url: 'https://github.com/Dexter2099' },
-    { id: 'linkedin', label: 'LinkedIn', url: 'https://www.linkedin.com/in/dexter-developer/' }
+    { id: 'github', label: 'GitHub', url: socialLinks.find(link => link.label === 'GitHub')!.href },
+    { id: 'linkedin', label: 'LinkedIn', url: socialLinks.find(link => link.label === 'LinkedIn')!.href }
   ]
 };
 export const UNKNOWN: Answer = { kind: 'unknown', text: `I don’t have a reviewed answer to that—I’m just Dexter’s portfolio bot 😊 You can ask him at ${EMAIL}.`, sources: [CONTACT.sources[0]] };

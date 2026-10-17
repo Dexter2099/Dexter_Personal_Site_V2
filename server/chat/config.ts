@@ -10,7 +10,9 @@ export const MODEL_RATES = {
   'gpt-6.1-sol': { input: 2.5, output: 10, effort: 'low' }
 } as const;
 export const MAX_OUTPUT = 600;
-export const MAX_INPUT_BYTES = 32000;
+// Includes all public experience/project content, reviewed evidence and framing.
+// The monthly/daily dollar caps remain independent of this context bound.
+export const MAX_INPUT_BYTES = 48000;
 export function isLoopback(url: URL): boolean {
   return ['localhost', '127.0.0.1', '[::1]'].includes(url.hostname);
 }
