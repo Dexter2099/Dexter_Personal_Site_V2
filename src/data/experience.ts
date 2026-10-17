@@ -9,27 +9,73 @@ export type LinkedExperienceBullet = {
 
 export type ExperienceBullet = string | LinkedExperienceBullet;
 
-export type ExperienceEntry = {
-  date: string;
+export type ExperienceGroup = {
   title: string;
-  meta: string;
-  logo?: string;
-  logoAlt?: string;
   bullets: ExperienceBullet[];
 };
 
+export type ExperienceEntry = {
+  id?: string;
+  date: string;
+  title: string;
+  meta: string;
+  summary?: string;
+  logo?: string;
+  logoAlt?: string;
+} & (
+  | { groups: ExperienceGroup[]; bullets?: never }
+  | { bullets: ExperienceBullet[]; groups?: never }
+);
+
 export const experienceEntries: ExperienceEntry[] = [
   {
+    id: "safetrase",
     date: "2026",
     title: "Internship at SafeTrase",
-    meta: "The Advisory Network | Mobile, web and backend development",
+    meta: "The Advisory Network",
+    summary: "Developed the Stage 1 SafeTrase prototype with product and public-health stakeholders. The app helps people review official health alerts relevant to their selected locations, saved places and planned trips.",
     logo: "/images/advisory-network-logo.png",
     logoAlt: "The Advisory Network logo",
-    bullets: [
-      "Developed the Stage 1 SafeTrase MVP across an Expo/React Native mobile app, Next.js admin portal, and Supabase/PostgreSQL backend using TypeScript.",
-      "Built secure workflows for reviewing and publishing public-health alerts, alongside authenticated mobile feeds and versioned in-app guidance.",
-      "Implemented database migrations, row-level security, and automated contract and security tests to protect sensitive workflows and enforce access boundaries.",
-      "Collaborate with stakeholders to translate evolving product and public-health requirements into maintainable technical solutions."
+    groups: [
+      {
+        title: "Mobile app and backend",
+        bullets: [
+          "Built an Expo/React Native mobile app and Next.js administration portal using TypeScript, with sign-in, alert feeds, saved places and workflows for reviewing and publishing alerts.",
+          "Used Supabase Auth, PostgreSQL/PostGIS and Edge Functions for the backend. Implemented database migrations and row-level security to restrict access to personal data and administrative actions.",
+          "Integrated Geoapify for place search and geocoding through backend services, keeping provider credentials outside the mobile app."
+        ]
+      },
+      {
+        title: "Source ingestion and cloud infrastructure",
+        bullets: [
+          "Built a TypeScript/Node.js platform to collect and structure official public-health information. Stored source snapshots, revision history and validation results so records could be traced to the original evidence.",
+          "Deployed collection services and PostgreSQL on a DigitalOcean Linux VM using Docker, with scheduled collection, persistent storage and automatic restarts. Connected the platform to Supabase through an authenticated, versioned HTTPS feed with resumable imports."
+        ]
+      },
+      {
+        title: "Android testing and software quality",
+        bullets: [
+          "Integrated Firebase messaging and crash-reporting modules. Used EAS builds and Firebase App Distribution for installed Android previews.",
+          "Tested native builds on a physical Android device using Android SDK tools, ADB and runtime logs. Checked sign-in, place search, cloud synchronisation, alert loading and session persistence after restart.",
+          "Diagnosed and fixed a native map crash, then verified map rendering, location refresh and app restarts on the device.",
+          "Wrote automated application, database, API contract and security tests for access controls, source imports and failure handling."
+        ]
+      },
+      {
+        title: "Website, SEO and audience engagement",
+        bullets: [
+          {
+            before: "Built and deployed ",
+            link: {
+              label: "safetrase.com",
+              href: "https://safetrase.com"
+            },
+            after: " using React, Vite and Cloudflare Pages. Connected Brevo waitlist registration to consent controls and a Cloudflare D1 submission ledger."
+          },
+          "Implemented page metadata, canonical URLs, structured data and an XML sitemap, and used Google Search Console for SEO work.",
+          "Configured Google Analytics 4 with visitor consent controls to track page views, scrolling and waitlist-link clicks."
+        ]
+      }
     ]
   },
   {

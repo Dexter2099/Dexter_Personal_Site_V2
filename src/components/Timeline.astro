@@ -5,9 +5,9 @@ import { experienceEntries } from "../data/experience";
 <section class="timeline-section" aria-label="Experience timeline">
   <ol class="timeline">
     {
-      experienceEntries.map((entry) => (
+      experienceEntries.map((entry, entryIndex) => (
         <li class="timeline__item">
-          <article class="timeline-card">
+          <article id={entry.id} class="timeline-card">
             <p class="timeline-card__date">{entry.date}</p>
             <div class="timeline-card__header">
               <div class="timeline-card__title-group">
@@ -22,25 +22,39 @@ import { experienceEntries } from "../data/experience";
                 )
               }
             </div>
-            <ul class="timeline-card__bullets" aria-label={`${entry.title} highlights`}>
+            {entry.summary && <p class="timeline-card__summary">{entry.summary}</p>}
+            <div class:list={{ "timeline-card__groups": entry.groups }}>
               {
-                entry.bullets.map((bullet) => (
-                  <li>
-                    {
-                      typeof bullet === "string" ? (
-                        bullet
-                      ) : (
-                        <>
-                          {bullet.before}
-                          <a href={bullet.link.href} target="_blank" rel="noreferrer">{bullet.link.label}</a>
-                          {bullet.after}
-                        </>
-                      )
-                    }
-                  </li>
+                (entry.groups ?? [{ title: "", bullets: entry.bullets ?? [] }]).map((group, groupIndex) => (
+                  <section
+                    class:list={{ "timeline-card__group": entry.groups }}
+                    aria-labelledby={group.title ? `experience-${entryIndex}-group-${groupIndex}` : undefined}
+                    aria-label={group.title ? undefined : `${entry.title} highlights`}
+                  >
+                    {group.title && <h4 id={`experience-${entryIndex}-group-${groupIndex}`}>{group.title}</h4>}
+                    <ul class="timeline-card__bullets">
+                      {
+                        group.bullets.map((bullet) => (
+                          <li>
+                            {
+                              typeof bullet === "string" ? (
+                                bullet
+                              ) : (
+                                <>
+                                  {bullet.before}
+                                  <a href={bullet.link.href} target="_blank" rel="noreferrer">{bullet.link.label}</a>
+                                  {bullet.after}
+                                </>
+                              )
+                            }
+                          </li>
+                        ))
+                      }
+                    </ul>
+                  </section>
                 ))
               }
-            </ul>
+            </div>
           </article>
         </li>
       ))
