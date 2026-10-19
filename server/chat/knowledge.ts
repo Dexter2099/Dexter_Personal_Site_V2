@@ -3,6 +3,7 @@ import type { Entry } from './types';
 import { normalise } from './policy';
 import type { D1Database } from '@cloudflare/workers-types';
 import { githubSnapshot, withGithubActivity } from './github';
+import { readmeKnowledge } from './readmes';
 
 export const entries: Entry[] = approvedEntries;
 const stop = new Set('dexter dexters mehta what how why who does did has have his him her their the a an and or for with from about can could should would tell me more please give know work working used use is are was in on of to he they this that experience examples skills project projects'.split(' '));
@@ -52,14 +53,15 @@ export function knowledgeVersion() {
   return version ??= versionForEntries(entries);
 }
 export async function chatKnowledge(db?:D1Database,now=Date.now()) {
-  const snapshot=await githubSnapshot(db), active=withGithubActivity(entries,snapshot,now);
-  if(!snapshot)return {entries:active,version:await knowledgeVersion()};
-  const bytes=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(JSON.stringify({base:await knowledgeVersion(),checkedAt:snapshot.checkedAt,entries:active})));
+  const [snapshot,readmes]=await Promise.all([githubSnapshot(db),readmeKnowledge(db,now)]);
+  const active=[...withGithubActivity(entries,snapshot,now),...readmes];
+  if(!snapshot&&!readmes.length)return {entries:active,version:await knowledgeVersion()};
+  const bytes=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(JSON.stringify({base:await knowledgeVersion(),checkedAt:snapshot?.checkedAt??null,entries:active})));
   return {entries:active,version:Array.from(new Uint8Array(bytes),b=>b.toString(16).padStart(2,'0')).join('').slice(0,16)};
 }
 export function sourceRefs(selected: Entry[], now = Date.now()) {
   return selected.flatMap(entry => [
-    { id: entry.id, label: `Reviewed contribution: ${entry.title}`, reviewed: entry.reviewed },
+    { id: entry.id, label: `${entry.id.startsWith('readme-')?'Public README':'Reviewed contribution'}: ${entry.title}`, reviewed: entry.reviewed },
     ...entry.links.slice(0,2).map(link => ({ id: entry.id, label: link.label, url: link.url, reviewed: entry.reviewed }))
   ]);
 }

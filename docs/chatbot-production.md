@@ -36,7 +36,17 @@ Only redacted, admitted submissions/replies are stored privately in D1. The unch
 
 ## Maintenance and release
 
-`dexter-portfolio-chat-maintenance` runs daily at 02:15 UTC (12:15 Brisbane). It shares production `CHAT_DB`, applies 90/365-day retention and refreshes the bounded public GitHub metric. Worker preview URLs and workers.dev are disabled; there is no public maintenance endpoint. Source/config: `workers/chat-maintenance.ts` and `workers/wrangler.maintenance.jsonc`.
+`dexter-portfolio-chat-maintenance` runs daily at 02:15 UTC (12:15 Brisbane). It shares production `CHAT_DB`, applies 90/365-day retention and refreshes the bounded public GitHub metric and linked public repository READMEs. Worker preview URLs and workers.dev are disabled; there is no public maintenance endpoint. Source/config: `workers/chat-maintenance.ts` and `workers/wrangler.maintenance.jsonc`.
+
+Public README sources are derived from the owner GitHub links on `src/data/projects.ts` cards, with OnboardFlow first. Only anonymous, verified public repositories are fetched, at a pinned default-branch commit. The deterministic parser excludes code fences, setup sections, recognizable secrets/contact data and instruction patterns. Excerpts have per-source and combined UTF-8 byte bounds and stay separate from reviewed career summaries; they are untrusted documentation, not model instructions or independently verified results. Simulation and limitation qualifiers are retained. A cache check date is not a feature release date. No model call or visitor-time GitHub request is needed to refresh.
+
+Inspect `github_activity.checked_at/last_status` and `public_readmes.checked_at/last_status/error_code/commit_sha` in authenticated D1 Studio to verify freshness. Temporary failures retain a dated last-good snapshot; a repository becoming private/deleted clears its cached excerpt on the next refresh. Removing its card's GitHub URL removes it from model context on the next site release. Website content changes follow the site release; README-only changes follow the daily cache refresh. A manual owner refresh can run sooner:
+
+```powershell
+npm run chat:sync -- --remote --force
+```
+
+The explicit production config selects the database; Wrangler credentials stay in the private process pipe. `--force` bypasses only the public-source refresh interval, never chat spending or visitor protections. Cloudflare Workers fetch uses `redirect:manual` and rejects 3xx; `redirect:error` is unsupported in the edge runtime (the refresh failure corrected on 20 October 2026).
 
 ```powershell
 node node_modules/wrangler/bin/wrangler.js d1 migrations apply dexter-portfolio-chat-production --remote --config wrangler.production.jsonc

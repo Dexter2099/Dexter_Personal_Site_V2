@@ -22,6 +22,7 @@
     "chat:report": "node scripts/chat-report.mjs",
     "chat:refresh": "node scripts/chat-knowledge.mjs --refresh",
     "chat:github": "node scripts/chat-github.mjs",
+    "chat:sync": "node scripts/chat-public-sync.mjs",
     "chat:eval": "node scripts/chat-eval.mjs",
     "chat:cleanup": "node scripts/chat-cleanup.mjs",
     "chat:clear-local-secrets": "node scripts/chat-clear-local-secrets.mjs"

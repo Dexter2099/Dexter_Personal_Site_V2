@@ -37,16 +37,18 @@ export async function githubSnapshot(db?:D1Database):Promise<GithubSnapshot|null
   if(!row||row.contributions===null||row.checked_at===null)return null;
   return {contributions:row.contributions,checkedAt:row.checked_at};
 }
-export async function refreshGithub(db:D1Database,fetcher:Fetcher=fetch,now=Date.now()) {
+export async function refreshGithub(db:D1Database,fetcher:Fetcher=fetch,now=Date.now(),options:{force?:boolean}={}) {
   // Claim before fetching: concurrent schedulers and failed upstream requests
   // cannot turn into repeated traffic. A failure retains the last good snapshot.
   const claim=await db.prepare(`INSERT INTO github_activity(account,attempted_at,last_status) VALUES(?,?,'refreshing')
     ON CONFLICT(account) DO UPDATE SET attempted_at=excluded.attempted_at,last_status='refreshing'
-    WHERE github_activity.attempted_at<=? RETURNING account`).bind(GITHUB_ACCOUNT,now,now-GITHUB_REFRESH_INTERVAL).first();
+    WHERE github_activity.attempted_at<=? RETURNING account`).bind(GITHUB_ACCOUNT,now,options.force?now:now-GITHUB_REFRESH_INTERVAL).first();
   if(!claim)return {status:'cached' as const,snapshot:await githubSnapshot(db)};
   let count:number;
   try {
-    const response=await fetcher(GITHUB_ACTIVITY_URL,{headers:{'User-Agent':'DexterPortfolioChat/1.0','Accept':'text/html'},redirect:'error',signal:AbortSignal.timeout(8000)});
+    // Workers supports manual/follow, not the Node-only redirect:error mode.
+    // readHtml rejects 3xx responses, so redirects are still never followed.
+    const response=await fetcher(GITHUB_ACTIVITY_URL,{headers:{'User-Agent':'DexterPortfolioChat/1.0','Accept':'text/html'},redirect:'manual',signal:AbortSignal.timeout(8000)});
     count=parseContributions(await readHtml(response));
   } catch {
     await db.prepare("UPDATE github_activity SET last_status='unavailable' WHERE account=? AND attempted_at=?").bind(GITHUB_ACCOUNT,now).run();

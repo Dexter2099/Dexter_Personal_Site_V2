@@ -17,6 +17,10 @@ function run(file,params,env=process.env) {
   const child=spawnSync(process.execPath,[file,...params],{env,stdio:'inherit'});
   if(child.status!==0) process.exit(child.status??1);
 }
+function refreshPublic() {
+  const result=spawnSync(process.execPath,[resolve('scripts/chat-public-sync.mjs')],{stdio:'inherit',windowsHide:true});
+  if(result.status!==0)console.warn('Public GitHub refresh incomplete; continuing with the last-good cache.');
+}
 if(args.includes('build')) { build();process.exit(0); }
 if(args.includes('migrate')) { run(wrangler,['d1','migrations','apply','portfolio-chat-local','--local','--config','wrangler.local.jsonc']);process.exit(0); }
 mkdirSync('.chat-private',{recursive:true});
@@ -47,10 +51,10 @@ for(const signal of ['SIGINT','SIGTERM'])process.on(signal,()=>{child?.kill();cl
 try {
   if(!args.includes('--no-build'))build();
   run(wrangler,['d1','migrations','apply','portfolio-chat-local','--local','--config','wrangler.local.jsonc']);
-  run(resolve('scripts/chat-github.mjs'),[]);
+  refreshPublic();
   run(resolve('scripts/chat-cleanup.mjs'),['--apply']);
   if(existsSync('.chat-private/source-register.json'))run(resolve('scripts/chat-knowledge.mjs'),['--refresh']);
-  const retentionTimer=setInterval(()=>{run(resolve('scripts/chat-cleanup.mjs'),['--apply']);run(resolve('scripts/chat-github.mjs'),[]);},86400000);
+  const retentionTimer=setInterval(()=>{run(resolve('scripts/chat-cleanup.mjs'),['--apply']);refreshPublic();},86400000);
   retentionTimer.unref();
   child=spawn(process.execPath,[wrangler,'pages','dev','dist','--ip','127.0.0.1','--port',process.env.CHAT_PORT??'8788'],{stdio:'inherit',windowsHide:true});
   child.on('exit',code=>{cleanup();process.exit(code??1);});

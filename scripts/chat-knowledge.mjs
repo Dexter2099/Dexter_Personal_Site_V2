@@ -4,6 +4,8 @@ import { resolve, extname } from 'node:path';
 import { tsImport } from 'tsx/esm/api';
 const { approvedEntries } = await tsImport('../server/chat/public-experience.ts', import.meta.url);
 const { providerBody, reservation } = await tsImport('../server/chat/provider.ts', import.meta.url);
+const { publicRepositories, readmeKnowledge } = await tsImport('../server/chat/readmes.ts', import.meta.url);
+const { withGithubActivity } = await tsImport('../server/chat/github.ts', import.meta.url);
 const allowed=new Set(['dexter-developer.dev','dexter-onboardflow.de.deplexo.com','github.com','safetrase.com','thrivabilitymatters.org','x.com','www.amazon.com.au','www.goodreads.com','www.linkedin.com']);
 const ids=new Set();
 for(const e of approvedEntries) {
@@ -16,6 +18,9 @@ const version=createHash('sha256').update(JSON.stringify(approvedEntries)).diges
 // Three UTF-8 bytes per UTF-16 code unit bounds a valid 2,000-unit question.
 // Fail the build if new public content would crowd out a maximum-size question.
 reservation(providerBody('字'.repeat(2000),approvedEntries,[],'gpt-5.4-mini'));
+// Reserve space for the largest cached public excerpts too, including UTF-8.
+const maximumReadmes=await readmeKnowledge({prepare(){return {async all(){return {results:publicRepositories().map(source=>({repo:source.repo,commit_sha:'a'.repeat(40),readme_path:'README.md',excerpt:'字'.repeat(source.limit),checked_at:Date.now(),last_status:'ok'}))};}};}});
+reservation(providerBody('字'.repeat(2000),[...withGithubActivity(approvedEntries,{contributions:10000000,checkedAt:Date.now()-172800000}),...maximumReadmes],[],'gpt-5.4'));
 console.log(`Validated ${ids.size} approved records. Knowledge version ${version}.`);
 if(process.argv.includes('--refresh')) {
   mkdirSync('.chat-private',{recursive:true});

@@ -44,12 +44,16 @@ All approved summaries reach the real model on every ordinary question. The `cur
 
 ```powershell
 npm run chat:github
+npm run chat:sync
+npm run chat:sync -- --force
 npm run chat:refresh
 ```
 
 The local owner-only source register lives in `.chat-private/source-register.json`. `chat:refresh` compares selected file hashes and writes review candidates without uploading content or changing approved knowledge. Update private-source summaries and dates deliberately, run checks, then release. All current public career/profile sections share the site's release automatically. Older detailed project evidence remains explicitly dated; public descriptions take precedence for the fields they describe. A new page must use shared content and be registered in the knowledge builder (see AGENTS.md). Live Spotify tracks, X posts, private files and external page contents are not automatically copied. The chatbot never crawls local repositories or arbitrary websites during a visitor question.
 
 ## Verification
+
+The launcher refreshes numeric GitHub activity and bounded public README excerpts from project-card GitHub links, with OnboardFlow first. `chat:sync` defaults to the local database; `--force` bypasses only its 23-hour refresh interval. A failed refresh retains the last-good snapshot and does not stop the local site. `public_readmes` stores the checked commit, excerpt, check time and status. Only public owner repositories are fetched anonymously; raw private repositories and arbitrary linked pages are excluded. README text is untrusted evidence with source links and scope qualifiers, not model instructions. Production uses the same importer on its daily maintenance schedule; see the production operation guide for the explicit remote command.
 
 ```powershell
 npm run chat:check

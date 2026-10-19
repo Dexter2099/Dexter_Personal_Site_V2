@@ -19,6 +19,7 @@ before(async()=>{
   db=await mf.getD1Database('CHAT_DB');
   await db.batch(readFileSync('migrations/0001_chat.sql','utf8').split(';').map(x=>x.trim()).filter(Boolean).map(sql=>db.prepare(sql)));
   await db.batch(readFileSync('migrations/0002_github_activity.sql','utf8').split(';').map(x=>x.trim()).filter(Boolean).map(sql=>db.prepare(sql)));
+  await db.batch(readFileSync('migrations/0003_public_readmes.sql','utf8').split(';').map(x=>x.trim()).filter(Boolean).map(sql=>db.prepare(sql)));
 });
 after(async()=>{await mf?.dispose();});
 beforeEach(async()=>{await db.prepare('DELETE FROM chat_requests').run();await db.prepare('DELETE FROM github_activity').run();env={CHAT_DB:db,CHAT_ENABLED:'true',CHAT_PROVIDER:'preview',CHAT_ID_SECRET:'test-secret-'.repeat(4),CHAT_MONTHLY_USD:'10',CHAT_DAILY_USD:'.75'};});
@@ -42,7 +43,7 @@ test('GitHub parser accepts only the last-year numeric heading',()=>{
 });
 test('concurrent GitHub refreshes fetch once and reuse the daily cache',async()=>{
   const now=Date.now();let calls=0;
-  const fetcher:typeof fetch=async(url,init)=>{calls++;assert.equal(url,GITHUB_ACTIVITY_URL);assert.equal(init?.redirect,'error');assert.ok(!new Headers(init?.headers).has('Authorization'));return githubHtml();};
+  const fetcher:typeof fetch=async(url,init)=>{calls++;assert.equal(url,GITHUB_ACTIVITY_URL);assert.equal(init?.redirect,'manual');assert.ok(!new Headers(init?.headers).has('Authorization'));return githubHtml();};
   const results=await Promise.all(Array.from({length:4},()=>refreshGithub(db,fetcher,now)));
   assert.equal(calls,1);assert.equal(results.filter(result=>result.status==='updated').length,1);
   assert.deepEqual(await githubSnapshot(db),{contributions:1057,checkedAt:now});
