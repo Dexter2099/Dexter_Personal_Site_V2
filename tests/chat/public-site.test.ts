@@ -50,3 +50,40 @@ test('recognizable credentials and private contact patterns do not enter automat
   assert.doesNotMatch(summary, /visitor@example|0400123456|sk-test/);
   assert.match(summary, /credential removed/);
 });
+
+test('OnboardFlow summary and demo link stay synchronized with the model context', () => {
+  const cards = structuredClone(projects);
+  const card = cards.find(project => project.id === 'onboardflow')!;
+  const before = withWebsiteContent(corpus.entries, experienceEntries, cards).find(entry => entry.id === card.id)!;
+  assert.ok(before.summary.includes(card.emphasis));
+  assert.ok(before.links.some(link => link.url === card.demoUrl));
+  card.emphasis = 'Public fixture: reviewed security evidence changed.';
+  const after = withWebsiteContent(corpus.entries, experienceEntries, cards).find(entry => entry.id === card.id)!;
+  assert.match(after.summary, /reviewed security evidence changed/);
+  assert.notEqual(after.summary, before.summary);
+});
+
+test('the SafeTrase website card supplies its public website link without Analytics account links', () => {
+  const card = projects.find(project => project.id === 'safetrase-website')!;
+  const entry = withWebsiteContent(corpus.entries).find(record => record.id === card.id)!;
+  assert.ok(entry.summary.includes(card.emphasis));
+  assert.ok(entry.links.some(link => link.label === 'Visit website' && link.url === 'https://safetrase.com/'));
+  assert.doesNotMatch(JSON.stringify(entry), /analytics\.google\.com|G-[A-Z0-9]{8,}|\b\d{9,}\b/);
+});
+
+test('project sources link to their rendered collection and preserve public project identities', () => {
+  const records = withWebsiteContent(corpus.entries);
+  for (const id of ['safetrase-website', 'kap', 'mallet']) {
+    const entry = records.find(record => record.id === id)!;
+    assert.ok(entry.links.some(link => link.url.startsWith('https://dexter-developer.dev/professional/#')));
+    assert.ok(!entry.links.some(link => link.url.startsWith('https://dexter-developer.dev/projects#')));
+    assert.match(entry.summary, /Collection: Professional Projects\./);
+  }
+  for (const id of ['onboardflow', 'job-tracker', 'gspacechat', 'ml']) {
+    const entry = records.find(record => record.id === id)!;
+    assert.ok(entry.links.some(link => link.url.startsWith('https://dexter-developer.dev/projects/#')));
+    assert.match(entry.summary, /Collection: Personal Projects\./);
+  }
+  assert.ok(records.some(record => record.title === 'Professional Projects'));
+  assert.ok(records.some(record => record.title === 'Personal Projects'));
+});

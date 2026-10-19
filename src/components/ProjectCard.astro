@@ -1,5 +1,6 @@
 ---
 import type { Project } from "../data/projects";
+import Button from "./Button.astro";
 
 export interface Props {
   project: Project;
@@ -44,8 +45,14 @@ const titleId = `${project.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").repla
       }
     </ul>
     {
-      (project.githubUrl || project.xUrl) && (
+      (project.demoUrl || project.websiteUrl || project.githubUrl || project.xUrl) && (
         <div class="project-card__actions">
+          {project.websiteUrl && (
+            <Button href={project.websiteUrl} label="Visit website" ariaLabel={`Visit the ${project.title}`} target="_blank" rel="noreferrer" variant="primary" />
+          )}
+          {project.demoUrl && (
+            <Button href={project.demoUrl} label="Try demo" ariaLabel={`Try the ${project.title} demo`} target="_blank" rel="noreferrer" variant="primary" />
+          )}
           {
             project.githubUrl && (
               <a

@@ -1,7 +1,7 @@
 import corpus from '../../knowledge/approved/portfolio.json';
 import { experienceEntries, type ExperienceEntry } from '../../src/data/experience';
 import type { Entry } from './types';
-import { projects, type Project } from '../../src/data/projects';
+import { projectPages, projects, type Project } from '../../src/data/projects';
 import { siteCopy } from '../../src/data/site-copy';
 import { socialLinks } from '../../src/data/links';
 import { authorLinks } from '../../src/data/author';
@@ -63,12 +63,17 @@ export function withWebsiteContent(base: Entry[], website = experienceEntries, c
       (role.groups ?? [{title: '', bullets: role.bullets ?? []}]).map(group => `${group.title} ${group.bullets.map(bulletText).join(' ')}`).join(' ')
     }`.trim(), `https://dexter-developer.dev/experience${role.id ? `#${role.id}` : ''}`, role.reviewed ?? copy.reviewed, ['experience', ...role.title.toLowerCase().split(/[^a-z0-9]+/)]);
   }
+  for (const page of Object.values(projectPages)) {
+    add(`website-${slug(page.title)}`, page.title, page.description,
+      `https://dexter-developer.dev${page.path}`, page.reviewed, ['projects', page.title]);
+  }
   for (const project of cards) {
     const id = project.id ?? `project-${slug(project.title)}`;
-    add(id, project.title, `${project.title}: ${project.description} ${project.emphasis} Technologies: ${project.techStack.join(', ')}. Video: ${project.videoLabel}.`,
-      `https://dexter-developer.dev/projects#${slug(project.title)}-title`, project.reviewed ?? copy.reviewed,
+    const page = projectPages[project.category ?? 'personal'];
+    add(id, project.title, `${project.title}: ${project.description} ${project.emphasis} Technologies: ${project.techStack.join(', ')}. Video: ${project.videoLabel}. Collection: ${page.title}.`,
+      `https://dexter-developer.dev${page.path}#${slug(project.title)}-title`, project.reviewed ?? copy.reviewed,
       ['project', ...project.techStack, project.title],
-      [...(project.githubUrl ? [{label: 'GitHub repository', url: project.githubUrl}] : []), ...(project.xUrl ? [{label: 'Game development updates on X', url: project.xUrl}] : [])]);
+      [...(project.githubUrl ? [{label: 'GitHub repository', url: project.githubUrl}] : []), ...(project.demoUrl ? [{label: 'Try demo', url: project.demoUrl}] : []), ...(project.websiteUrl ? [{label: 'Visit website', url: project.websiteUrl}] : []), ...(project.xUrl ? [{label: 'Game development updates on X', url: project.xUrl}] : [])]);
   }
   add('website-about', 'About Dexter', Object.values(copy.about).join(' '), 'https://dexter-developer.dev/about', copy.reviewed, ['about', 'background', 'interests', 'education', 'goals'], authorLinks.map(link => ({label: link.label, url: new URL(link.href).origin + new URL(link.href).pathname})));
   add('website-home', 'Dexter’s public profile and technology stack', `${copy.name}: ${copy.role}. Technology stack displayed on his home page: ${techStack.map(tech => tech.name).join(', ')}. A displayed technology is not evidence of employment tenure.`, 'https://dexter-developer.dev/', copy.reviewed, ['profile', 'technology', 'skills']);

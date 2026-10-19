@@ -4,7 +4,7 @@ import { resolve, extname } from 'node:path';
 import { tsImport } from 'tsx/esm/api';
 const { approvedEntries } = await tsImport('../server/chat/public-experience.ts', import.meta.url);
 const { providerBody, reservation } = await tsImport('../server/chat/provider.ts', import.meta.url);
-const allowed=new Set(['dexter-developer.dev','github.com','safetrase.com','thrivabilitymatters.org','x.com','www.amazon.com.au','www.goodreads.com','www.linkedin.com']);
+const allowed=new Set(['dexter-developer.dev','dexter-onboardflow.de.deplexo.com','github.com','safetrase.com','thrivabilitymatters.org','x.com','www.amazon.com.au','www.goodreads.com','www.linkedin.com']);
 const ids=new Set();
 for(const e of approvedEntries) {
   if(!e.id||ids.has(e.id)||!e.summary||e.summary.length>2500||!e.limits||!/^\d{4}-\d{2}-\d{2}$/.test(e.reviewed)||!e.tags.length||e.reviewDays<1)throw new Error('Invalid knowledge entry.');

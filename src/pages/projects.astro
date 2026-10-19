@@ -1,22 +1,5 @@
 ---
-import ProjectCard from "../components/ProjectCard.astro";
-import { projects } from "../data/projects";
-import BaseLayout from "../layouts/BaseLayout.astro";
+import ProjectsPage from "../components/ProjectsPage.astro";
 ---
 
-<BaseLayout title="Featured Projects | Dexter Mehta">
-  <div class="projects-page">
-    <header class="projects-hero" aria-labelledby="projects-title">
-      <h1 id="projects-title">Featured Projects</h1>
-      <p>Selected projects to showcase technical skills.</p>
-    </header>
-
-    <section class="project-showcase" aria-label="Featured project demos">
-      {
-        projects.map((project) => (
-          <ProjectCard project={project} />
-        ))
-      }
-    </section>
-  </div>
-</BaseLayout>
+<ProjectsPage category="personal" />

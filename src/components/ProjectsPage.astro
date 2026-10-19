@@ -1,0 +1,26 @@
+---
+import ProjectCard from "./ProjectCard.astro";
+import { projectPages, projects, type ProjectCategory } from "../data/projects";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+export interface Props {
+  category: ProjectCategory;
+}
+
+const { category } = Astro.props;
+const page = projectPages[category];
+const cards = projects.filter(project => (project.category ?? "personal") === category);
+---
+
+<BaseLayout title={`${page.title} | Dexter Mehta`} description={page.description}>
+  <div class="projects-page">
+    <header class="projects-hero" aria-labelledby="projects-title">
+      <h1 id="projects-title">{page.title}</h1>
+      <p>{page.description}</p>
+    </header>
+
+    <section class="project-showcase" aria-label={page.title}>
+      {cards.map(project => <ProjectCard project={project} />)}
+    </section>
+  </div>
+</BaseLayout>

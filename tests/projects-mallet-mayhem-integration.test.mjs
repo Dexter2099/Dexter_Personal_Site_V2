@@ -20,11 +20,11 @@ test("Mallet Mayhem '84 is the last featured project", async () => {
   );
   assert.match(
     projects,
-    /An air-hockey sports simulation game built in Unreal Engine 5 and C\+\+, developed from ideation and physics research through testing and production builds within two months\./
+    /Built an air-hockey sports simulation in Unreal Engine 5 and C\+\+, taking the project from concept and physics research to tested production builds within two months\./
   );
   assert.match(
     projects,
-    /Developed almost entirely by directing Codex and Unreal MCP in natural language\./
+    /Used Codex and Unreal MCP to implement and refine gameplay systems, guiding development through physics research, iterative testing and build validation\./
   );
   assert.match(projects, /techStack: \["Unreal Engine 5", "C\+\+", "Codex", "Unreal MCP"\]/);
   assert.match(
@@ -63,7 +63,7 @@ test("project descriptions keep the complete C++ token on one line", async () =>
 test("project cards render optional X links independently of GitHub links", async () => {
   const projectCard = await read("src/components/ProjectCard.astro");
 
-  assert.match(projectCard, /\(project\.githubUrl \|\| project\.xUrl\) &&/);
+  assert.match(projectCard, /\(project\.demoUrl \|\| project\.websiteUrl \|\| project\.githubUrl \|\| project\.xUrl\) &&/);
   assert.match(projectCard, /project\.xUrl &&/);
   assert.match(projectCard, /href=\{project\.xUrl\}/);
   assert.match(projectCard, /View \$\{project\.title\} development updates on X/);

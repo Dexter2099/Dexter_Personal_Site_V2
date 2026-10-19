@@ -1,8 +1,28 @@
+export type ProjectCategory = "professional" | "personal";
+
+export const projectPages = {
+  professional: {
+    title: "Professional Projects",
+    description: "Projects developed for organisations and independent release.",
+    path: "/professional/",
+    reviewed: "2026-10-19"
+  },
+  personal: {
+    title: "Personal Projects",
+    description: "Selected personal projects to showcase technical skills.",
+    path: "/projects/",
+    reviewed: "2026-10-19"
+  }
+} satisfies Record<ProjectCategory, { title: string; description: string; path: string; reviewed: string }>;
+
 export type Project = {
   id?: string;
   reviewed?: string;
+  category?: ProjectCategory;
   title: string;
   githubUrl?: string;
+  demoUrl?: string;
+  websiteUrl?: string;
   xUrl?: string;
   videoSrc: string;
   videoLabel: string;
@@ -14,8 +34,25 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    title: "SafeTrase Website",
+    id: "safetrase-website",
+    category: "professional",
+    reviewed: "2026-10-19",
+    websiteUrl: "https://safetrase.com/",
+    videoSrc: "/videos/safetrase-website-analytics-5e980773.mp4",
+    videoLabel: "SafeTrase website and Google Analytics 4 Home, showing active users, event count and the country map with account details hidden",
+    videoFit: "contain",
+    description:
+      "Built SafeTrase’s responsive frontend with React and JavaScript, using Vite for development and production builds, and CSS for desktop and mobile layouts.",
+    techStack: ["React", "JavaScript", "Vite", "CSS", "Google Analytics 4"],
+    emphasis:
+      "Integrated Brevo CRM for waitlist sign-ups and contact management. Configured Google Analytics 4 with visitor consent controls to measure page views, scrolling and waitlist-link clicks."
+  },
+  {
     title: "THRIVE Knowledge Assessment Platform",
     id: "kap",
+    category: "professional",
+    reviewed: "2026-10-19",
     videoSrc: "/videos/kap-superquiz-demo.mp4",
     videoLabel: "THRIVE Knowledge Assessment Platform demo reel",
     videoFit: "contain",
@@ -24,6 +61,21 @@ export const projects: Project[] = [
     techStack: ["TypeScript", "React", "Express", "PostgreSQL", "Drizzle", "Docker Compose", "Nginx", "Vitest"],
     emphasis:
       "Role-scoped learner and administrator workflows, secure assessment delivery, immutable attempt records, reporting, testing, and deployment-ready architecture."
+  },
+  {
+    title: "OnboardFlow",
+    id: "onboardflow",
+    reviewed: "2026-10-19",
+    githubUrl: "https://github.com/Dexter2099/client-onboarding-automation",
+    demoUrl: "https://dexter-onboardflow.de.deplexo.com/",
+    videoSrc: "/videos/onboardflow-demo-614090dd.mp4",
+    videoLabel: "OnboardFlow app flow-through (sped up), with fictional data and simulated email and handoff",
+    videoFit: "contain",
+    description:
+      "A client onboarding automation tool. A project manager reviews client information, corrects an out-of-scope request and prepares an approved kickoff brief. A personal project with fictional data and simulated email delivery and handoff.",
+    techStack: ["React", "TypeScript", "C#", "ASP.NET Core", "EF Core/Npgsql", "PostgreSQL", "Docker"],
+    emphasis:
+      "OWASP-aware security, practical SOLID principles and CI/CD with deployment gates and live checks."
   },
   {
     title: "Job Tracker API",
@@ -64,14 +116,16 @@ export const projects: Project[] = [
   {
     title: "Mallet Mayhem '84",
     id: "mallet",
+    category: "professional",
+    reviewed: "2026-10-19",
     xUrl: "https://x.com/DeftMenaceGames",
     videoSrc: "/videos/mallet-mayhem-84-trailer-30s-cd9c4ab2.mp4",
     videoLabel: "Mallet Mayhem '84 coming soon trailer",
     videoFit: "contain",
     description:
-      "An air-hockey sports simulation game built in Unreal Engine 5 and C++, developed from ideation and physics research through testing and production builds within two months.",
+      "Built an air-hockey sports simulation in Unreal Engine 5 and C++, taking the project from concept and physics research to tested production builds within two months.",
     techStack: ["Unreal Engine 5", "C++", "Codex", "Unreal MCP"],
     emphasis:
-      "Developed almost entirely by directing Codex and Unreal MCP in natural language."
+      "Used Codex and Unreal MCP to implement and refine gameplay systems, guiding development through physics research, iterative testing and build validation."
   }
 ];
