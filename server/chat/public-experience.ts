@@ -63,8 +63,10 @@ export function withWebsiteContent(base: Entry[], website = experienceEntries, c
       (role.groups ?? [{title: '', bullets: role.bullets ?? []}]).map(group => `${group.title} ${group.bullets.map(bulletText).join(' ')}`).join(' ')
     }`.trim(), `https://dexter-developer.dev/experience${role.id ? `#${role.id}` : ''}`, role.reviewed ?? copy.reviewed, ['experience', ...role.title.toLowerCase().split(/[^a-z0-9]+/)]);
   }
-  for (const page of Object.values(projectPages)) {
-    add(`website-${slug(page.title)}`, page.title, page.description,
+  for (const [category, page] of Object.entries(projectPages)) {
+    const members = cards.filter(project => (project.category ?? 'personal') === category);
+    add(`website-${slug(page.title)}`, page.title,
+      `${page.description} Exactly ${members.length} cards appear on this page, in this order: ${members.map(project => project.title).join('; ')}.`,
       `https://dexter-developer.dev${page.path}`, page.reviewed, ['projects', page.title]);
   }
   for (const project of cards) {

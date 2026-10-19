@@ -87,3 +87,19 @@ test('project sources link to their rendered collection and preserve public proj
   assert.ok(records.some(record => record.title === 'Professional Projects'));
   assert.ok(records.some(record => record.title === 'Personal Projects'));
 });
+
+test('page membership is explicit in model context and follows a project moving between collections', () => {
+  const cards = structuredClone(projects);
+  const before = withWebsiteContent(corpus.entries, experienceEntries, cards);
+  const professional = before.find(record => record.id === 'website-professional-projects')!;
+  const personal = before.find(record => record.id === 'website-personal-projects')!;
+  assert.match(professional.summary, /Exactly 3 cards.*SafeTrase Website; THRIVE Knowledge Assessment Platform; Mallet Mayhem '84\./);
+  assert.match(personal.summary, /Exactly 4 cards.*OnboardFlow; Job Tracker API; Gspace Chat; X-Ray Pneumonia Classifier\./);
+  const packet = JSON.parse(providerBody('Which projects are on each page?', before, [], 'gpt-5.4').input[0].content);
+  assert.equal(packet.approved_records.find((record: any) => record.id === professional.id).summary, professional.summary);
+  assert.equal(packet.approved_records.find((record: any) => record.id === personal.id).summary, personal.summary);
+  cards.find(project => project.id === 'onboardflow')!.category = 'professional';
+  const after = withWebsiteContent(corpus.entries, experienceEntries, cards);
+  assert.match(after.find(record => record.id === professional.id)!.summary, /Exactly 4 cards.*OnboardFlow/);
+  assert.doesNotMatch(after.find(record => record.id === personal.id)!.summary, /OnboardFlow/);
+});
