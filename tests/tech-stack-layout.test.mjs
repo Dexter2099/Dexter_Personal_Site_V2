@@ -36,7 +36,7 @@ test("desktop tech stack is icon-only while preserving header and link sizing", 
   assert.match(css, /\.home-social-link\s*\{[^}]*width:\s*3rem;[^}]*height:\s*3rem;/s);
   assert.match(css, /\.home-social-link__icon\s*\{[^}]*width:\s*2rem;[^}]*height:\s*2rem;/s);
 
-  assert.match(css, /\.site-shell:has\(\.home-page\)\s+\.site-footer\s*\{[^}]*display:\s*none;/s);
+  assert.doesNotMatch(css, /\.site-shell:has\(\.home-page\)\s+\.site-footer\s*\{[^}]*display:\s*none;/s);
   assert.match(css, /\.site-shell:has\(\.home-page\)\s+\.home-page\s*\{[^}]*padding-bottom:\s*0;/s);
   assert.match(css, /\.home-supporting-content\s*\{[^}]*gap:\s*clamp\(0\.8rem,\s*1\.5vh,\s*1\.1rem\);/s);
   assert.match(css, /\.tech-stack__list\s*\{[^}]*flex-wrap:\s*wrap;[^}]*gap:\s*clamp\(0\.85rem,\s*1\.7vw,\s*1\.2rem\);[^}]*row-gap:\s*0\.55rem;[^}]*padding:\s*0\.35rem 0 0\.65rem;/s);

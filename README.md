@@ -2,6 +2,10 @@
 
 Dark editorial software developer portfolio built with Astro, TypeScript, and plain CSS.
 
+The site version is maintained internally in `package.json`; the public footer displays only the update month alongside the copyright.
+Version `1.2.13` is the owner-selected starting point for release tracking on October 20, 2026; earlier work was not numbered retroactively.
+Update the footer's month in `src/data/site-copy.ts` when meaningful site changes are published.
+
 ## Setup
 
 Use Node.js 22.12 or newer (the checked-in `.node-version` selects 24.19.0 for Cloudflare Pages). Install the locked dependencies:

@@ -1,4 +1,5 @@
 ---
+import { siteCopy } from "../data/site-copy";
 import {
   siAstro,
   siCloudflarepages,
@@ -18,7 +19,13 @@ const footerTech = [
 
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <p class="site-footer__copyright">© 2026 Dexter Mehta</p>
+    <p class="site-footer__copyright">
+      <span>© 2026 {siteCopy.name}</span>
+      <span class="site-footer__updated">
+        <span aria-hidden="true">·</span>
+        <span>Last updated <time datetime={siteCopy.footer.lastUpdated}>{siteCopy.footer.lastUpdatedLabel}</time></span>
+      </span>
+    </p>
 
     <div class="site-footer__stack" aria-label="Built with Astro, TypeScript, Tailwind CSS, React, and Cloudflare Pages">
       <span class="site-footer__label">Built with</span>
