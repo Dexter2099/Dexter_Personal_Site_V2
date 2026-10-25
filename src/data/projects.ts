@@ -65,14 +65,14 @@ export const projects: Project[] = [
   {
     title: "OnboardFlow",
     id: "onboardflow",
-    reviewed: "2026-10-19",
+    reviewed: "2026-10-25",
     githubUrl: "https://github.com/Dexter2099/client-onboarding-automation",
     demoUrl: "https://dexter-onboardflow.de.deplexo.com/",
-    videoSrc: "/videos/onboardflow-demo-614090dd.mp4",
-    videoLabel: "OnboardFlow app flow-through (sped up), with fictional data and simulated email and handoff",
+    videoSrc: "/videos/onboardflow-ai-demo-20261025-f4fd50f5.mp4",
+    videoLabel: "OnboardFlow AI filling, source inspection, clarification and submission for human review; fictional data, sped-up demo",
     videoFit: "contain",
     description:
-      "A client onboarding automation tool. A project manager reviews client information, corrects an out-of-scope request and prepares an approved kickoff brief. A personal project with fictional data and simulated email delivery and handoff.",
+      "An AI onboarding app that drafts answers from client documents, shows supporting sources and asks for missing details before human submission. Built with React, C#/ASP.NET Core and PostgreSQL. The demo uses fictional data.",
     techStack: ["React", "TypeScript", "C#", "ASP.NET Core", "EF Core/Npgsql", "PostgreSQL", "Docker"],
     emphasis:
       "OWASP-aware security, practical SOLID principles and CI/CD with deployment gates and live checks."
