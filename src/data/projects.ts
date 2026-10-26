@@ -117,7 +117,7 @@ export const projects: Project[] = [
     title: "Mallet Mayhem '84",
     id: "mallet",
     category: "professional",
-    reviewed: "2026-10-19",
+    reviewed: "2026-10-21",
     xUrl: "https://x.com/DeftMenaceGames",
     videoSrc: "/videos/mallet-mayhem-84-trailer-30s-cd9c4ab2.mp4",
     videoLabel: "Mallet Mayhem '84 coming soon trailer",
