@@ -6,7 +6,7 @@ const { approvedEntries } = await tsImport('../server/chat/public-experience.ts'
 const { providerBody, reservation } = await tsImport('../server/chat/provider.ts', import.meta.url);
 const { publicRepositories, readmeKnowledge } = await tsImport('../server/chat/readmes.ts', import.meta.url);
 const { withGithubActivity } = await tsImport('../server/chat/github.ts', import.meta.url);
-const allowed=new Set(['dexter-developer.dev','onboardflow.hostless.app','github.com','safetrase.com','thrivabilitymatters.org','x.com','www.amazon.com.au','www.goodreads.com','www.linkedin.com']);
+const allowed=new Set(['dexter-developer.dev','dexter-onboardflow.pages.dev','onboardflow.hostless.app','github.com','safetrase.com','thrivabilitymatters.org','x.com','www.amazon.com.au','www.goodreads.com','www.linkedin.com']);
 const ids=new Set();
 for(const e of approvedEntries) {
   if(!e.id||ids.has(e.id)||!e.summary||e.summary.length>2500||!e.limits||!/^\d{4}-\d{2}-\d{2}$/.test(e.reviewed)||!e.tags.length||e.reviewDays<1)throw new Error('Invalid knowledge entry.');
