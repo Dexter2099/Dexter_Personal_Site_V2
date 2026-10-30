@@ -65,9 +65,9 @@ export const projects: Project[] = [
   {
     title: "OnboardFlow",
     id: "onboardflow",
-    reviewed: "2026-10-26",
+    reviewed: "2026-10-31",
     githubUrl: "https://github.com/Dexter2099/client-onboarding-automation",
-    demoUrl: "https://onboardflow.hostless.app/",
+    demoUrl: "https://dexter-onboardflow.pages.dev/",
     videoSrc: "/videos/onboardflow-ai-demo-20261025-f4fd50f5.mp4",
     videoLabel: "OnboardFlow AI filling, source inspection, clarification and submission for human review; fictional data, sped-up demo",
     videoFit: "contain",
