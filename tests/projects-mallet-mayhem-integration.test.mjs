@@ -37,7 +37,7 @@ test("Mallet Mayhem '84 is the last featured project", async () => {
     "Mallet Mayhem must not reference the retired gameplay demo"
   );
   assert.match(projects, /videoFit: "contain"/);
-  assert.match(projects, /xUrl: "https:\/\/x\.com\/DeftMenaceGames"/);
+  assert.match(projects, /steamUrl: "https:\/\/store\.steampowered\.com\/app\/5365200\/Mallet_Mayhem_84\/"/);
   assert.ok(
     existsSync(
       new URL(
@@ -60,11 +60,11 @@ test("project descriptions keep the complete C++ token on one line", async () =>
   );
 });
 
-test("project cards render optional X links independently of GitHub links", async () => {
+test("project cards render optional Steam links independently of GitHub links", async () => {
   const projectCard = await read("src/components/ProjectCard.astro");
 
-  assert.match(projectCard, /\(project\.demoUrl \|\| project\.websiteUrl \|\| project\.githubUrl \|\| project\.xUrl\) &&/);
-  assert.match(projectCard, /project\.xUrl &&/);
-  assert.match(projectCard, /href=\{project\.xUrl\}/);
-  assert.match(projectCard, /View \$\{project\.title\} development updates on X/);
+  assert.match(projectCard, /\(project\.demoUrl \|\| project\.websiteUrl \|\| project\.githubUrl \|\| project\.steamUrl\) &&/);
+  assert.match(projectCard, /project\.steamUrl &&/);
+  assert.match(projectCard, /href=\{project\.steamUrl\}/);
+  assert.match(projectCard, /View \$\{project\.title\} on Steam/);
 });

@@ -1,6 +1,7 @@
 ---
 import type { Project } from "../data/projects";
 import Button from "./Button.astro";
+import { siSteam } from "simple-icons";
 
 export interface Props {
   project: Project;
@@ -45,7 +46,7 @@ const titleId = `${project.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").repla
       }
     </ul>
     {
-      (project.demoUrl || project.websiteUrl || project.githubUrl || project.xUrl) && (
+      (project.demoUrl || project.websiteUrl || project.githubUrl || project.steamUrl) && (
         <div class="project-card__actions">
           {project.websiteUrl && (
             <Button href={project.websiteUrl} label="Visit website" ariaLabel={`Visit the ${project.title}`} target="_blank" rel="noreferrer" variant="primary" />
@@ -70,18 +71,18 @@ const titleId = `${project.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").repla
             )
           }
           {
-            project.xUrl && (
+            project.steamUrl && (
               <a
                 class="project-card__github"
-                href={project.xUrl}
-                aria-label={`View ${project.title} development updates on X`}
+                href={project.steamUrl}
+                aria-label={`View ${project.title} on Steam`}
                 target="_blank"
                 rel="noreferrer"
               >
                 <svg class="project-card__github-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.451-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z" />
+                  <path d={siSteam.path} />
                 </svg>
-                <span class="project-card__sr-only">View {project.title} development updates on X</span>
+                <span class="project-card__sr-only">View {project.title} on Steam</span>
               </a>
             )
           }

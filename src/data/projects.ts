@@ -23,7 +23,7 @@ export type Project = {
   githubUrl?: string;
   demoUrl?: string;
   websiteUrl?: string;
-  xUrl?: string;
+  steamUrl?: string;
   videoSrc: string;
   videoLabel: string;
   videoFit?: "cover" | "contain";
@@ -117,10 +117,10 @@ export const projects: Project[] = [
     title: "Mallet Mayhem '84",
     id: "mallet",
     category: "professional",
-    reviewed: "2026-10-21",
-    xUrl: "https://x.com/DeftMenaceGames",
+    reviewed: "2026-11-11",
+    steamUrl: "https://store.steampowered.com/app/5365200/Mallet_Mayhem_84/",
     videoSrc: "/videos/mallet-mayhem-84-trailer-30s-cd9c4ab2.mp4",
-    videoLabel: "Mallet Mayhem '84 coming soon trailer",
+    videoLabel: "Mallet Mayhem '84 trailer",
     videoFit: "contain",
     description:
       "Built an air-hockey sports simulation in Unreal Engine 5 and C++, taking the project from concept and physics research to tested production builds within two months.",

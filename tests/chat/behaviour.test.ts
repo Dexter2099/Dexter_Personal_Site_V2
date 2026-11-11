@@ -145,7 +145,7 @@ for (const question of currentWorkQuestions) test(`current-work overview: ${ques
   assert.deepEqual(selected.map(e=>e.id),['current-work','safetrase-source','mallet']);
   assert.match(selected[0].summary,/SafeTrase internship at The Advisory Network/);
   assert.match(selected[0].summary,/Mallet Mayhem/);
-  assert.ok(selected[0].links.some(link=>link.url==='https://x.com/DeftMenaceGames'));
+  assert.ok(selected[0].links.some(link=>link.url==='https://store.steampowered.com/app/5365200/Mallet_Mayhem_84/'));
 });
 test('latest-work wording preserves named-project and skill focus',()=>{
   assert.deepEqual(retrieve('What is the latest on KAP SuperQuiz?').map(e=>e.id),['kap']);
@@ -162,13 +162,19 @@ test('latest-project request reaches the provider with both current activities',
     assert.deepEqual(packet.approved_records.map((e:any)=>e.id),entries.map(e=>e.id));
     assert.match(packet.approved_records[0].summary,/SafeTrase internship at The Advisory Network/);
     assert.match(packet.approved_records[0].summary,/Mallet Mayhem/);
-    return Response.json({status:'completed',usage:{input_tokens:1000,output_tokens:100},output:[{type:'message',content:[{type:'output_text',text:JSON.stringify({kind:'answer',text:'Dexter’s latest professional work is his SafeTrase internship at The Advisory Network. He is also developing Mallet Mayhem ’84.',source_ids:['current-work']})}]}]});
+    for(const id of ['current-work','mallet']) {
+      const record=packet.approved_records.find((entry:any)=>entry.id===id);
+      assert.match(record.summary,/released on Steam for Windows/);
+      assert.match(record.summary,/5 November 2026/);
+      assert.doesNotMatch(record.summary+' '+record.limits,/Coming Soon|unreleased|submitted to Valve/);
+    }
+    return Response.json({status:'completed',usage:{input_tokens:1000,output_tokens:100},output:[{type:'message',content:[{type:'output_text',text:JSON.stringify({kind:'answer',text:'Dexter’s latest professional work is his SafeTrase internship at The Advisory Network. He also released Mallet Mayhem ’84 on Steam.',source_ids:['current-work']})}]}]});
   };
   const response=await handleChat(request("what is dexter's latest project?"),{...env,CHAT_PROVIDER:'openai',CHAT_MODEL:'gpt-5.4-mini',OPENAI_API_KEY:'test'},fetcher);
   assert.equal(response.status,200);assert.equal(calls,1);
   const answer=await response.json() as any;
   assert.equal(answer.kind,'answer');assert.match(answer.text,/SafeTrase.*The Advisory Network/);
-  assert.ok(answer.sources.some((source:any)=>source.url==='https://x.com/DeftMenaceGames'));
+  assert.ok(answer.sources.some((source:any)=>source.url==='https://store.steampowered.com/app/5365200/Mallet_Mayhem_84/'));
   assert.equal((await db.prepare('SELECT status FROM chat_requests').first()).status,'answer');
 });
 test('ordinary wording without keyword hits reaches the model and stays grounded',async()=>{
@@ -219,7 +225,10 @@ test('GitHub activity questions reach the model while direct profile links remai
   assert.ok(fixedReply('Where can I find Dexter’s GitHub profile?')!.sources.some(source=>source.url==='https://github.com/Dexter2099'));
 });
 test('unknown trivia is friendly and never guessed',()=>{const a=fixedReply('Dexter favourite colour')!;assert.equal(a,UNKNOWN);assert.match(a.text,/😊/);});
-test('stale milestones carry an explicit historical status',()=>{assert.match(datedSummary(entries.find(x=>x.id==='mallet')!,Date.parse('2026-11-12')).currentStatus,/Historical/);});
+test('stale milestones carry an explicit historical status',()=>{
+  const entry=entries.find(x=>x.id==='mallet')!;
+  assert.match(datedSummary(entry,Date.parse(entry.reviewed)+(entry.reviewDays+1)*86400000).currentStatus,/Historical/);
+});
 test('GitHub activity is dated and cannot establish daily working hours',()=>{
   const activity=entries.find(entry=>entry.id==='development-activity')!;
   assert.match(activity.summary,/1,054 contributions in the last year/);
