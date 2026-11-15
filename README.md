@@ -8,7 +8,7 @@ Update the footer's month in `src/data/site-copy.ts` when meaningful site change
 
 ## Setup
 
-Use Node.js 22.12 or newer (the checked-in `.node-version` selects 24.19.0 for Cloudflare Pages). Install the locked dependencies:
+Use Node.js 22.23.4 or newer (the checked-in `.node-version` selects 24.19.0 for Cloudflare Pages). Install the locked dependencies:
 
 ```bash
 npm ci
