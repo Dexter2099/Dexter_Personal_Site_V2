@@ -16,7 +16,7 @@ test('published SafeTrase details reach the actual model context with experience
   }
   assert.ok(reservation(body) > 0);
   const android = entries.find(entry => entry.id === 'safetrase-android')!;
-  assert.equal(android.reviewed, '2026-10-17');
+  assert.equal(android.reviewed, '2026-11-16');
   assert.equal(android.links[0].url, 'https://dexter-developer.dev/experience#safetrase');
 });
 

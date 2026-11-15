@@ -3,7 +3,7 @@
 export const employerCases=[
   {question:'Why should we consider Dexter for a developer role?',expected:'answer',sources:['profile','safetrase-source'],contains:['SafeTrase']},
   {question:'What has he been up to lately?',expected:'answer',sources:['current-work'],contains:['SafeTrase','Mallet']},
-  {question:'Where is Dexter doing his internship?',expected:'answer',sources:['current-work','safetrase-app','safetrase-source'],contains:['Advisory Network']},
+  {question:'Where does Dexter work as a software developer?',expected:'answer',sources:['current-work','safetrase-app','safetrase-source'],contains:['Advisory Network']},
   {question:'How does Dexter solve problems?',expected:'answer',sources:['safetrase-source','profile','ai-workflow','delvify','kap']},
   {question:'What did he actually build for SafeTrase?',expected:'answer',sources:['safetrase-source','safetrase-app'],contains:['SafeTrase']},
   {question:'How does he check that his work is reliable?',expected:'answer',sources:['safetrase-source','delvify','kap','job-tracker','ai-workflow']},

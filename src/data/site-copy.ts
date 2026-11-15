@@ -4,8 +4,8 @@ export const siteCopy = {
   name: 'Dexter Mehta',
   role: 'Fullstack Developer',
   footer: {
-    lastUpdated: '2026-10',
-    lastUpdatedLabel: 'Oct 2026'
+    lastUpdated: '2026-11',
+    lastUpdatedLabel: 'Nov 2026'
   },
   about: {
     introduction: 'I’m a software developer based in Brisbane with a Master of Information Technology from Queensland University of Technology, majoring in Computer Science. I’m focused on fullstack development and practical AI applications.',

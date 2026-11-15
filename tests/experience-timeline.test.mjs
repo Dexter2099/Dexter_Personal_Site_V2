@@ -9,7 +9,7 @@ test("experience timeline adds SafeTrase then THRIVE with a clickable project li
   const experience = await read("src/data/experience.ts");
   const timeline = await read("src/components/Timeline.astro");
 
-  const safeTraseIndex = experience.indexOf('title: "Internship at SafeTrase"');
+  const safeTraseIndex = experience.indexOf('title: "Software Developer at SafeTrase"');
   const thriveIndex = experience.indexOf('title: "Volunteer Full Stack Developer at the THRIVE Project"');
   const delvifyIndex = experience.indexOf('title: "Internship at Delvify.ai"');
 

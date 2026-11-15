@@ -2,14 +2,14 @@
   "reviewed": "2026-10-12",
   "entries": [
     {
-      "id":"current-work", "title":"Dexter’s current work and latest projects", "tags":["current","latest","recent","ongoing"], "priority":101,"reviewed":"2026-11-11","reviewDays":30,
-      "summary":"Dexter’s latest professional work is his SafeTrase internship at The Advisory Network. His recent focus includes the source ingester: collecting official public-health material, preserving its provenance and reliably connecting it to the app. His internship also covers the mobile app, admin portal and backend. Alongside this, Mallet Mayhem ’84, his Unreal Engine/C++ air-hockey game, is released on Steam for Windows under Deft Menace Games. Steam lists its release date as 5 November 2026; its store page is the public source for availability and game details.",
-      "limits":"The game release and store link were reviewed on 11 November 2026; the SafeTrase overview remains the 21 October snapshot. Lead broad current-work answers with the SafeTrase internship, then the game. Do not describe older projects as his newest work or imply every hosted source system is operational. See the game record for verification limits.",
+      "id":"current-work", "title":"Dexter’s current work and latest projects", "tags":["current","latest","recent","ongoing"], "priority":101,"reviewed":"2026-11-16","reviewDays":30,
+      "summary":"Dexter’s latest professional work is his SafeTrase software development work at The Advisory Network. His recent focus includes the source ingester: collecting official public-health material, preserving its provenance and reliably connecting it to the app. His SafeTrase work also covers the mobile app, admin portal and backend. Alongside this, Mallet Mayhem ’84, his Unreal Engine/C++ air-hockey game, is released on Steam for Windows under Deft Menace Games. Steam lists its release date as 5 November 2026; its store page is the public source for availability and game details.",
+      "limits":"Game release and store link reviewed 11 November 2026; SafeTrase role title reviewed 16 November 2026, contributions remain the 21 October snapshot. Do not call older projects newest or imply all hosted systems are live. See the game record for verification limits.",
       "links":[{"label":"Dexter’s experience", "url":"https://dexter-developer.dev/experience"},{"label":"Steam store page", "url":"https://store.steampowered.com/app/5365200/Mallet_Mayhem_84/"}]
     },
     {
       "id":"development-activity", "title":"Development activity and coding frequency", "tags":["code","coding","often","frequency","regular","activity","contributions","github","daily","hours","routine"], "priority":88,"reviewed":"2026-10-12","reviewDays":1,
-      "summary":"Dexter works on software regularly across his SafeTrase internship, open-source contributions and personal projects, including Mallet Mayhem ’84. His public GitHub profile was checked on 12 October 2026 and displayed 1,054 contributions in the last year, supporting a description of active, ongoing software-development work.",
+      "summary":"Dexter works on software regularly across his SafeTrase work, open-source contributions and personal projects, including Mallet Mayhem ’84. His public GitHub profile was checked on 12 October 2026 and displayed 1,054 contributions in the last year, supporting a description of active, ongoing software-development work.",
       "limits":"For broad coding-frequency questions, give a brief, natural answer about regular development and the dated GitHub evidence. Do not add an unsolicited list of measurement caveats. Describe 1,054 as contributions in the last year observed on 12 October 2026. Do not present it as a calendar-year total, a live count, commits or days worked. GitHub contributions include commits, pull requests and issues and do not capture all local or non-GitHub work. Do not infer that Dexter codes every day, a fixed number of hours, individual authorship of every line, or skill level from a contribution count. If asked for exact hours or a daily routine, answer the supported part and briefly say that exact detail is not documented. Private repository identities and work records remain excluded.",
       "links":[{"label":"GitHub activity", "url":"https://github.com/Dexter2099"}]
     },
@@ -26,7 +26,7 @@
       "links":[{"label":"SafeTrase", "url":"https://safetrase.com"}]
     },
     {
-      "id":"safetrase-app","title":"SafeTrase mobile, admin and backend development","tags":["safetrase","safetrace","mobile","react","native","expo","next","typescript","supabase","postgresql","security","testing","ai","internship"],"priority":95,"reviewed":"2026-10-12","reviewDays":30,
+      "id":"safetrase-app","title":"SafeTrase mobile, admin and backend development","tags":["safetrase","safetrace","mobile","react","native","expo","next","typescript","supabase","postgresql","security","testing","ai","developer"],"priority":95,"reviewed":"2026-10-12","reviewDays":30,
       "summary":"Versioned guidance and authenticated feeds are covered by contract/security tests. Constrained backend AI guidance includes consent, quota and official-packet validation; provider activation is not established.",
       "limits":"Android preview testing is supported; do not generalise to iOS, every device or complete notification delivery. AI provider activation remains unestablished. No autonomous medical advice or assumptions that all integrations are operational.","links":[{"label":"SafeTrase", "url":"https://safetrase.com"}]
     },

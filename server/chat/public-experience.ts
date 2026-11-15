@@ -32,7 +32,7 @@ export function withWebsiteExperience(base: Entry[], website: ExperienceEntry[] 
       tags: existing?.tags ?? ['safetrase', ...group.title.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean)],
       priority: existing?.priority ?? 94,
       reviewed: role.reviewed!, reviewDays: existing?.reviewDays ?? 30,
-      summary: redact([`${role.title} at ${role.meta}.`, ...(id === 'safetrase-app' && role.summary ? [role.summary] : []), ...bullets].join(' ')) +
+      summary: redact([`${role.title} at ${role.meta}.`, ...(id === 'safetrase-app' ? [role.companyDescription, role.summary].filter(Boolean) : []), ...bullets].join(' ')) +
         (existing?.summary ? ` ${existing.summary}` : ''),
       limits: existing?.limits ?? 'Stage 1 prototype contributions. Do not infer production scale, all-device acceptance or current uptime. Privacy rules apply.',
       links: [{label: 'SafeTrase experience', url: 'https://dexter-developer.dev/experience#safetrase'}]
@@ -59,7 +59,7 @@ export function withWebsiteContent(base: Entry[], website = experienceEntries, c
   };
   for (const role of website.filter(entry => entry.id !== 'safetrase')) {
     const id = role.id ?? `experience-${slug(role.title)}`;
-    add(id, role.title, `${role.title}. ${role.meta}. ${role.date}. ${role.summary ?? ''} ${
+    add(id, role.title, `${role.title}. ${role.meta}. ${role.date}. ${role.companyDescription ?? ''} ${role.summary ?? ''} ${
       (role.groups ?? [{title: '', bullets: role.bullets ?? []}]).map(group => `${group.title} ${group.bullets.map(bulletText).join(' ')}`).join(' ')
     }`.trim(), `https://dexter-developer.dev/experience${role.id ? `#${role.id}` : ''}`, role.reviewed ?? copy.reviewed, ['experience', ...role.title.toLowerCase().split(/[^a-z0-9]+/)]);
   }

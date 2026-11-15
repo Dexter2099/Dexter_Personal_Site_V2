@@ -19,6 +19,7 @@ export type ExperienceEntry = {
   date: string;
   title: string;
   meta: string;
+  companyDescription?: string;
   summary?: string;
   reviewed?: string;
   logo?: string;
@@ -31,10 +32,11 @@ export type ExperienceEntry = {
 export const experienceEntries: ExperienceEntry[] = [
   {
     id: "safetrase",
-    reviewed: "2026-10-17",
+    reviewed: "2026-11-16",
     date: "2026",
-    title: "Internship at SafeTrase",
+    title: "Software Developer at SafeTrase",
     meta: "The Advisory Network",
+    companyDescription: "SafeTrase is an Australian startup focused on bringing relevant public health data from trusted sources to at-risk members of the community.",
     summary: "Developed the Stage 1 SafeTrase prototype with product and public-health stakeholders. The app helps people review official health alerts relevant to their selected locations, saved places and planned trips.",
     logo: "/images/advisory-network-logo.png",
     logoAlt: "The Advisory Network logo",

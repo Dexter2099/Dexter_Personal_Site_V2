@@ -22,6 +22,7 @@ import { experienceEntries } from "../data/experience";
                 )
               }
             </div>
+            {entry.companyDescription && <p class="timeline-card__summary">{entry.companyDescription}</p>}
             {entry.summary && <p class="timeline-card__summary">{entry.summary}</p>}
             <div class:list={{ "timeline-card__groups": entry.groups }}>
               {
