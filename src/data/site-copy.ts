@@ -1,8 +1,8 @@
 // Public profile copy shared by the rendered pages and the website assistant.
 export const siteCopy = {
-  reviewed: '2026-10-20',
+  reviewed: '2026-11-16',
   name: 'Dexter Mehta',
-  role: 'Fullstack Developer',
+  role: 'Software Developer',
   footer: {
     lastUpdated: '2026-11',
     lastUpdatedLabel: 'Nov 2026'
