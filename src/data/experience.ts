@@ -84,8 +84,9 @@ export const experienceEntries: ExperienceEntry[] = [
   },
   {
     date: "2026",
-    title: "Volunteer Full Stack Developer at the THRIVE Project",
+    title: "Volunteer Software Developer at the THRIVE Project",
     id: "kap",
+    reviewed: "2026-11-16",
     meta: "KAP SuperQuiz | Remote",
     logo: "/images/thrive-logo.png",
     logoAlt: "THRIVE Project logo",

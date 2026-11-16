@@ -10,7 +10,7 @@ test("experience timeline adds SafeTrase then THRIVE with a clickable project li
   const timeline = await read("src/components/Timeline.astro");
 
   const safeTraseIndex = experience.indexOf('title: "Software Developer at SafeTrase"');
-  const thriveIndex = experience.indexOf('title: "Volunteer Full Stack Developer at the THRIVE Project"');
+  const thriveIndex = experience.indexOf('title: "Volunteer Software Developer at the THRIVE Project"');
   const delvifyIndex = experience.indexOf('title: "Internship at Delvify.ai"');
 
   assert.ok(safeTraseIndex >= 0, "SafeTrase entry must exist");
