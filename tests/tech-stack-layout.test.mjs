@@ -17,7 +17,7 @@ test("home tech stack uses the requested ordered stack", async () => {
     "TypeScript",
     "React",
     "Tailwind CSS",
-    "PyTorch",
+    "AI assisted development (Codex)",
     "Google Cloud"
   ];
 
