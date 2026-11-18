@@ -3,6 +3,12 @@ export const siteCopy = {
   reviewed: '2026-11-16',
   name: 'Dexter Mehta',
   role: 'Software Developer',
+  socialPreview: {
+    image: '/images/dm-social-preview.png',
+    alt: 'DM — Dexter Mehta',
+    width: 600,
+    height: 600
+  },
   footer: {
     lastUpdated: '2026-11',
     lastUpdatedLabel: 'Nov 2026'

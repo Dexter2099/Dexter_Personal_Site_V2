@@ -3,6 +3,7 @@ import Footer from "../components/Footer.astro";
 import SideRaysBackground from "../components/SideRaysBackground.astro";
 import SideNav from "../components/SideNav.astro";
 import PortfolioChat from "../components/PortfolioChat.astro";
+import { siteCopy } from "../data/site-copy";
 import "../styles/global.css";
 
 export interface Props {
@@ -14,6 +15,9 @@ const {
   title = "Dexter Mehta",
   description = "Backend developer portfolio focused on APIs, databases, and practical AI applications."
 } = Astro.props;
+const siteOrigin = "https://dexter-developer.dev";
+const pageUrl = new URL(Astro.url.pathname, siteOrigin).href;
+const previewImage = new URL(siteCopy.socialPreview.image, siteOrigin).href;
 ---
 
 <!doctype html>
@@ -22,6 +26,21 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteCopy.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:image" content={previewImage} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content={siteCopy.socialPreview.width} />
+    <meta property="og:image:height" content={siteCopy.socialPreview.height} />
+    <meta property="og:image:alt" content={siteCopy.socialPreview.alt} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={previewImage} />
+    <meta name="twitter:image:alt" content={siteCopy.socialPreview.alt} />
     <meta name="theme-color" content="#07080A" />
     <meta name="robots" content="noindex, nofollow" />
     <meta name="googlebot" content="noindex, nofollow" />
