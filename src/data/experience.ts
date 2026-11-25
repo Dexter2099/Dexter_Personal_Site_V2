@@ -32,7 +32,7 @@ export type ExperienceEntry = {
 export const experienceEntries: ExperienceEntry[] = [
   {
     id: "safetrase",
-    reviewed: "2026-11-16",
+    reviewed: "2026-11-25",
     date: "2026",
     title: "Software Developer at SafeTrase",
     meta: "The Advisory Network",
@@ -47,6 +47,14 @@ export const experienceEntries: ExperienceEntry[] = [
           "Built an Expo/React Native mobile app and Next.js administration portal using TypeScript, with sign-in, alert feeds, saved places and workflows for reviewing and publishing alerts.",
           "Used Supabase Auth, PostgreSQL/PostGIS and Edge Functions for the backend. Implemented database migrations and row-level security to restrict access to personal data and administrative actions.",
           "Integrated Geoapify for place search and geocoding through backend services, keeping provider credentials outside the mobile app."
+        ]
+      },
+      {
+        title: "Frontend design and prototyping",
+        bullets: [
+          "Developed an interactive SafeTrase frontend prototype in Figma Make, covering health alerts, saved places, trips and settings.",
+          "Refined mobile layouts, alert cards, detail screens and navigation, with consistent typography, spacing and shared interface patterns.",
+          "Added text-size, high-contrast and larger tap-target options, and tested key user journeys in phone-sized browser layouts."
         ]
       },
       {

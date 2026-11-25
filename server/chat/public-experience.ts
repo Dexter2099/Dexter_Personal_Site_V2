@@ -10,6 +10,7 @@ import { redact } from './policy';
 
 const groupIds: Record<string, string> = {
   'Mobile app and backend': 'safetrase-app',
+  'Frontend design and prototyping': 'safetrase-frontend',
   'Source ingestion and cloud infrastructure': 'safetrase-source',
   'Android testing and software quality': 'safetrase-android',
   'Website, SEO and audience engagement': 'safetrase-web'
@@ -46,7 +47,7 @@ export function withWebsiteExperience(base: Entry[], website: ExperienceEntry[] 
 const slug = (text: string) => text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const bulletText = (bullet: import('../../src/data/experience').ExperienceBullet) =>
   typeof bullet === 'string' ? bullet : `${bullet.before}${bullet.link.label}${bullet.after}`;
-const contributionLimits = 'Published portfolio description, not proof of current uptime, commercial scale or independent authorship of every line. No private records, credentials or infrastructure identifiers. Do not infer dates or employment from project descriptions.';
+const contributionLimits = 'Public description: no inferred uptime, scale, sole authorship, project dates or employment; no private records, credentials or infrastructure IDs.';
 
 export function withWebsiteContent(base: Entry[], website = experienceEntries, cards: Project[] = projects, copy = siteCopy) {
   const result = withWebsiteExperience(base, website);
