@@ -52,9 +52,9 @@ export const experienceEntries: ExperienceEntry[] = [
       {
         title: "Frontend design and prototyping",
         bullets: [
-          "Developed an interactive SafeTrase frontend prototype in Figma Make, covering health alerts, saved places, trips and settings.",
-          "Refined mobile layouts, alert cards, detail screens and navigation, with consistent typography, spacing and shared interface patterns.",
-          "Added text-size, high-contrast and larger tap-target options, and tested key user journeys in phone-sized browser layouts."
+          "Interactive prototyping and interaction design using Figma Make, including screen layouts, mobile navigation and user flows.",
+          "Responsive UI development using consistent typography, spacing and reusable interface patterns across mobile layouts.",
+          "Accessibility and UI testing, including text-size controls, high-contrast modes, larger tap targets and browser-based checks of navigation and key user journeys."
         ]
       },
       {
