@@ -13,7 +13,7 @@ export interface Props {
 
 const {
   title = "Dexter Mehta",
-  description = "Backend developer portfolio focused on APIs, databases, and practical AI applications."
+  description = siteCopy.socialPreview.description
 } = Astro.props;
 const siteOrigin = "https://dexter-developer.dev";
 const pageUrl = new URL(Astro.url.pathname, siteOrigin).href;

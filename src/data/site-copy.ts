@@ -4,6 +4,7 @@ export const siteCopy = {
   name: 'Dexter Mehta',
   role: 'Software Developer',
   socialPreview: {
+    description: 'Software developer portfolio focused on APIs, databases, and practical AI applications.',
     image: '/images/dm-social-preview.png',
     alt: 'DM — Dexter Mehta',
     width: 600,
